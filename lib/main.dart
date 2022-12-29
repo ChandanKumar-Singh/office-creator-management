@@ -103,21 +103,44 @@ class _SplashScreenState extends State<SplashScreen> {
     //   FocusManager.instance.primaryFocus?.unfocus();
     // }
     connectionSetup();
-    checkLogin();
+    // checkLogin();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: Image.asset(
-            'assets/images/NOV-LOGO-red.png',
-            width: Get.width / 2,
-          ),
+      body: Center(
+        child: Stack(
+          children: [
+            Text(
+              'wecollab ',
+              style: TextStyle(
+                fontSize: Theme.of(context).textTheme.headline4!.fontSize,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Positioned(
+              right: 5,
+
+              child: Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.red,
+                ),
+              ),
+            )
+          ],
         ),
       ),
+      // body: Center(
+      //   child: Image.asset(
+      //     'assets/images/NOV-LOGO-red.png',
+      //     width: Get.width / 2,
+      //   ),
+      // ),
     );
   }
 }
