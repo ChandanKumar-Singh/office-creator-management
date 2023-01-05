@@ -71,7 +71,7 @@ class _CreaterManagementAppState extends State<CreaterManagementApp> {
           brightness: Brightness.light,
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(5),
             ),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
@@ -82,7 +82,7 @@ class _CreaterManagementAppState extends State<CreaterManagementApp> {
             ),
           ),
         ),
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
@@ -126,7 +126,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Container(
                 height: 10,
                 width: 10,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.red,
                 ),

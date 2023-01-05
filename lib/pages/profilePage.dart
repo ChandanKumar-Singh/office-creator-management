@@ -9,6 +9,7 @@ import 'package:creater_management/pages/taskDetailspage.dart';
 import 'package:creater_management/providers/authProvider.dart';
 import 'package:creater_management/providers/dashBoardController.dart';
 import 'package:creater_management/providers/userController.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
@@ -40,93 +41,95 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Card(
-                elevation: 7,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: onInsta || onYoutube
-                      ? Column(
-                          children: [
-                            if (onInsta)
-                              Row(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/instaLogo.png',
-                                    width: 30,
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Expanded(
-                                    child: Row(
-                                      children: [
-                                        h6Text(
-                                          'Followers:',
-                                          color: Colors.grey,
-                                        ),
-                                        const SizedBox(width: 10),
-                                        h5Text(
-                                          up.creator.data!.instaFollowers
-                                              .toString(),
-                                          // color: Colors.grey,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            if (onYoutube)
-                              Row(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/youtubeLogo.jpg',
-                                    width: 30,
-                                    height: 40,
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Expanded(
-                                    child: Row(
-                                      children: [
-                                        h6Text(
-                                          'Subscribers:',
-                                          color: Colors.grey,
-                                        ),
-                                        const SizedBox(width: 10),
-                                        h5Text(
-                                          up.creator.data!.youtubeSubscribers
-                                              .toString(),
-                                          // color: Colors.grey,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Card(
+                    elevation: 7,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15.0, horizontal: 20),
+                      child: onInsta || onYoutube
+                          ? Row(
                               children: [
-                                const Icon(
-                                  Icons.circle,
-                                  color: Colors.red,
-                                  size: 15,
-                                ),
-                                const SizedBox(width: 5),
-                                b1Text(
-                                  'Live Count',
-                                  color: Colors.red,
-                                ),
+                                if (onInsta)
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/instaLogo.png',
+                                        width: 30,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      h5Text(
+                                        countInKMB(up
+                                            .creator.data!.instaFollowers
+                                            .toString()),
+                                        // color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ],
+                                  ),
+                                if (onYoutube && onInsta)
+                                  const SizedBox(width: 20),
+                                if (onYoutube)
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/youtubeLogo.jpg',
+                                        width: 30,
+                                        height: 40,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Row(
+                                        children: [
+                                          // h6Text(
+                                          //   'Subscribers:',
+                                          //   color: Colors.grey,
+                                          // ),
+                                          // const SizedBox(width: 10),
+                                          h5Text(
+                                            countInKMB(up.creator.data!
+                                                .youtubeSubscribers
+                                                .toString()),
+                                            // color: Colors.grey,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                // Row(
+                                //   mainAxisAlignment: MainAxisAlignment.end,
+                                //   children: [
+                                //     const Icon(
+                                //       Icons.circle,
+                                //       color: Colors.red,
+                                //       size: 15,
+                                //     ),
+                                //     const SizedBox(width: 5),
+                                //     b1Text(
+                                //       'Live Count',
+                                //       color: Colors.red,
+                                //     ),
+                                //   ],
+                                // )
                               ],
                             )
-                          ],
-                        )
-                      : Center(
-                          child:
-                              b1Text('You have not any subscriber or follower'),
-                        ),
-                ),
+                          : Row(
+                              children: [
+                                b1Text(
+                                    'You have not any subscriber or follower',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLine: 2),
+                              ],
+                            ),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 15),
@@ -134,7 +137,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Card(
-                  elevation: 7,
+                  elevation: 3,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
@@ -142,438 +145,586 @@ class _ProfilePageState extends State<ProfilePage> {
                     backgroundColor: Colors.transparent,
                     body: Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            // Row(
-                            //   children: [
-                            //     Expanded(
-                            //         child: TextFormField(
-                            //       readOnly: true,
-                            //       controller: up.firstNameController,
-                            //       cursorHeight: 25,
-                            //       keyboardType: TextInputType.text,
-                            //       // cursorColor: Colors.white,
-                            //       style: const TextStyle(
-                            //         fontWeight: FontWeight.normal,
-                            //         // color: Colors.white,
-                            //         fontSize: 20,
-                            //       ),
-                            //       onChanged: (val) {
-                            //         // if (val.length > 10) {
-                            //         //   setState(() {
-                            //         //     ap.phoneController.text =
-                            //         //         val.substring(0, 10);
-                            //         //   });
-                            //         // }
-                            //         // if (val.length == 10) {
-                            //         //   FocusManager.instance.primaryFocus?.unfocus();
-                            //         // }
-                            //       },
-                            //       decoration: InputDecoration(
-                            //         hintText: 'First Name',
-                            //         hintStyle: const TextStyle(
-                            //           fontWeight: FontWeight.normal,
-                            //           color: Colors.grey,
-                            //           fontSize: 20,
-                            //         ),
-                            //         border: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         enabledBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         focusedBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ))
-                            //   ],
-                            // ),
-                            // const SizedBox(height: 15),
-                            // Row(
-                            //   children: [
-                            //     Expanded(
-                            //         child: TextFormField(
-                            //       readOnly: true,
-                            //
-                            //       controller: up.lastNameController,
-                            //       cursorHeight: 25,
-                            //       keyboardType: TextInputType.text,
-                            //       // cursorColor: Colors.white,
-                            //       style: const TextStyle(
-                            //         fontWeight: FontWeight.normal,
-                            //         // color: Colors.white,
-                            //         fontSize: 20,
-                            //       ),
-                            //       onChanged: (val) {
-                            //         // if (val.length > 10) {
-                            //         //   setState(() {
-                            //         //     ap.phoneController.text =
-                            //         //         val.substring(0, 10);
-                            //         //   });
-                            //         // }
-                            //         // if (val.length == 10) {
-                            //         //   FocusManager.instance.primaryFocus?.unfocus();
-                            //         // }
-                            //       },
-                            //       decoration: InputDecoration(
-                            //         hintText: 'Last Name',
-                            //         hintStyle: const TextStyle(
-                            //           fontWeight: FontWeight.normal,
-                            //           color: Colors.grey,
-                            //           fontSize: 20,
-                            //         ),
-                            //         border: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         enabledBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         focusedBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ))
-                            //   ],
-                            // ),
-                            // const SizedBox(height: 15),
-                            Row(
-                              children: [
-                                Expanded(
-                                    child: TextFormField(
-                                  controller: up.emailController,
-                                  // readOnly: true,
-
-                                  cursorHeight: 25,
-                                  keyboardType: TextInputType.emailAddress,
-                                  // cursorColor: Colors.white,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    // color: Colors.white,
-                                    fontSize: 20,
-                                  ),
-                                  onChanged: (val) {
-                                    // if (val.length > 10) {
-                                    //   setState(() {
-                                    //     ap.phoneController.text =
-                                    //         val.substring(0, 10);
-                                    //   });
-                                    // }
-                                    // if (val.length == 10) {
-                                    //   FocusManager.instance.primaryFocus?.unfocus();
-                                    // }
-                                  },
-                                  decoration: InputDecoration(
-                                    hintText: 'Email Address',
-                                    hintStyle: const TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.grey,
-                                      fontSize: 20,
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      borderSide: const BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      borderSide: const BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      borderSide: const BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ),
-                                ))
-                              ],
-                            ),
-                            const SizedBox(height: 15),
-                            // Row(
-                            //   children: [
-                            //     Expanded(
-                            //         child: TextFormField(
-                            //       readOnly: true,
-                            //       controller: up.phoneController,
-                            //       cursorHeight: 25,
-                            //       keyboardType: TextInputType.phone,
-                            //       // cursorColor: Colors.white,
-                            //       style: const TextStyle(
-                            //         fontWeight: FontWeight.normal,
-                            //         // color: Colors.white,
-                            //         fontSize: 20,
-                            //       ),
-                            //       onChanged: (val) {
-                            //         // if (val.length > 10) {
-                            //         //   setState(() {
-                            //         //     ap.phoneController.text =
-                            //         //         val.substring(0, 10);
-                            //         //   });
-                            //         // }
-                            //         // if (val.length == 10) {
-                            //         //   FocusManager.instance.primaryFocus?.unfocus();
-                            //         // }
-                            //       },
-                            //       decoration: InputDecoration(
-                            //         hintText: 'Mobile No.',
-                            //         hintStyle: const TextStyle(
-                            //           fontWeight: FontWeight.normal,
-                            //           color: Colors.grey,
-                            //           fontSize: 20,
-                            //         ),
-                            //         border: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         enabledBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         focusedBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ))
-                            //   ],
-                            // ),
-                            // const SizedBox(height: 15),
-                            Row(
-                              children: [
-                                Expanded(
-                                    child: TextFormField(
-                                  // readOnly: true,
-
-                                  controller: up.addressController,
-                                  cursorHeight: 25,
-                                  keyboardType: TextInputType.emailAddress,
-                                  // cursorColor: Colors.white,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    // color: Colors.white,
-                                    fontSize: 20,
-                                  ),
-                                  onChanged: (val) {
-                                    // if (val.length > 10) {
-                                    //   setState(() {
-                                    //     ap.phoneController.text =
-                                    //         val.substring(0, 10);
-                                    //   });
-                                    // }
-                                    // if (val.length == 10) {
-                                    //   FocusManager.instance.primaryFocus?.unfocus();
-                                    // }
-                                  },
-                                  maxLines: 2,
-                                  decoration: InputDecoration(
-                                    hintText: 'Address',
-                                    hintStyle: const TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.grey,
-                                      fontSize: 20,
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      borderSide: const BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      borderSide: const BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      borderSide: const BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ),
-                                ))
-                              ],
-                            ),
-                            // const SizedBox(height: 15),
-                            // Row(
-                            //   children: [
-                            //     Expanded(
-                            //         child: TextFormField(
-                            //       controller: up.instaFollowersController,
-                            //       // readOnly: true,
-                            //
-                            //       cursorHeight: 25,
-                            //       keyboardType: TextInputType.number,
-                            //       // cursorColor: Colors.white,
-                            //       style: const TextStyle(
-                            //         fontWeight: FontWeight.normal,
-                            //         // color: Colors.white,
-                            //         fontSize: 20,
-                            //       ),
-                            //       onChanged: (val) {
-                            //         // if (val.length > 10) {
-                            //         //   setState(() {
-                            //         //     ap.phoneController.text =
-                            //         //         val.substring(0, 10);
-                            //         //   });
-                            //         // }
-                            //         // if (val.length == 10) {
-                            //         //   FocusManager.instance.primaryFocus?.unfocus();
-                            //         // }
-                            //       },
-                            //       decoration: InputDecoration(
-                            //         hintText: 'Instagram Followers',
-                            //         labelText: 'Instagram Followers',
-                            //         hintStyle: const TextStyle(
-                            //           fontWeight: FontWeight.normal,
-                            //           color: Colors.grey,
-                            //           fontSize: 20,
-                            //         ),
-                            //         border: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         enabledBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         focusedBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ))
-                            //   ],
-                            // ),
-                            // const SizedBox(height: 15),
-                            // Row(
-                            //   children: [
-                            //     Expanded(
-                            //         child: TextFormField(
-                            //       controller: up.ytSubscribersController,
-                            //       readOnly: true,
-                            //
-                            //       cursorHeight: 25,
-                            //       keyboardType: TextInputType.number,
-                            //       // cursorColor: Colors.white,
-                            //       style: const TextStyle(
-                            //         fontWeight: FontWeight.normal,
-                            //         // color: Colors.white,
-                            //         fontSize: 20,
-                            //       ),
-                            //       onChanged: (val) {
-                            //         // if (val.length > 10) {
-                            //         //   setState(() {
-                            //         //     ap.phoneController.text =
-                            //         //         val.substring(0, 10);
-                            //         //   });
-                            //         // }
-                            //         // if (val.length == 10) {
-                            //         //   FocusManager.instance.primaryFocus?.unfocus();
-                            //         // }
-                            //       },
-                            //       decoration: InputDecoration(
-                            //         hintText: 'Youtube Subscribers',
-                            //         labelText: 'Youtube Subscribers',
-                            //         hintStyle: const TextStyle(
-                            //           fontWeight: FontWeight.normal,
-                            //           color: Colors.grey,
-                            //           fontSize: 20,
-                            //         ),
-                            //         border: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         enabledBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //         focusedBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           borderSide: const BorderSide(
-                            //             color: Colors.grey,
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ))
-                            //   ],
-                            // ),
-                            const SizedBox(height: 15),
-                            const SizedBox(height: 20),
-                          ],
-                        ),
-                      ),
-                    ),
-                    bottomNavigationBar: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0, vertical: 5),
-                      child: Row(
+                      child: Column(
                         children: [
                           Expanded(
-                            child: ListTile(
-                              tileColor: App.themecolor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              onTap: () async {
-                                if (up.creator.data!.status == 'Active') {
-                                  await up.updateProfile(homePage: false);
-                                } else {
-                                  showNotVerifiedDialog(
-                                      up.creator.data!.status == 'Active',
-                                      false);
-                                }
-                              },
-                              title: h6Text(
-                                'Update ',
-                                textAlign: TextAlign.center,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: h4Text(
+                                                dp.userTasksHistory.total_collab
+                                                    .toString(),
+                                                color: Colors.grey,
+                                                textAlign: TextAlign.center,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: h6Text('Total Collab',
+                                                textAlign: TextAlign.center,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const VerticalDivider(
+                                    width: 1, thickness: 1, color: Colors.grey),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: h4Text(
+                                                dp.userTasksHistory.pending_task
+                                                    .toString(),
+                                                color: Colors.grey,
+                                                textAlign: TextAlign.center,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: h6Text('Pending Tasks',
+                                                textAlign: TextAlign.center,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Divider(
+                              height: 0, thickness: 1, color: Colors.grey),
+                          Expanded(
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: h4Text(
+                                                dp.userTasksHistory
+                                                    .completed_collab
+                                                    .toString(),
+                                                color: Colors.grey,
+                                                textAlign: TextAlign.center,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: h6Text('Completed Collab',
+                                                textAlign: TextAlign.center,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const VerticalDivider(
+                                    width: 1, thickness: 1, color: Colors.grey),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: h4Text(
+                                                dp.userTasksHistory
+                                                    .rajected_collab
+                                                    .toString(),
+                                                color: Colors.grey,
+                                                textAlign: TextAlign.center,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: h6Text('Rejected Collab',
+                                                textAlign: TextAlign.center,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
+                      // child: SingleChildScrollView(
+                      //   child: Column(
+                      //     children: [
+                      //       // Row(
+                      //       //   children: [
+                      //       //     Expanded(
+                      //       //         child: TextFormField(
+                      //       //       readOnly: true,
+                      //       //       controller: up.firstNameController,
+                      //       //       cursorHeight: 25,
+                      //       //       keyboardType: TextInputType.text,
+                      //       //       // cursorColor: Colors.white,
+                      //       //       style: const TextStyle(
+                      //       //         fontWeight: FontWeight.normal,
+                      //       //         // color: Colors.white,
+                      //       //         fontSize: 20,
+                      //       //       ),
+                      //       //       onChanged: (val) {
+                      //       //         // if (val.length > 10) {
+                      //       //         //   setState(() {
+                      //       //         //     ap.phoneController.text =
+                      //       //         //         val.substring(0, 10);
+                      //       //         //   });
+                      //       //         // }
+                      //       //         // if (val.length == 10) {
+                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
+                      //       //         // }
+                      //       //       },
+                      //       //       decoration: InputDecoration(
+                      //       //         hintText: 'First Name',
+                      //       //         hintStyle: const TextStyle(
+                      //       //           fontWeight: FontWeight.normal,
+                      //       //           color: Colors.grey,
+                      //       //           fontSize: 20,
+                      //       //         ),
+                      //       //         border: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         enabledBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         focusedBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //       ),
+                      //       //     ))
+                      //       //   ],
+                      //       // ),
+                      //       // const SizedBox(height: 15),
+                      //       // Row(
+                      //       //   children: [
+                      //       //     Expanded(
+                      //       //         child: TextFormField(
+                      //       //       readOnly: true,
+                      //       //
+                      //       //       controller: up.lastNameController,
+                      //       //       cursorHeight: 25,
+                      //       //       keyboardType: TextInputType.text,
+                      //       //       // cursorColor: Colors.white,
+                      //       //       style: const TextStyle(
+                      //       //         fontWeight: FontWeight.normal,
+                      //       //         // color: Colors.white,
+                      //       //         fontSize: 20,
+                      //       //       ),
+                      //       //       onChanged: (val) {
+                      //       //         // if (val.length > 10) {
+                      //       //         //   setState(() {
+                      //       //         //     ap.phoneController.text =
+                      //       //         //         val.substring(0, 10);
+                      //       //         //   });
+                      //       //         // }
+                      //       //         // if (val.length == 10) {
+                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
+                      //       //         // }
+                      //       //       },
+                      //       //       decoration: InputDecoration(
+                      //       //         hintText: 'Last Name',
+                      //       //         hintStyle: const TextStyle(
+                      //       //           fontWeight: FontWeight.normal,
+                      //       //           color: Colors.grey,
+                      //       //           fontSize: 20,
+                      //       //         ),
+                      //       //         border: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         enabledBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         focusedBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //       ),
+                      //       //     ))
+                      //       //   ],
+                      //       // ),
+                      //       // const SizedBox(height: 15),
+                      //       Row(
+                      //         children: [
+                      //           Expanded(
+                      //               child: TextFormField(
+                      //             controller: up.emailController,
+                      //             // readOnly: true,
+                      //
+                      //             cursorHeight: 25,
+                      //             keyboardType: TextInputType.emailAddress,
+                      //             // cursorColor: Colors.white,
+                      //             style: const TextStyle(
+                      //               fontWeight: FontWeight.normal,
+                      //               // color: Colors.white,
+                      //               fontSize: 20,
+                      //             ),
+                      //             onChanged: (val) {
+                      //               // if (val.length > 10) {
+                      //               //   setState(() {
+                      //               //     ap.phoneController.text =
+                      //               //         val.substring(0, 10);
+                      //               //   });
+                      //               // }
+                      //               // if (val.length == 10) {
+                      //               //   FocusManager.instance.primaryFocus?.unfocus();
+                      //               // }
+                      //             },
+                      //             decoration: InputDecoration(
+                      //               hintText: 'Email Address',
+                      //               hintStyle: const TextStyle(
+                      //                 fontWeight: FontWeight.normal,
+                      //                 color: Colors.grey,
+                      //                 fontSize: 20,
+                      //               ),
+                      //               border: OutlineInputBorder(
+                      //                 borderRadius: BorderRadius.circular(15),
+                      //                 borderSide: const BorderSide(
+                      //                   color: Colors.grey,
+                      //                 ),
+                      //               ),
+                      //               enabledBorder: OutlineInputBorder(
+                      //                 borderRadius: BorderRadius.circular(15),
+                      //                 borderSide: const BorderSide(
+                      //                   color: Colors.grey,
+                      //                 ),
+                      //               ),
+                      //               focusedBorder: OutlineInputBorder(
+                      //                 borderRadius: BorderRadius.circular(15),
+                      //                 borderSide: const BorderSide(
+                      //                   color: Colors.grey,
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //           ))
+                      //         ],
+                      //       ),
+                      //       const SizedBox(height: 15),
+                      //       // Row(
+                      //       //   children: [
+                      //       //     Expanded(
+                      //       //         child: TextFormField(
+                      //       //       readOnly: true,
+                      //       //       controller: up.phoneController,
+                      //       //       cursorHeight: 25,
+                      //       //       keyboardType: TextInputType.phone,
+                      //       //       // cursorColor: Colors.white,
+                      //       //       style: const TextStyle(
+                      //       //         fontWeight: FontWeight.normal,
+                      //       //         // color: Colors.white,
+                      //       //         fontSize: 20,
+                      //       //       ),
+                      //       //       onChanged: (val) {
+                      //       //         // if (val.length > 10) {
+                      //       //         //   setState(() {
+                      //       //         //     ap.phoneController.text =
+                      //       //         //         val.substring(0, 10);
+                      //       //         //   });
+                      //       //         // }
+                      //       //         // if (val.length == 10) {
+                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
+                      //       //         // }
+                      //       //       },
+                      //       //       decoration: InputDecoration(
+                      //       //         hintText: 'Mobile No.',
+                      //       //         hintStyle: const TextStyle(
+                      //       //           fontWeight: FontWeight.normal,
+                      //       //           color: Colors.grey,
+                      //       //           fontSize: 20,
+                      //       //         ),
+                      //       //         border: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         enabledBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         focusedBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //       ),
+                      //       //     ))
+                      //       //   ],
+                      //       // ),
+                      //       // const SizedBox(height: 15),
+                      //       Row(
+                      //         children: [
+                      //           Expanded(
+                      //               child: TextFormField(
+                      //             // readOnly: true,
+                      //
+                      //             controller: up.addressController,
+                      //             cursorHeight: 25,
+                      //             keyboardType: TextInputType.emailAddress,
+                      //             // cursorColor: Colors.white,
+                      //             style: const TextStyle(
+                      //               fontWeight: FontWeight.normal,
+                      //               // color: Colors.white,
+                      //               fontSize: 20,
+                      //             ),
+                      //             onChanged: (val) {
+                      //               // if (val.length > 10) {
+                      //               //   setState(() {
+                      //               //     ap.phoneController.text =
+                      //               //         val.substring(0, 10);
+                      //               //   });
+                      //               // }
+                      //               // if (val.length == 10) {
+                      //               //   FocusManager.instance.primaryFocus?.unfocus();
+                      //               // }
+                      //             },
+                      //             maxLines: 2,
+                      //             decoration: InputDecoration(
+                      //               hintText: 'Address',
+                      //               hintStyle: const TextStyle(
+                      //                 fontWeight: FontWeight.normal,
+                      //                 color: Colors.grey,
+                      //                 fontSize: 20,
+                      //               ),
+                      //               border: OutlineInputBorder(
+                      //                 borderRadius: BorderRadius.circular(15),
+                      //                 borderSide: const BorderSide(
+                      //                   color: Colors.grey,
+                      //                 ),
+                      //               ),
+                      //               enabledBorder: OutlineInputBorder(
+                      //                 borderRadius: BorderRadius.circular(15),
+                      //                 borderSide: const BorderSide(
+                      //                   color: Colors.grey,
+                      //                 ),
+                      //               ),
+                      //               focusedBorder: OutlineInputBorder(
+                      //                 borderRadius: BorderRadius.circular(15),
+                      //                 borderSide: const BorderSide(
+                      //                   color: Colors.grey,
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //           ))
+                      //         ],
+                      //       ),
+                      //       // const SizedBox(height: 15),
+                      //       // Row(
+                      //       //   children: [
+                      //       //     Expanded(
+                      //       //         child: TextFormField(
+                      //       //       controller: up.instaFollowersController,
+                      //       //       // readOnly: true,
+                      //       //
+                      //       //       cursorHeight: 25,
+                      //       //       keyboardType: TextInputType.number,
+                      //       //       // cursorColor: Colors.white,
+                      //       //       style: const TextStyle(
+                      //       //         fontWeight: FontWeight.normal,
+                      //       //         // color: Colors.white,
+                      //       //         fontSize: 20,
+                      //       //       ),
+                      //       //       onChanged: (val) {
+                      //       //         // if (val.length > 10) {
+                      //       //         //   setState(() {
+                      //       //         //     ap.phoneController.text =
+                      //       //         //         val.substring(0, 10);
+                      //       //         //   });
+                      //       //         // }
+                      //       //         // if (val.length == 10) {
+                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
+                      //       //         // }
+                      //       //       },
+                      //       //       decoration: InputDecoration(
+                      //       //         hintText: 'Instagram Followers',
+                      //       //         labelText: 'Instagram Followers',
+                      //       //         hintStyle: const TextStyle(
+                      //       //           fontWeight: FontWeight.normal,
+                      //       //           color: Colors.grey,
+                      //       //           fontSize: 20,
+                      //       //         ),
+                      //       //         border: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         enabledBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         focusedBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //       ),
+                      //       //     ))
+                      //       //   ],
+                      //       // ),
+                      //       // const SizedBox(height: 15),
+                      //       // Row(
+                      //       //   children: [
+                      //       //     Expanded(
+                      //       //         child: TextFormField(
+                      //       //       controller: up.ytSubscribersController,
+                      //       //       readOnly: true,
+                      //       //
+                      //       //       cursorHeight: 25,
+                      //       //       keyboardType: TextInputType.number,
+                      //       //       // cursorColor: Colors.white,
+                      //       //       style: const TextStyle(
+                      //       //         fontWeight: FontWeight.normal,
+                      //       //         // color: Colors.white,
+                      //       //         fontSize: 20,
+                      //       //       ),
+                      //       //       onChanged: (val) {
+                      //       //         // if (val.length > 10) {
+                      //       //         //   setState(() {
+                      //       //         //     ap.phoneController.text =
+                      //       //         //         val.substring(0, 10);
+                      //       //         //   });
+                      //       //         // }
+                      //       //         // if (val.length == 10) {
+                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
+                      //       //         // }
+                      //       //       },
+                      //       //       decoration: InputDecoration(
+                      //       //         hintText: 'Youtube Subscribers',
+                      //       //         labelText: 'Youtube Subscribers',
+                      //       //         hintStyle: const TextStyle(
+                      //       //           fontWeight: FontWeight.normal,
+                      //       //           color: Colors.grey,
+                      //       //           fontSize: 20,
+                      //       //         ),
+                      //       //         border: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         enabledBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //         focusedBorder: OutlineInputBorder(
+                      //       //           borderRadius: BorderRadius.circular(15),
+                      //       //           borderSide: const BorderSide(
+                      //       //             color: Colors.grey,
+                      //       //           ),
+                      //       //         ),
+                      //       //       ),
+                      //       //     ))
+                      //       //   ],
+                      //       // ),
+                      //       const SizedBox(height: 15),
+                      //       const SizedBox(height: 20),
+                      //     ],
+                      //   ),
+                      // ),
                     ),
+                    // bottomNavigationBar: Padding(
+                    //   padding: const EdgeInsets.symmetric(
+                    //       horizontal: 8.0, vertical: 5),
+                    //   child: Row(
+                    //     children: [
+                    //       Expanded(
+                    //         child: ListTile(
+                    //           tileColor: App.themecolor,
+                    //           shape: RoundedRectangleBorder(
+                    //             borderRadius: BorderRadius.circular(15),
+                    //           ),
+                    //           onTap: () async {
+                    //             if (up.creator.data!.status == 'Active') {
+                    //               await up.updateProfile(homePage: false);
+                    //             } else {
+                    //               showNotVerifiedDialog(
+                    //                   up.creator.data!.status == 'Active',
+                    //                   false);
+                    //             }
+                    //           },
+                    //           title: h6Text(
+                    //             'Update ',
+                    //             textAlign: TextAlign.center,
+                    //             color: Colors.white,
+                    //             fontWeight: FontWeight.bold,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                   ),
                 ),
               ),
@@ -657,7 +808,7 @@ class _ProfilePageState extends State<ProfilePage> {
           bottom: 0,
           // left: 20,
           // right: 20,
-          child: Container(
+          child: SizedBox(
             width: Get.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -697,23 +848,24 @@ class _ProfilePageState extends State<ProfilePage> {
                       fontWeight: FontWeight.bold,
                     ),
                     const SizedBox(width: 10),
-                    SizedBox(
-                      width: up.creator.data!.status != 'Active' ? 18 : 25,
-                      child: Image.asset(
-                        'assets/images/${up.creator.data!.status != 'Active' ? 'not-' : ''}verified.png',
-                        color: up.creator.data!.status != 'Active'
-                            ? Colors.red
-                            : null,
+                    if (up.creator.data!.status == 'Active')
+                      SizedBox(
+                        width: up.creator.data!.status != 'Active' ? 18 : 25,
+                        child: Image.asset(
+                          'assets/images/${up.creator.data!.status != 'Active' ? 'not-' : ''}verified.png',
+                          color: up.creator.data!.status != 'Active'
+                              ? Colors.red
+                              : null,
+                        ),
                       ),
-                    ),
                   ],
                 ),
-                // b1Text(
-                //   up.creator.data!.status != 'Active'
-                //       ? 'Not Verified'
-                //       : 'Verified',
-                //   color: Colors.green,
-                // ),
+                if (up.creator.data!.status != 'Active')
+                  b1Text(
+                    'Unverified',
+
+                    // color: Colors.green,
+                  ),
               ],
             ),
           ),

@@ -57,8 +57,8 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(builder: (context, up, _) {
-      print('show error text $showErrorText');
-      print('urlVerified $urlVerified');
+      debugPrint('show error text $showErrorText');
+      debugPrint('urlVerified $urlVerified');
       return Scaffold(
         backgroundColor: App.themecolor1.withOpacity(0.9),
         body: SafeArea(
@@ -148,7 +148,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10))),
+                      borderRadius: BorderRadius.circular(0))),
               onPressed: () async {
                 await Provider.of<AuthProvider>(context, listen: false)
                     .logOut();
@@ -166,15 +166,37 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10))),
+                      borderRadius: BorderRadius.circular(0))),
               onPressed: showErrorText
                   ? null
                   : () async {
                       checkErrorText(up);
 
                       if (!showErrorText) {
-                        // await getYouTubeSubscribers(
-                        //     videoId: up.ytUrlController.text, channelName: '');
+                        try {
+                          if (up.instaUserNameController.text.isNotEmpty &&
+                              instaVerified) {
+                            var countText = await getInstaSubscribers(
+                                up.instaUserNameController.text);
+                            debugPrint(countText.toString());
+                            if (countText > 0) {
+                              up.instaFollowersController.text = '$countText';
+                            }
+                          }
+                          if (up.ytUrlController.text.isNotEmpty &&
+                              urlVerified) {
+                            var countText = await getYouTubeSubscribers(
+                                videoId: up.ytUrlController.text,
+                                channelName: 'Aviral   kapasia');
+                            debugPrint(countText.toString());
+                            if (countText > 0) {
+                              up.ytSubscribersController.text = '$countText';
+                            }
+                          }
+                        } catch (e) {
+                          debugPrint(
+                              'TRYING TO RE-VERIFY  URLS AND USERNAME ERROR $e');
+                        }
                         var success = await up.updateProfile(homePage: false);
                         if (success) {
                           Get.offAll(const HomePage());
@@ -242,7 +264,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                                     var countText = await getYouTubeSubscribers(
                                         videoId: up.ytUrlController.text,
                                         channelName: 'Aviral   kapasia');
-                                    print(countText);
+                                    debugPrint(countText.toString());
 
                                     Future.delayed(const Duration(seconds: 1),
                                         () {
@@ -283,19 +305,19 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                     ),
                   ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(5),
                     borderSide: const BorderSide(
                       color: Colors.white,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(5),
                     borderSide: const BorderSide(
                       color: Colors.white,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(5),
                     borderSide: const BorderSide(
                       color: Colors.white,
                     ),
@@ -383,7 +405,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   //                                     });
   //                                     var countText = await getYtSubscribers(
   //                                         up.ytUrlController.text);
-  //                                     print(countText);
+  //                                     debugPrint(countText);
   //
   //                                     Future.delayed(const Duration(seconds: 1),
   //                                         () {
@@ -513,7 +535,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                                       });
                                       var countText = await getInstaSubscribers(
                                           up.instaUserNameController.text);
-                                      print(countText);
+                                      debugPrint(countText.toString());
 
                                       Future.delayed(const Duration(seconds: 1),
                                           () {
@@ -529,7 +551,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                                       } else {
                                         Fluttertoast.showToast(
                                             msg:
-                                                'Verification failed.Please try again with your another video');
+                                                'Verification failed.Please try again');
                                         instaVerified = false;
                                       }
                                       checkErrorText(up);
@@ -554,19 +576,19 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                       ),
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
@@ -617,19 +639,19 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 ),
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
@@ -684,19 +706,19 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                       fontSize: 20,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
@@ -746,19 +768,19 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                       fontSize: 20,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
@@ -805,19 +827,19 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                   fontSize: 20,
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(
                     color: Colors.white,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(
                     color: Colors.white,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(
                     color: Colors.white,
                   ),
@@ -852,19 +874,19 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                   fontSize: 20,
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(
                     color: Colors.white,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(
                     color: Colors.white,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(
                     color: Colors.white,
                   ),
@@ -901,19 +923,19 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                       fontSize: 20,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ),

@@ -159,6 +159,7 @@ class UserProvider extends ChangeNotifier {
 
     return success;
   }
+
 }
 // {
 // "first_name":"Manoj",

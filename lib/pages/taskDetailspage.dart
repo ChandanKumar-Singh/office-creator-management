@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:creater_management/constants/app.dart';
 import 'package:creater_management/pages/homePage.dart';
 import 'package:creater_management/pages/uploadProofPage.dart';
@@ -5,24 +7,36 @@ import 'package:creater_management/providers/authProvider.dart';
 import 'package:creater_management/providers/dashBoardController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:skeleton_animation/skeleton_animation.dart';
 import 'package:skeleton_loader/skeleton_loader.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../constants/widgets.dart';
 import '../functions/functions.dart';
 import '../models/taskModel.dart';
 import '../widgets/CustomDrawer.dart';
+import '../widgets/buildCacheImageNetwork.dart';
 
 class TaskDetailsPage extends StatefulWidget {
   const TaskDetailsPage(
-      {Key? key, this.task, this.response, this.heroTag, this.status})
+      {Key? key,
+      this.task,
+      this.response,
+      this.heroTag,
+      this.status,
+      this.reason})
       : super(key: key);
   final TaskModel? task;
   final int? response;
   final String? heroTag;
+  final String? reason;
   final int? status;
   @override
   State<TaskDetailsPage> createState() => _TaskDetailsPageState();
@@ -41,6 +55,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     }
   }
 
+  ScrollController deliverablesCtrl = ScrollController();
+  ScrollController termsConditionCtrl = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     print(widget.status);
@@ -53,7 +70,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 taskId: task.id!,
               )
             : widget.status == 0 || widget.status == 3
-                ? TaskDetailsUploadDocsButtons(task: task)
+                ? TaskDetailsUploadDocsButtons(
+                    task: task, reason: widget.reason)
                 : const SizedBox.shrink(),
         body: Column(
           children: [
@@ -139,9 +157,15 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                         Hero(
                           tag: widget.heroTag ?? task.title!,
                           child: isOnline
-                              ? Image.network(
-                                  App.imageBase + (task.image ?? ''),
-                                  width: 100,
+                              ? SizedBox(
+                                  height: 70,
+                                  width: 70,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: buildCachedNetworkImage(
+                                        imageUrl:
+                                            App.imageBase + (task.image ?? '')),
+                                  ),
                                 )
                               : Image.asset(
                                   'assets/images/noInternet.png',
@@ -152,9 +176,15 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                         Hero(
                           tag: widget.heroTag ?? task.title!,
                           child: isOnline
-                              ? Image.network(
-                                  App.imageBase + (task.image ?? ''),
-                                  width: 100,
+                              ? SizedBox(
+                                  height: 70,
+                                  width: 70,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: buildCachedNetworkImage(
+                                        imageUrl:
+                                            App.imageBase + (task.image ?? '')),
+                                  ),
                                 )
                               : Image.asset('assets/images/noInternet.png',
                                   width: 100),
@@ -177,7 +207,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                         children: <Widget>[
                           Expanded(
                             child: h6Text(
-                              'Payment ${NumberFormat.simpleCurrency(name: 'INR').format(double.parse(task.amount ?? '0'))}',
+                              'Payment ${NumberFormat.simpleCurrency(name: 'Rs.').format(double.parse(task.amount ?? '0'))}',
                               textAlign: TextAlign.center,
                               fontWeight: FontWeight.normal,
                             ),
@@ -195,118 +225,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10),
                 child: Consumer<DashboardProvider>(builder: (context, dp, _) {
                   return dp.loadingTasks
-                      ? SkeletonLoader(
-                          builder: Card(
-                            elevation: 3,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            margin: const EdgeInsets.all(0),
-                            child: Container(
-                              padding: const EdgeInsets.all(10),
-                              // height: 150,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    flex: 2,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Image.asset(
-                                          'assets/images/user.png',
-                                          fit: BoxFit.contain,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(width: 7),
-                                  Expanded(
-                                    flex: 8,
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            const Expanded(
-                                              child: Text(
-                                                "    fefey9yfew fewh g                                 ",
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    color: Colors.grey),
-                                              ),
-                                            ),
-                                            const SizedBox(width: 7),
-                                            InkWell(
-                                              onTap: () {},
-                                              splashColor: Colors.grey,
-                                              radius: 50,
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                              child: const Icon(
-                                                Icons.favorite_outline,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            const Expanded(
-                                              child: Text(
-                                                "                                          \n                 ",
-                                                maxLines: 2,
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              NumberFormat.simpleCurrency(
-                                                      name: 'INR')
-                                                  .format(50000),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              '   h',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .caption!
-                                                  .copyWith(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          items: 1,
-                          period: const Duration(seconds: 5),
-                          baseColor: Colors.transparent,
-                          highlightColor: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.05),
-                          direction: SkeletonDirection.ltr,
-                        )
+                      ? buildTaskDetailsSkeleton()
                       : Card(
                           elevation: 3,
                           shape: RoundedRectangleBorder(
@@ -319,40 +238,98 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      h6Text(
-                                        'Deliverables',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ],
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    h6Text(
+                                      'Deliverables',
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ],
+                                ),
+                                Expanded(
+                                  child: Scrollbar(
+                                    controller: deliverablesCtrl,
+                                    // thumbVisibility: true,
+                                    thickness: 10,
+                                    radius: const Radius.circular(10),
+                                    trackVisibility: true,
+                                    child: ListView(
+                                      controller: deliverablesCtrl,
+                                      padding: const EdgeInsets.all(0),
+                                      children: [
+                                        SelectableLinkify(
+                                            onOpen: (link) async {
+                                              var url = link.url;
+                                              if (await canLaunchUrl(
+                                                  Uri.parse(url))) {
+                                                try {
+                                                  await launchUrl(
+                                                      Uri.parse(url),
+                                                      mode: LaunchMode
+                                                          .externalApplication);
+                                                } catch (e) {
+                                                  log(e.toString());
+                                                }
+                                              } else {
+                                                Fluttertoast.showToast(
+                                                    msg:
+                                                        'Could not open the url');
+                                                throw 'Could not launch $link';
+                                              }
+                                            },
+                                            text: task.description ?? '')
+                                      ],
+                                    ),
                                   ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                          child: b1Text(task.description ?? ''))
-                                    ],
+                                ),
+                                const SizedBox(height: 30),
+                                Row(
+                                  children: [
+                                    h6Text(
+                                      'Terms & Conditions',
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ],
+                                ),
+                                Expanded(
+                                  child: Scrollbar(
+                                    controller: termsConditionCtrl,
+                                    // thumbVisibility: true,
+                                    thickness: 10,
+                                    radius: const Radius.circular(10),
+                                    trackVisibility: true,
+                                    child: ListView(
+                                      controller: termsConditionCtrl,
+                                      padding: const EdgeInsets.all(0),
+                                      children: [
+                                        SelectableLinkify(
+                                            onOpen: (link) async {
+                                              var url = link.url;
+                                              if (await canLaunchUrl(
+                                                  Uri.parse(url))) {
+                                                try {
+                                                  await launchUrl(
+                                                      Uri.parse(url),
+                                                      mode: LaunchMode
+                                                          .externalApplication);
+                                                } catch (e) {
+                                                  log(e.toString());
+                                                }
+                                              } else {
+                                                Fluttertoast.showToast(
+                                                    msg:
+                                                        'Could not open the url');
+                                                throw 'Could not launch $link';
+                                              }
+                                            },
+                                            text: task.termsConditions ?? '')
+                                      ],
+                                    ),
                                   ),
-                                  Row(
-                                    children: [
-                                      h6Text(
-                                        'Terms & Conditions',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                          child: b1Text(
-                                              task.termsConditions ?? ''))
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         );
@@ -361,6 +338,120 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             ),
           ],
         ));
+  }
+
+  Widget buildTaskDetailsSkeleton() {
+    return Card(
+      elevation: 0.3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      margin: const EdgeInsets.all(0),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        // height: 150,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                h6Text(
+                  'Deliverables',
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
+            ),
+            const SizedBox(height: 7),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Skeleton(height: 10, width: 100, style: SkeletonStyle.text),
+            const SizedBox(height: 30),
+            Row(
+              children: [
+                h6Text(
+                  'Terms & Conditions',
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
+            ),
+            const SizedBox(height: 7),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Skeleton(height: 10, width: 150, style: SkeletonStyle.text),
+            const SizedBox(height: 30),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -393,6 +484,7 @@ class TaskDetailsAcceptRejectButtons extends StatelessWidget {
                   Get.back();
                   dp.getResTasks();
                   dp.getTasks();
+                  dp.getUserTasksHistory();
                 }
               },
               child: const Text(
@@ -415,6 +507,7 @@ class TaskDetailsAcceptRejectButtons extends StatelessWidget {
                   Get.back();
                   dp.getResTasks();
                   dp.getTasks();
+                  dp.getUserTasksHistory();
                 }
               },
               style: ElevatedButton.styleFrom(
@@ -440,9 +533,11 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
   const TaskDetailsUploadDocsButtons({
     Key? key,
     required this.task,
+    this.reason,
   }) : super(key: key);
 
   final TaskModel task;
+  final String? reason;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -450,16 +545,18 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: ElevatedButton(
+            child: OutlinedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: App.yellowButtonColor,
-              ),
+                  // backgroundColor: App.yellowButtonColor,
+                  // backgroundColor: Colors.black,
+                  side: const BorderSide(color: Colors.black)),
               onPressed: () {
                 Navigator.push(
                     Get.context!,
                     slideLeftRoute(
                         UploadProofPage(
                           task: task,
+                          reason: reason,
                         ),
                         effect: PageTransitionType.rightToLeftJoined,
                         current: TaskDetailsPage(
@@ -467,9 +564,9 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
                         )));
               },
               child: h6Text(
-                'UPLOAD PROOF',
+                'UPLOAD PROOF OF WORK',
                 style: const TextStyle(
-                  letterSpacing: 2,
+                  letterSpacing: 0,
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),

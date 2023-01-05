@@ -15,6 +15,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../functions/functions.dart';
+import '../models/createrModel.dart';
 
 class DashboardProvider extends ChangeNotifier {
   bool loadingTasks = false;
@@ -57,12 +58,12 @@ class DashboardProvider extends ChangeNotifier {
             Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
           }
         }
-        print("it's url Hit  $response ");
+        debugPrint("it's url Hit  $response ");
       } else {
         showNetWorkToast();
         if (cacheExist) {
           response = (await APICacheManager().getCacheData('tasks')).syncData;
-          print("it's cache Hit $response");
+          debugPrint("it's cache Hit $response");
         }
       }
       response = jsonDecode(response);
@@ -87,7 +88,7 @@ class DashboardProvider extends ChangeNotifier {
       debugPrint('e e e e e e get tasks e -> $e');
     }
 
-    print('testing tasks ------ >$total    ${tasks.length}');
+    debugPrint('testing tasks ------ >$total    ${tasks.length}');
     notifyListeners();
   }
 
@@ -119,7 +120,7 @@ class DashboardProvider extends ChangeNotifier {
       debugPrint('e e e e e e e -> $e');
     }
 
-    print('testing tasks ------ >$total    ${tasks.length}');
+    debugPrint('testing tasks ------ >$total    ${tasks.length}');
     notifyListeners();
   }
 
@@ -132,7 +133,7 @@ class DashboardProvider extends ChangeNotifier {
     var response;
     // tasks.clear();
     // notifyListeners();
-    // print(Provider.of<UserProvider>(Get.context!, listen: false)
+    // debugPrint(Provider.of<UserProvider>(Get.context!, listen: false)
     //     .creator
     //     .data!
     //     .toJson());
@@ -159,13 +160,13 @@ class DashboardProvider extends ChangeNotifier {
             Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
           }
         }
-        print("it's url Hit  $response ");
+        debugPrint("it's url Hit  $response ");
       } else {
         showNetWorkToast();
         if (cacheExist) {
           response =
               (await APICacheManager().getCacheData('resTasks')).syncData;
-          print("it's cache Hit $response");
+          debugPrint("it's cache Hit $response");
         }
       }
       response = jsonDecode(response);
@@ -185,7 +186,7 @@ class DashboardProvider extends ChangeNotifier {
       debugPrint('e e e e get res tasks e e e -> $e');
     }
 
-    print('testing tasks ------ >$resTotal    ${resTasks.length}');
+    debugPrint('testing tasks ------ >$resTotal    ${resTasks.length}');
     notifyListeners();
   }
 
@@ -215,7 +216,7 @@ class DashboardProvider extends ChangeNotifier {
       debugPrint('e e e e e e res tasks e -> $e');
     }
 
-    print('testing tasks ------ >$resTotal    ${resTasks.length}');
+    debugPrint('testing tasks ------ >$resTotal    ${resTasks.length}');
     notifyListeners();
   }
 
@@ -249,17 +250,17 @@ class DashboardProvider extends ChangeNotifier {
             Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
           }
         }
-        print("it's url get wallet Hit  $response ");
+        debugPrint("it's url get wallet Hit  $response ");
       } else {
         showNetWorkToast();
         if (cacheExist) {
           response = (await APICacheManager().getCacheData('wallet')).syncData;
-          print("it's cache Hit $response");
+          debugPrint("it's cache Hit $response");
         }
       }
       response = jsonDecode(response);
       if (response != null) {
-        print(response.runtimeType);
+        debugPrint(response.runtimeType.toString());
         wallTasks.clear();
 
         if (response != 0) {
@@ -275,7 +276,51 @@ class DashboardProvider extends ChangeNotifier {
       debugPrint('e e e e e  wallTasks e e -> $e');
     }
 
-    print('testing tasks ------ >$wallTotal    ${wallTasks.length}');
+    debugPrint('testing tasks ------ >$wallTotal    ${wallTasks.length}');
+    notifyListeners();
+  }
+
+  late UserTasksHistory userTasksHistory;
+
+  Future<void> getUserTasksHistory() async {
+    var response;
+    try {
+      bool cacheExist =
+          await APICacheManager().isAPICacheKeyExist('UserTasksHistory');
+      if (isOnline) {
+        var url = '${App.baseUrl}${App.getUserTaskHistories}';
+        var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
+        var res = await http.get(Uri.parse(url), headers: headers);
+        if (res.statusCode == 200) {
+          if (jsonDecode(res.body)['success'] == 200) {
+            var data = jsonDecode(res.body)['data'];
+            var cacheModel = APICacheDBModel(
+                key: 'UserTasksHistory', syncData: jsonEncode(data));
+
+            await APICacheManager().addCacheData(cacheModel);
+            response = cacheModel.syncData;
+          } else {
+            Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
+          }
+        }
+        debugPrint("it's url get UserTasksHistory Hit  $response ");
+      } else {
+        showNetWorkToast();
+        if (cacheExist) {
+          response = (await APICacheManager().getCacheData('UserTasksHistory'))
+              .syncData;
+          debugPrint("it's UserTasksHistory cache Hit $response");
+        }
+      }
+      response = jsonDecode(response);
+      if (response != null) {
+        userTasksHistory = UserTasksHistory.fromJson(response);
+      } else {
+        debugPrint("it's userTasksHistory response  $response ");
+      }
+    } catch (e) {
+      debugPrint('e e e e e  userTasksHistory e e -> $e');
+    }
     notifyListeners();
   }
 
@@ -304,7 +349,7 @@ class DashboardProvider extends ChangeNotifier {
       debugPrint('e e e e e e wallTasks  e -> $e');
     }
 
-    print('testing tasks ------ >$wallTotal    ${wallTasks.length}');
+    debugPrint('testing tasks ------ >$wallTotal    ${wallTasks.length}');
     notifyListeners();
   }
 
@@ -324,7 +369,7 @@ class DashboardProvider extends ChangeNotifier {
             "task_id": taskId.toString(),
             "type": accept == 0 ? "Rejected" : "Accepted"
           };
-          print('response body $body');
+          debugPrint('response body $body');
           var res =
               await http.post(Uri.parse(url), headers: headers, body: body);
           if (res.statusCode == 200) {
@@ -349,7 +394,8 @@ class DashboardProvider extends ChangeNotifier {
                   .creator
                   .data!
                   .status ==
-              'Active',true);
+              'Active',
+          true);
     }
     return result;
   }
@@ -365,7 +411,7 @@ class DashboardProvider extends ChangeNotifier {
           "task_id": taskId.toString(),
           "type": accept == 0 ? "Rejected" : "Accepted"
         };
-        print('response body $body');
+        debugPrint('response body $body');
         var res = await http.post(Uri.parse(url), headers: headers, body: body);
         if (res.statusCode == 200) {
           if (jsonDecode(res.body)['success'] == 200) {
@@ -413,7 +459,7 @@ class DashboardProvider extends ChangeNotifier {
         request.fields['url'] = addedUrl;
         request.headers.addAll(headers);
         var res = await request.send();
-        print('res  upload proof------> $res');
+        debugPrint('res  upload proof------> $res');
         var responseData = await res.stream.toBytes();
 
         var result = String.fromCharCodes(responseData);
@@ -430,7 +476,7 @@ class DashboardProvider extends ChangeNotifier {
         showNetWorkToast(msg: 'You are offline. Please connect to network');
       }
     } catch (e) {
-      print('e e e e e e e upload proof  e  ee e  e ---> $e');
+      debugPrint('e e e e e e e upload proof  e  ee e  e ---> $e');
     }
 
     uploadingImage = false;

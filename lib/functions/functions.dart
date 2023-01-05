@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_version_checker/flutter_app_version_checker.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -712,6 +713,25 @@ String timeBefore(String time) {
   return dt;
 }
 
+String countInKMB(String count) {
+  String kmbCount = '';
+  int ct = int.parse(count);
+  print('ct is $ct');
+
+  if (ct > 999 && ct < 999999) {
+    kmbCount = '${(ct / 1000).toStringAsFixed(2)}K';
+  } else if (ct > 999999 && ct < 9999999) {
+    kmbCount = '${(ct / 1000000).toStringAsFixed(2)}M';
+  } else if (ct > 9999999 && ct < 999999999) {
+    kmbCount = '${(ct / 1000000000).toStringAsFixed(2)}B';
+  } else if (ct > 1000000000) {
+    kmbCount = '${(ct / 1000000000).toStringAsFixed(2)}B+';
+  } else {
+    kmbCount = count;
+  }
+  return kmbCount;
+}
+
 void hoverLoadingDialog(loading) async {
   if (loading) {
     await showDialog(
@@ -812,6 +832,10 @@ void showShortSheetActions(
           child: child,
         );
       });
+}
+
+Future<bool?> callNumber(String number) async {
+  return await FlutterPhoneDirectCaller.callNumber(number);
 }
 
 // Future<void> pickImageDialog(UserProvider up) async {

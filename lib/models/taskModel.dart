@@ -77,6 +77,7 @@ class ResTaskModel {
   int? taskId;
   String? type;
   int? status;
+  String? reason;
   String? createdAt;
   String? updatedAt;
   TaskModel? task;
@@ -87,6 +88,7 @@ class ResTaskModel {
         this.taskId,
         this.type,
         this.status,
+        this.reason,
         this.createdAt,
         this.updatedAt,
         this.task});
@@ -97,6 +99,7 @@ class ResTaskModel {
     taskId = json['task_id'];
     type = json['type'];
     status = json['status'];
+    reason = json['reason'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     task = json['task'] != null ? TaskModel.fromJson(json['task']) : null;
@@ -109,6 +112,7 @@ class ResTaskModel {
     data['task_id'] = taskId;
     data['type'] = type;
     data['status'] = status;
+    data['reason'] = reason;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     if (task != null) {

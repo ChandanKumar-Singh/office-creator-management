@@ -17,6 +17,7 @@ import 'package:swipe_refresh/swipe_refresh.dart';
 
 import '../constants/widgets.dart';
 import '../functions/functions.dart';
+import '../widgets/taskSckeleton.dart';
 
 class WalletPage extends StatefulWidget {
   const WalletPage({Key? key}) : super(key: key);
@@ -57,10 +58,9 @@ class _WalletPageState extends State<WalletPage> {
                 itemBuilder: (context, index) => Column(
                   children: [
                     dp.loadingWalletTasks
-                          ? buildTasksHisSkeleton(context)
-                          : buildTaskHisCard(dp.wallTasks[index], context),
-                    if(index!=dp.wallTasks.length-1)
-                      Divider()
+                        ? buildTasksHisSkeleton(context)
+                        : buildTaskHisCard(dp.wallTasks[index], context),
+                    if (index != dp.wallTasks.length - 1) const Divider()
                   ],
                 ),
               ),
@@ -74,9 +74,9 @@ class _WalletPageState extends State<WalletPage> {
   Widget buildHeader(DashboardProvider dp) {
     double total = 0;
     for (var element in dp.wallTasks) {
-      if(element.type=='Credited') {
+      if (element.type == 'Credited') {
         total += double.parse(element.amount ?? '0');
-      }else{
+      } else {
         total -= double.parse(element.amount ?? '0');
       }
     }
@@ -170,7 +170,7 @@ class _WalletPageState extends State<WalletPage> {
                     color: Colors.grey,
                   ),
                   h5Text(
-                    NumberFormat.simpleCurrency(name: 'INR').format(total),
+                    NumberFormat.simpleCurrency(name: 'Rs.').format(total),
                     fontWeight: FontWeight.bold,
                   ),
                   Row(
@@ -192,110 +192,111 @@ class _WalletPageState extends State<WalletPage> {
   }
 
   Padding buildTasksHisSkeleton(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: SkeletonLoader(
-        builder: Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          margin: const EdgeInsets.all(0),
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            // height: 150,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/images/user.png',
-                        fit: BoxFit.contain,
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 7),
-                Expanded(
-                  flex: 8,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: Text(
-                              "    fefey9yfew fewh g                                 ",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.grey),
-                            ),
-                          ),
-                          const SizedBox(width: 7),
-                          InkWell(
-                            onTap: () {},
-                            splashColor: Colors.grey,
-                            radius: 50,
-                            borderRadius: BorderRadius.circular(50),
-                            child: const Icon(
-                              Icons.favorite_outline,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: Text(
-                              "                                          \n                 ",
-                              maxLines: 2,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            NumberFormat.simpleCurrency(name: 'INR')
-                                .format(50000),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            '   h',
-                            style: Theme.of(context)
-                                .textTheme
-                                .caption!
-                                .copyWith(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        items: 1,
-        period: const Duration(seconds: 5),
-        baseColor: Colors.transparent,
-        highlightColor: Theme.of(context).colorScheme.primary.withOpacity(0.05),
-        direction: SkeletonDirection.ltr,
-      ),
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.0),
+      child: TaskSkeleton(),
+      // child: SkeletonLoader(
+      //   builder: Card(
+      //     elevation: 0,
+      //     shape: RoundedRectangleBorder(
+      //       borderRadius: BorderRadius.circular(20),
+      //     ),
+      //     margin: const EdgeInsets.all(0),
+      //     child: Container(
+      //       padding: const EdgeInsets.all(10),
+      //       // height: 150,
+      //       decoration: BoxDecoration(
+      //         borderRadius: BorderRadius.circular(20),
+      //       ),
+      //       child: Row(
+      //         children: [
+      //           Expanded(
+      //             flex: 2,
+      //             child: Column(
+      //               mainAxisAlignment: MainAxisAlignment.start,
+      //               children: [
+      //                 Image.asset(
+      //                   'assets/images/user.png',
+      //                   fit: BoxFit.contain,
+      //                 ),
+      //               ],
+      //             ),
+      //           ),
+      //           const SizedBox(width: 7),
+      //           Expanded(
+      //             flex: 8,
+      //             child: Column(
+      //               children: [
+      //                 Row(
+      //                   children: [
+      //                     const Expanded(
+      //                       child: Text(
+      //                         "    fefey9yfew fewh g                                 ",
+      //                         style:
+      //                             TextStyle(fontSize: 18, color: Colors.grey),
+      //                       ),
+      //                     ),
+      //                     const SizedBox(width: 7),
+      //                     InkWell(
+      //                       onTap: () {},
+      //                       splashColor: Colors.grey,
+      //                       radius: 50,
+      //                       borderRadius: BorderRadius.circular(50),
+      //                       child: const Icon(
+      //                         Icons.favorite_outline,
+      //                         color: Colors.grey,
+      //                       ),
+      //                     ),
+      //                   ],
+      //                 ),
+      //                 Row(
+      //                   children: const [
+      //                     Expanded(
+      //                       child: Text(
+      //                         "                                          \n                 ",
+      //                         maxLines: 2,
+      //                         style: TextStyle(
+      //                           fontSize: 18,
+      //                           fontWeight: FontWeight.bold,
+      //                         ),
+      //                       ),
+      //                     ),
+      //                   ],
+      //                 ),
+      //                 Row(
+      //                   children: [
+      //                     Text(
+      //                       NumberFormat.simpleCurrency(name: 'INR')
+      //                           .format(50000),
+      //                     ),
+      //                   ],
+      //                 ),
+      //                 Row(
+      //                   mainAxisAlignment: MainAxisAlignment.end,
+      //                   children: [
+      //                     Text(
+      //                       '   h',
+      //                       style: Theme.of(context)
+      //                           .textTheme
+      //                           .caption!
+      //                           .copyWith(
+      //                               fontSize: 16, fontWeight: FontWeight.bold),
+      //                     )
+      //                   ],
+      //                 )
+      //               ],
+      //             ),
+      //           ),
+      //         ],
+      //       ),
+      //     ),
+      //   ),
+      //   items: 1,
+      //   period: const Duration(seconds: 5),
+      //   baseColor: Colors.transparent,
+      //   highlightColor: Theme.of(context).colorScheme.primary.withOpacity(0.05),
+      //   direction: SkeletonDirection.ltr,
+      // ),
     );
   }
 
@@ -392,7 +393,7 @@ class _WalletPageState extends State<WalletPage> {
                       Row(
                         children: [
                           Text(
-                            NumberFormat.simpleCurrency(name: 'INR')
+                            NumberFormat.simpleCurrency(name: 'Rs.')
                                 .format(double.parse(task.task!.amount ?? '0')),
                           ),
                         ],
