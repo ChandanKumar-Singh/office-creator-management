@@ -103,7 +103,7 @@ class _SplashScreenState extends State<SplashScreen> {
     //   FocusManager.instance.primaryFocus?.unfocus();
     // }
     connectionSetup();
-    // checkLogin();
+    checkLogin();
     super.initState();
   }
 
