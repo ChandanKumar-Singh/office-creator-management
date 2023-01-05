@@ -160,7 +160,9 @@ class CustomDrawer extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          onTap: () async {},
+                          onTap: () async {
+                            Fluttertoast.showToast(msg: 'Coming soon!');
+                          },
                           title: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [

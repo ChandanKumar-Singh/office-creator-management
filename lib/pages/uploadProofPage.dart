@@ -290,6 +290,7 @@ class _TaskDetailsPageState extends State<UploadProofPage> {
                           : 'Upload Screenshot',
                       fontWeight: FontWeight.bold,
                       maxLine: 1,
+                      textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       color: Colors.white),
                 )

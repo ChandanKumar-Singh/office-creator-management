@@ -473,20 +473,19 @@ class TaskDetailsAcceptRejectButtons extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: App.themecolor.withOpacity(0.8),
-              ),
               onPressed: () async {
                 var res = await dp.userAcceptOrReject(taskId, 0);
                 if (res != 0) {
                   dp.setBottomIndex(1);
-
                   Get.back();
                   dp.getResTasks();
                   dp.getTasks();
                   dp.getUserTasksHistory();
                 }
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: App.themecolor1,
+              ),
               child: const Text(
                 'REJECT',
                 style: TextStyle(
@@ -545,12 +544,11 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: OutlinedButton(
-              style: ElevatedButton.styleFrom(
-                  // backgroundColor: App.yellowButtonColor,
-                  // backgroundColor: Colors.black,
-                  side: const BorderSide(color: Colors.black)),
-              onPressed: () {
+            child: GestureDetector(
+              // style: ElevatedButton.styleFrom(
+              //   backgroundColor: App.themecolor.withOpacity(0.8),
+              // ),
+              onTap: () async {
                 Navigator.push(
                     Get.context!,
                     slideLeftRoute(
@@ -563,16 +561,57 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
                           task: task,
                         )));
               },
-              child: h6Text(
-                'UPLOAD PROOF OF WORK',
-                style: const TextStyle(
-                  letterSpacing: 0,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
+              child: Container(
+                height: 60,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(0),
+                    // color: App.themecolor,
+                    border: Border.all(
+                      color: App.themecolor,
+                      width: 2,
+                    )),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    h5Text(
+                      'UPLOAD PROOF OF WORK',
+                      fontWeight: FontWeight.bold,
+                      color: App.themecolor,
+                    )
+                  ],
                 ),
               ),
             ),
           ),
+          // Expanded(
+          //   child: OutlinedButton(
+          //     style: ElevatedButton.styleFrom(
+          //         // backgroundColor: App.yellowButtonColor,
+          //         // backgroundColor: Colors.black,
+          //         side: const BorderSide(color: Colors.black)),
+          //     onPressed: () {
+          //       Navigator.push(
+          //           Get.context!,
+          //           slideLeftRoute(
+          //               UploadProofPage(
+          //                 task: task,
+          //                 reason: reason,
+          //               ),
+          //               effect: PageTransitionType.rightToLeftJoined,
+          //               current: TaskDetailsPage(
+          //                 task: task,
+          //               )));
+          //     },
+          //     child: h6Text(
+          //       'UPLOAD PROOF OF WORK',
+          //       style: const TextStyle(
+          //         letterSpacing: 0,
+          //         fontSize: 22,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
