@@ -242,6 +242,7 @@ class AuthProvider extends ChangeNotifier {
           dp.getTasks();
           dp.getResTasks();
           dp.getWallTasks();
+           dp.getUserTasksHistory();
         } catch (e) {
           print('This is ogin extra error $e');
         }

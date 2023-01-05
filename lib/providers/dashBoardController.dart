@@ -280,7 +280,11 @@ class DashboardProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  late UserTasksHistory userTasksHistory;
+  UserTasksHistory userTasksHistory = UserTasksHistory(
+      total_collab: 0,
+      completed_collab: 0,
+      pending_task: 0,
+      rajected_collab: 0);
 
   Future<void> getUserTasksHistory() async {
     var response;
