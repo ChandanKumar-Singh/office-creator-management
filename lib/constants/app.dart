@@ -14,6 +14,7 @@ class App{
   ///tasks history
   static const String getTasks='getTasks';
   static const String getUserTaskHistories='getUserTaskHistories';
+  static const String getGenres='getGenres';
   static const String userTaskResponseHistories='userTaskResponseHistories';
   static const String userResponseToTask='userResponseToTask';
   static const String userSubmitCompletedTask='userSubmitCompletedTask';

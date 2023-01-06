@@ -60,6 +60,7 @@ dependencies:
   flutter_linkify: ^5.0.2
   url_launcher: ^6.1.7
   flutter_phone_direct_caller: ^2.1.1
+  dropdown_textfield: ^1.0.7
 
 #  otp_autofill: ^2.1.0
 #  sms_autofill: ^2.2.0

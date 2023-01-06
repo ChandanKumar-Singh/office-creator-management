@@ -38,7 +38,6 @@ class Creator {
   }
 }
 
-
 class Data {
   int? id;
   String? email;
@@ -57,28 +56,31 @@ class Data {
   String? createdAt;
   String? updatedAt;
   String? fullName;
+  List? genres;
 
-  Data(
-      {this.id,
-      this.email,
-      this.firstName,
-      this.lastName,
-      this.phone,
-      this.status,
-      this.address,
-      this.profilePic,
-      this.instaFollowers,
-      this.youtubeSubscribers,
-      this.insta_username,
-      this.youtubeUrl,
-      this.isVerified,
-      this.deviceToken,
-      this.createdAt,
-      this.updatedAt,
-      this.fullName});
+  Data({
+    this.id,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.phone,
+    this.status,
+    this.address,
+    this.profilePic,
+    this.instaFollowers,
+    this.youtubeSubscribers,
+    this.insta_username,
+    this.youtubeUrl,
+    this.isVerified,
+    this.deviceToken,
+    this.createdAt,
+    this.updatedAt,
+    this.fullName,
+    this.genres,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
-    print(json);
+    print(json['genres']);
     id = json['id'];
     email = json['email'];
     firstName = json['first_name'];
@@ -96,6 +98,8 @@ class Data {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     fullName = json['fullName'];
+    genres = json['genres'].map((e) => e['pivot']['genre_id']).toList();
+    print(genres);
   }
 
   Map<String, dynamic> toJson() {
@@ -117,10 +121,60 @@ class Data {
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     data['fullName'] = fullName;
+    data['genres'] = genres;
     return data;
   }
 }
 
+class UserGenreModel {
+  int? id;
+  String? title;
+  String? createdAt;
+  String? updatedAt;
+  Pivot? pivot;
+
+  UserGenreModel(
+      {this.id, this.title, this.createdAt, this.updatedAt, this.pivot});
+
+  UserGenreModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    pivot = json['pivot'] != null ? Pivot.fromJson(json['pivot']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (pivot != null) {
+      data['pivot'] = pivot!.toJson();
+    }
+    return data;
+  }
+}
+
+class Pivot {
+  int? userId;
+  int? genreId;
+
+  Pivot({this.userId, this.genreId});
+
+  Pivot.fromJson(Map<String, dynamic> json) {
+    userId = json['user_id'];
+    genreId = json['genre_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['user_id'] = userId;
+    data['genre_id'] = genreId;
+    return data;
+  }
+}
 
 class UserTasksHistory {
   int? total_collab;

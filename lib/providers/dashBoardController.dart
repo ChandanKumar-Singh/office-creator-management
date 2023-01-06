@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:api_cache_manager/api_cache_manager.dart';
 import 'package:api_cache_manager/models/cache_db_model.dart';
 import 'package:creater_management/constants/app.dart';
+import 'package:creater_management/models/GenresModel.dart';
 import 'package:creater_management/models/taskModel.dart';
 import 'package:creater_management/models/walletHisModel.dart';
 import 'package:creater_management/providers/userController.dart';
@@ -487,5 +488,50 @@ class DashboardProvider extends ChangeNotifier {
     notifyListeners();
     hoverBlankLoadingDialog(false);
     return resstatus;
+  }
+
+  List<GenresModel> genreses = [];
+  Future<void> getGenres() async {
+    var response;
+    try {
+      bool cacheExist = await APICacheManager().isAPICacheKeyExist('genres');
+      if (isOnline) {
+        var url = '${App.baseUrl}${App.getGenres}';
+        var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
+        var res = await http.get(Uri.parse(url), headers: headers);
+        if (res.statusCode == 200) {
+          if (jsonDecode(res.body)['success'] == 200) {
+            var data = jsonDecode(res.body)['data'];
+            var cacheModel =
+                APICacheDBModel(key: 'genres', syncData: jsonEncode(data));
+
+            await APICacheManager().addCacheData(cacheModel);
+            response = cacheModel.syncData;
+          } else {
+            Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
+          }
+        }
+        debugPrint("it's url get genres Hit  $response ");
+      } else {
+        showNetWorkToast();
+        if (cacheExist) {
+          response = (await APICacheManager().getCacheData('genres')).syncData;
+          debugPrint("it's genres cache Hit $response");
+        }
+      }
+      response = jsonDecode(response);
+      if (response != null) {
+        debugPrint(response.runtimeType.toString());
+        genreses.clear();
+        if (response != 0) {
+          response.forEach((e) {
+            genreses.add(GenresModel.fromJson(e));
+          });
+        } else {}
+      }
+    } catch (e) {
+      debugPrint('e e e e e  genres e e -> $e');
+    }
+    notifyListeners();
   }
 }

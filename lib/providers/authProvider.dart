@@ -232,6 +232,7 @@ class AuthProvider extends ChangeNotifier {
         token = response['results']['token'];
         await prefs.setString('token', token);
         print('is route enabled  $route ');
+        await dp.getGenres();
         if (route != null && route) {
           profileCompleted = isProfileCompleted(up);
           print('is profile completed $profileCompleted');
@@ -242,7 +243,7 @@ class AuthProvider extends ChangeNotifier {
           dp.getTasks();
           dp.getResTasks();
           dp.getWallTasks();
-           dp.getUserTasksHistory();
+          dp.getUserTasksHistory();
         } catch (e) {
           print('This is ogin extra error $e');
         }

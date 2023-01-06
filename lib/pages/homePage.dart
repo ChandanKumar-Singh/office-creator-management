@@ -62,6 +62,7 @@ class _HomePageState extends State<HomePage> {
         .then((value) => _controller.sink.add(SwipeRefreshState.hidden));
     setState(() {});
     await ap.login();
+    await dp.getGenres();
 
     setState(() {});
   }

@@ -1,8 +1,12 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:creater_management/constants/app.dart';
+import 'package:creater_management/models/GenresModel.dart';
 import 'package:creater_management/providers/authProvider.dart';
+import 'package:creater_management/providers/dashBoardController.dart';
 import 'package:creater_management/providers/userController.dart';
+import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -27,31 +31,64 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   bool instaVerified = false;
   bool loadingYtSub = false;
   bool loadingInsta = false;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  FocusNode searchFocusNode = FocusNode();
+  FocusNode textFieldFocusNode = FocusNode();
+  late SingleValueDropDownController _cnt;
+  late MultiValueDropDownController _cntMulti;
+
+  @override
+  void dispose() {
+    _cnt.dispose();
+    _cntMulti.dispose();
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
-    Provider.of<UserProvider>(context, listen: false).initRecommendedBio();
-    if (Provider.of<UserProvider>(context, listen: false)
-        .ytUrlController
-        .text
-        .isNotEmpty) {
+    _cnt = SingleValueDropDownController();
+    _cntMulti = MultiValueDropDownController();
+    var up = Provider.of<UserProvider>(context, listen: false);
+    var dp = Provider.of<DashboardProvider>(context, listen: false);
+
+    ///bio
+    up.initRecommendedBio();
+
+    ///yt
+    if (up.ytUrlController.text.isNotEmpty) {
       setState(() {
         urlVerified = true;
       });
     }
-    if (Provider.of<UserProvider>(context, listen: false)
-            .instaFollowersController
-            .text
-            .isNotEmpty &&
-        Provider.of<UserProvider>(context, listen: false)
-                .instaFollowersController
-                .text !=
-            '0') {
+
+    ///instagram
+    if (up.instaFollowersController.text.isNotEmpty &&
+        up.instaFollowersController.text != '0') {
       setState(() {
         instaVerified = true;
       });
     }
-    checkErrorText(Provider.of<UserProvider>(context, listen: false));
+    up.initRecommendedBio();
+
+    ///genres
+    debugPrint('user has  genres ${up.creator.data!.genres}');
+    if (up.creator.data!.genres != null &&
+        up.creator.data!.genres!.isNotEmpty) {
+      up.selectedGenres.clear();
+      for (var item in up.creator.data!.genres!) {
+        GenresModel genresModel =
+            dp.genreses.firstWhere((genres) => genres.id == item);
+        DropDownValueModel dropDownValueModel = DropDownValueModel(
+            name: genresModel.title ?? '', value: genresModel.id ?? 0);
+        debugPrint('dropDownValueList ${dropDownValueModel}');
+        _cntMulti.dropDownValueList ??= [];
+        _cntMulti.dropDownValueList!.add(dropDownValueModel);
+        up.selectedGenres.add(dropDownValueModel);
+        setState(() {});
+      }
+    }
+    checkErrorText(up);
   }
 
   @override
@@ -59,46 +96,144 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
     return Consumer<UserProvider>(builder: (context, up, _) {
       debugPrint('show error text $showErrorText');
       debugPrint('urlVerified $urlVerified');
-      return Scaffold(
-        backgroundColor: App.themecolor1.withOpacity(0.9),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 18.0, horizontal: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 50),
-                  buildProfilePicCircle(up),
-                  const SizedBox(height: 50),
-                  buildNameForm(up),
-                  const SizedBox(height: 20),
-                  buildLastNameForm(up),
-                  const SizedBox(height: 20),
-                  buildEmailForm(up),
-                  const SizedBox(height: 20),
-                  buildPhoneForm(up),
-                  const SizedBox(height: 20),
-                  buildAddressForm(up),
-                  // const SizedBox(height: 20),
-                  // buildInstaFollowersForm(up),
-                  const SizedBox(height: 20),
-                  buildInstaUserNameForm(up),
-                  // const SizedBox(height: 20),
-                  // buildYtChannelIdForm(up),
-                  const SizedBox(height: 20),
-                  buildYtVideoUrlForm(up),
-                  const SizedBox(height: 30),
-                  buildLogoutAndStartButtons(context, up),
-                  const SizedBox(height: 50),
-                ],
+      debugPrint('dropDownValueList ${_cntMulti.dropDownValueList}');
+      return Consumer<DashboardProvider>(builder: (context, dsp, _) {
+        return Scaffold(
+          backgroundColor: App.themecolor1.withOpacity(0.9),
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 50),
+                    buildProfilePicCircle(up),
+                    const SizedBox(height: 50),
+                    buildNameForm(up),
+                    const SizedBox(height: 20),
+                    buildLastNameForm(up),
+                    const SizedBox(height: 20),
+                    buildEmailForm(up),
+                    const SizedBox(height: 20),
+                    buildPhoneForm(up),
+                    const SizedBox(height: 20),
+                    buildAddressForm(up),
+                    const SizedBox(height: 20),
+                    buildGenresForm(dsp, up),
+                    // buildInstaFollowersForm(up),
+                    const SizedBox(height: 20),
+                    buildInstaUserNameForm(up),
+                    // const SizedBox(height: 20),
+                    // buildYtChannelIdForm(up),
+                    const SizedBox(height: 20),
+                    buildYtVideoUrlForm(up),
+                    const SizedBox(height: 30),
+                    buildLogoutAndStartButtons(context, up),
+                    const SizedBox(height: 50),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      );
+        );
+      });
     });
+  }
+
+  Widget buildGenresForm(DashboardProvider dsp, UserProvider up) {
+    return Column(
+      children: [
+        DropDownTextField.multiSelection(
+          controller: _cntMulti,
+          // initialValue: const ["name1", "name2", "name8", "name3"],
+          dropDownList: [
+            ...dsp.genreses.map(
+              (genres) {
+                return DropDownValueModel(
+                    name: genres.title ?? '',
+                    value: genres.id ?? Random().nextInt(1000));
+              },
+            ),
+          ],
+          onChanged: (val) {
+            setState(() {
+              up.selectedGenres = val.map((e) => e).toList();
+              checkErrorText(up);
+              print(up.selectedGenres.length);
+            });
+          },
+          submitButtonText: 'Done',
+          submitButtonColor: App.themecolor1,
+          submitButtonTextStyle: const TextStyle(color: Colors.white),
+          textFieldDecoration: InputDecoration(
+              labelStyle: const TextStyle(
+                fontWeight: FontWeight.normal,
+                color: Colors.white,
+                fontSize: 20,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5),
+                borderSide: const BorderSide(
+                  color: Colors.white,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5),
+                borderSide: const BorderSide(
+                  color: Colors.white,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5),
+                borderSide: const BorderSide(
+                  color: Colors.white,
+                ),
+              ),
+              labelText: 'Genres'),
+          textStyle: const TextStyle(color: Colors.white),
+          clearIconProperty: IconProperty(color: Colors.blue),
+          dropDownIconProperty: IconProperty(color: Colors.white),
+        ),
+        if (up.selectedGenres.isEmpty)
+          Row(
+            children: const [
+              Expanded(
+                  child: Text(
+                'You must have to choose your genres',
+                style: TextStyle(color: Colors.white),
+              ))
+            ],
+          ),
+        if (up.selectedGenres.isNotEmpty)
+          Wrap(
+            alignment: WrapAlignment.start,
+            runAlignment: WrapAlignment.start,
+            direction: Axis.horizontal,
+            spacing: 10,
+            children: [
+              ...up.selectedGenres.map(
+                (e) => Chip(
+                  label: Text(e.name),
+                  deleteIcon: const Icon(
+                    Icons.clear,
+                    color: Colors.red,
+                  ),
+                  onDeleted: () {
+                    up.selectedGenres
+                        .removeWhere((element) => element.value == e.value);
+                    _cntMulti.dropDownValueList!
+                        .removeWhere((element) => element.value == e.value);
+                    checkErrorText(up);
+                    setState(() {});
+                  },
+                ),
+              ),
+            ],
+          ),
+      ],
+    );
   }
 
   buildProfilePicCircle(UserProvider up) {
@@ -964,7 +1099,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
         up.addressController.text.isEmpty ||
         (up.instaFollowersController.text.isEmpty &&
             up.ytSubscribersController.text.isEmpty) ||
-        up.phoneController.text.isEmpty) {
+        up.phoneController.text.isEmpty ||up.selectedGenres.isEmpty) {
       setState(() {
         showErrorText = true;
       });

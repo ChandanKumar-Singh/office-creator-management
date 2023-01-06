@@ -23,6 +23,8 @@ class UserProvider extends ChangeNotifier {
   TextEditingController addressController = TextEditingController();
   TextEditingController instaUserNameController = TextEditingController();
   TextEditingController ytUrlController = TextEditingController();
+  List<dynamic> selectedGenres = [];
+
   TextEditingController ytSubscribersController =
       TextEditingController(text: '0');
   TextEditingController instaFollowersController =
@@ -117,6 +119,7 @@ class UserProvider extends ChangeNotifier {
         var url = App.baseUrl + App.complete_profile;
         var headers = {
           'Accept': '*/*',
+          'Content-Type': 'application/json',
           'Authorization': 'Bearer ${creator.token}'
         };
         var body = {
@@ -128,9 +131,11 @@ class UserProvider extends ChangeNotifier {
           "youtube_subscribers": ytSubscribersController.text,
           "youtube_url": ytUrlController.text,
           "insta_username": instaUserNameController.text,
+          'genre_ids': selectedGenres.map((e) => e.value).toList()
         };
         print('complete profile update parameters $body');
-        var res = await http.post(Uri.parse(url), headers: headers, body: body);
+        var res = await http.post(Uri.parse(url),
+            headers: headers, body: jsonEncode(body));
         print('complete profile response ${res.body}');
 
         if (res.statusCode == 200) {
@@ -150,7 +155,7 @@ class UserProvider extends ChangeNotifier {
       }
     } catch (e) {
       success = false;
-      print('e e e e e e e   e  ee e  e ---> $e');
+      print('e e e e e e e updateProfile   e  ee e  e ---> $e');
     }
     if (!homePage) {
       hoverBlankLoadingDialog(false);
@@ -159,7 +164,6 @@ class UserProvider extends ChangeNotifier {
 
     return success;
   }
-
 }
 // {
 // "first_name":"Manoj",
