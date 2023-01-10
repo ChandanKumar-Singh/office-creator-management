@@ -34,7 +34,6 @@ class _CollabHistoryPageState extends State<CollabHistoryPage> {
   Stream<SwipeRefreshState> get _stream => _controller.stream;
   Future<void> _refresh() async {
     var dp = Provider.of<DashboardProvider>(context, listen: false);
-
     await dp
         .getResTasks()
         .then((value) => _controller.sink.add(SwipeRefreshState.hidden));
@@ -63,7 +62,7 @@ class _CollabHistoryPageState extends State<CollabHistoryPage> {
                     dp.loadingResTasks
                         ? buildTasksHisSkeleton(context)
                         : buildTaskHisCard(dp.resTasks[index], context),
-                    if (index != dp.resTasks.length - 1) Divider()
+                    if (index != dp.resTasks.length - 1) const Divider()
                   ],
                 ),
               ),
@@ -163,8 +162,8 @@ class _CollabHistoryPageState extends State<CollabHistoryPage> {
   }
 
   Padding buildTasksHisSkeleton(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.0),
       child: TaskSkeleton(),
       // child: SkeletonLoader(
       //   builder: Card(
@@ -324,21 +323,20 @@ class _CollabHistoryPageState extends State<CollabHistoryPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Hero(
-                        tag: heroTag,
-                        child: isOnline
-                            ? SizedBox(
-                                height: 50,
-                                width: 50,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: buildCachedNetworkImage(
-                                    imageUrl: App.imageBase +
-                                        (task.task!.image ?? ''),
-                                  ),
-                                ),
-                              )
-                            : Image.asset('assets/images/noInternet.png'),
-                      ),
+                          tag: heroTag,
+                          child: SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: isOnline
+                                  ? buildCachedNetworkImage(
+                                      imageUrl: App.imageBase +
+                                          (task.task!.image ?? ''),
+                                    )
+                                  : Image.asset('assets/images/noInternet.png'),
+                            ),
+                          )),
                     ],
                   ),
                 ),

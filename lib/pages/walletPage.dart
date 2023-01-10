@@ -17,6 +17,7 @@ import 'package:swipe_refresh/swipe_refresh.dart';
 
 import '../constants/widgets.dart';
 import '../functions/functions.dart';
+import '../widgets/buildCacheImageNetwork.dart';
 import '../widgets/taskSckeleton.dart';
 
 class WalletPage extends StatefulWidget {
@@ -324,13 +325,19 @@ class _WalletPageState extends State<WalletPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      isOnline
-                          ? Image.network(
-                              App.imageBase + (task.task!.image ?? ''),
-                              fit: BoxFit.contain,
-                            )
-                          : Image.asset('assets/images/noInternet.png',
-                              width: 100),
+                      SizedBox(
+                        height: 50,
+                        width: 50,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: isOnline
+                              ? buildCachedNetworkImage(
+                            imageUrl: App.imageBase +
+                                (task.task!.image ?? ''),
+                          )
+                              : Image.asset('assets/images/noInternet.png'),
+                        ),
+                      ),
                     ],
                   ),
                 ),

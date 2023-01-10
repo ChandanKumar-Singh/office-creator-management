@@ -1,6 +1,7 @@
 import 'package:creater_management/constants/app.dart';
 import 'package:creater_management/constants/widgets.dart';
 import 'package:creater_management/providers/authProvider.dart';
+import 'package:creater_management/providers/userController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -35,10 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: App.themecolor,
         body: Stack(
           children: [
-            SizedBox(
-              height: Get.height,
-              width: Get.width,
-            ),
+            SizedBox(height: Get.height, width: Get.width),
             Positioned(
               bottom: 0,
               child: ClipPath(
@@ -65,21 +63,28 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Positioned(
               bottom: MediaQuery.of(context).viewInsets.bottom <= 10
-                  ? Get.height * 0.1
+                  ? Get.height * 0.05
                   : 0,
               child: Container(
-                // height: Get.height * 0.2,
+                height: Get.height * 0.6,
                 width: Get.width,
                 // color: Colors.white,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    h4Text(
-                      'Hello\nCreator',
+                    const Spacer(),
+                    h2Text(
+                      'Hello',
                       color: Colors.white,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    h3Text(
+                      'Creators',
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                     const SizedBox(height: 30),
                     Row(
@@ -129,7 +134,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                       msg:
                                           'Please enter a valid mobile number');
                                 } else {
-                                  await ap.sendOtp().then((value) {
+                                  // await ap.sendOtp().then((value) {
+                                  await ap
+                                      .sendOtpApi(ap.phoneController.text,
+                                          otpScreen: false)
+                                      .then((value) {
                                     debugPrint('Otp sent ${ap.otpSent}');
                                     if (ap.otpSent) {}
                                   });
@@ -168,13 +177,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                        ))
+                        )),
                       ],
                     ),
+                    const Spacer(),
                     if (MediaQuery.of(context).viewInsets.bottom <= 10)
                       Column(
                         children: [
-                          SizedBox(height: Get.height * 0.1),
+                          // SizedBox(height: Get.height * 0.1),
                           SizedBox(
                             width: Get.width,
                             child: Column(
@@ -288,17 +298,19 @@ class _OtpScreenState extends State<OtpScreen> {
             ),
             Positioned(
               bottom: MediaQuery.of(context).viewInsets.bottom <= 10
-                  ? Get.height * 0.1
+                  ? Get.height * 0.05
                   : 0,
               child: Container(
-                // height: Get.height * 0.2,
+                height: Get.height * 0.6,
                 width: Get.width,
                 // color: Colors.white,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    const Spacer(),
                     Row(
                       children: [
                         Expanded(
@@ -317,7 +329,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         Expanded(
                           child: OTPTextField(
                             controller: ap.otpFieldController,
-                            length: 6,
+                            length: 4,
                             width: MediaQuery.of(context).size.width,
                             fieldWidth: 35,
                             style: const TextStyle(
@@ -331,9 +343,27 @@ class _OtpScreenState extends State<OtpScreen> {
                             textFieldAlignment: MainAxisAlignment.spaceAround,
                             fieldStyle: FieldStyle.underline,
                             onCompleted: (pin) async {
-                              print("Completed: $pin");
-                              ap.otpController.text = pin;
-                              await ap.otpVerification();
+                              print("Completed: $pin ${ap.resOtp}");
+                              if (ap.resOtp == pin) {
+                                hoverBlankLoadingDialog(true);
+                                ap.otpController.clear();
+                                ap.otpFieldController.clear();
+
+                                Provider.of<UserProvider>(Get.context!,
+                                        listen: false)
+                                    .phoneController
+                                    .text = ap.phoneController.text;
+                                ap.otpSent = false;
+                                setState(() {});
+                                if (blr) {
+                                  hoverBlankLoadingDialog(false);
+                                }
+                                var res = await ap.login(
+                                    imLogging: true, route: true);
+                              } else {
+                                Fluttertoast.showToast(
+                                    msg: 'Otp is not valid. Try again');
+                              }
                             },
                           ),
                         ),
@@ -344,7 +374,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       children: [
                         Expanded(
                           child: h6Text(
-                            'Enter six digit OTP',
+                            'Enter four digit OTP',
                             textAlign: TextAlign.center,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -352,24 +382,37 @@ class _OtpScreenState extends State<OtpScreen> {
                         ),
                       ],
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          // style: ElevatedButton.styleFrom(
+                          //     elevation: 1,
+                          //     backgroundColor: Colors.white,
+                          //  ),
+                          onPressed: () async {
+                            // await ap.sendOtp();
+                            ap.otpFieldController.clear();
+                            ap.otpController.clear();
+                            await ap.sendOtpApi(ap.phoneController.text,
+                                otpScreen: true);
+                          },
+                          child: b1Text(
+                            ap.otpTimeOutDuration == 0
+                                ? 'Resend OTP ${ap.otpTimeOutDuration}'
+                                : timerString(ap.otpTimeOutDuration),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
                     if (MediaQuery.of(context).viewInsets.bottom <= 10)
                       Column(
                         children: [
-                          if (ap.verificationId == '')
-                            TextButton(
-                              // style: ElevatedButton.styleFrom(
-                              //     elevation: 1,
-                              //     backgroundColor: Colors.white,
-                              //  ),
-                              onPressed: () async{
-                                await ap.sendOtp();
-                              },
-                              child: b1Text(
-                                'Resend OTP',
-                                color: Colors.white,
-                              ),
-                            ),
-                          SizedBox(height: Get.height * 0.1),
+                          // if (ap.verificationId == '')
+                          // SizedBox(height: Get.height * 0.1),
+                          // const Spacer(),
                           SizedBox(
                             width: Get.width,
                             child: Column(

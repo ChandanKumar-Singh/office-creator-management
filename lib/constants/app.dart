@@ -5,6 +5,7 @@ class App{
   static const String imageBase='https://vikalpias.in/collaboration/public/';
   static const String baseUrl='https://vikalpias.in/collaboration/public/api/v1/';
   static const String login='login';
+  static const String sendOTP='sendOTP';
   static const String forgetPassword='forgetPassword';
   static const String getTeamMembers='getTeamMembers';
   static const String paymentHistory='paymentHistory';

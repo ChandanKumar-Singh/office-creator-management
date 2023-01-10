@@ -291,19 +291,21 @@ void connectionSetup() async {
 void checkLogin() async {
   prefs = await SharedPreferences.getInstance();
   appTempPath = (await getTemporaryDirectory()).path;
-  if (isOnline) {
-    var user = auth.currentUser;
-    debugPrint('check login online user $user');
-    if (user != null) {
-      isLogin = true;
-    }
-  } else {
-    bool? login = prefs.getBool('isLogin');
-    debugPrint('check login offline user $login');
+  // if (isOnline) {
+  //   var user = auth.currentUser;
+  //   debugPrint('check login online user $user');
+  //   if (user != null) {
+  //     isLogin = true;
+  //   }
+  // } else {
+  bool? login = prefs.getBool('isLogin');
+  debugPrint('check login offline user $login');
 
-    if (login != null && login) {
-      isLogin = true;
-    }
+  if (login != null && login) {
+    isLogin = true;
+    // }
+  } else {
+    isLogin = false;
   }
   Timer(const Duration(seconds: 1), () async {
     if (!isLogin) {
@@ -485,11 +487,12 @@ Future<void> initiateUser({String? id, String? pass, bool? route}) async {
 bool isProfileCompleted(UserProvider up) {
   if (up.creator.data!.firstName != null &&
       up.creator.data!.address != null &&
-      up.creator.data!.instaFollowers != 0 &&
-      up.creator.data!.youtubeSubscribers != 0 &&
-      up.creator.data!.youtubeUrl != null &&
-      up.creator.data!.youtubeUrl != '') {
-    debugPrint('0000000000000000000000000000000000000 pushing');
+      ((up.creator.data!.insta_username != null &&
+              up.creator.data!.instaFollowers != 0) ||
+          (up.creator.data!.youtubeUrl != null &&
+              up.creator.data!.youtubeSubscribers != 0))) {
+    debugPrint(
+        '0000000000000000000000000000000000000 isProfileCompleted pushing');
     Get.offAll(const HomePage());
     return true;
   } else {
@@ -756,6 +759,21 @@ void hoverLoadingDialog(loading) async {
   } else {
     Get.back();
   }
+}
+
+///Timer String
+String timerString(int duration) {
+  var min = '0';
+  var sec = '0';
+  if (duration > 0 && duration < 60) {
+    sec = duration.toString();
+  } else if (duration / 60 > 1) {
+    min = (duration ~/ 60).toString();
+    sec = (duration % 60).toInt().toString();
+  }
+  var elapsed = '$min:$sec';
+
+  return elapsed;
 }
 
 bool blr = false;

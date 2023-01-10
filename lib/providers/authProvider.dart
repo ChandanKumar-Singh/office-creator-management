@@ -77,7 +77,7 @@ class AuthProvider extends ChangeNotifier {
                   // verificationId = '';
                   otpSent = false;
                   notifyListeners();
-                  print('codeAutoRetrievalTimeout $reason');
+                  debugPrint('codeAutoRetrievalTimeout $reason');
                   if (blr) {
                     hoverBlankLoadingDialog(false);
                   }
@@ -104,7 +104,7 @@ class AuthProvider extends ChangeNotifier {
       showNetWorkToast(msg: 'You are offline. Please connect to network');
     }
     debugPrint('otp count $otpSentCount  otp sent $otpSent');
-    print(blr);
+    debugPrint(blr.toString());
     // if (blr) {
     // Future.delayed(Duration(seconds: 1),()=>  hoverBlankLoadingDialog(false));
     // }
@@ -138,7 +138,7 @@ class AuthProvider extends ChangeNotifier {
             var res = await login(imLogging: true, route: true);
           }
 
-          print(user);
+          debugPrint(user.toString());
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'session-expired') {
@@ -148,19 +148,89 @@ class AuthProvider extends ChangeNotifier {
         }
         otpController.clear();
         otpFieldController.clear();
-        print('FirebaseAuthException  verificaton $e');
+        debugPrint('FirebaseAuthException  verificaton $e');
       }
     } else {
       otpController.clear();
       otpFieldController.clear();
       showNetWorkToast(msg: 'You are offline. Please connect to network');
     }
-    print('otp count $otpSentCount  otp sent $otpSent');
+    debugPrint('otp count $otpSentCount  otp sent $otpSent');
     if (blr) {
       hoverBlankLoadingDialog(false);
     }
     otpController.clear();
     otpFieldController.clear();
+  }
+
+  late Timer _timer;
+  int otpTimeOutDuration = 90;
+  String? resOtp;
+  void otpTimeOut() {
+    otpTimeOutDuration = 90;
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (otpTimeOutDuration == 0) {
+        _timer.cancel();
+        otpTimeOutDuration = 90;
+      } else {
+        otpTimeOutDuration--;
+      }
+      notifyListeners();
+    });
+  }
+
+  Future<void> sendOtpApi(String number, {required bool otpScreen}) async {
+    hoverBlankLoadingDialog(true);
+
+    if (isOnline) {
+      notifyListeners();
+      try {
+        var url = App.baseUrl + App.sendOTP;
+        var headers = {'Content-Type': 'application/json'};
+        var body = {"phone": number};
+        debugPrint('sendOtpApi parameters $body');
+        var res = await http.post(Uri.parse(url),
+            headers: headers, body: jsonEncode(body));
+        debugPrint('sendOtpApi  ${res.body}');
+        var response = jsonDecode(res.body);
+        if (res.statusCode == 200) {
+          if (response['data'] != null) {
+            otpSent = true;
+            resOtp = response['data'].toString();
+            notifyListeners();
+            otpTimeOut();
+            if (!otpScreen) {
+              Navigator.push(Get.context!,
+                  MaterialPageRoute(builder: (context) => const OtpScreen()));
+            }
+            Future.delayed(
+                const Duration(seconds: 1),
+                () => Fluttertoast.showToast(
+                    msg: 'A OTP has sent to your registered mobile number'));
+          } else {
+            otpSent = false;
+            _timer.cancel();
+            notifyListeners();
+            Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
+          }
+        } else {
+          otpSent = false;
+          _timer.cancel();
+          notifyListeners();
+          Fluttertoast.showToast(msg: 'Some thing went wrong.');
+        }
+      } catch (e) {
+        debugPrint('sendOtpApi ERROR $e');
+        otpSent = false;
+        _timer.cancel();
+        notifyListeners();
+        if (blr) {
+          hoverBlankLoadingDialog(false);
+        }
+      }
+    } else {
+      showNetWorkToast(msg: 'You are offline. Please connect to network');
+    }
   }
 
   Future<dynamic> login({bool? imLogging, bool? route}) async {
@@ -177,10 +247,10 @@ class AuthProvider extends ChangeNotifier {
         var headers = {'Content-Type': 'application/json'};
         var body = {"phone": phoneController.text, "device_token": deviceToken};
 
-        print('login parameters $body');
+        debugPrint('login parameters $body');
         var res = await http.post(Uri.parse(url),
             headers: headers, body: jsonEncode(body));
-        print('login api ${res.body}');
+        debugPrint('login api ${res.body}');
         if (res.statusCode == 200) {
           if (jsonDecode(res.body)['status'] == 200) {
             var cacheModel = APICacheDBModel(key: 'login', syncData: res.body);
@@ -193,31 +263,27 @@ class AuthProvider extends ChangeNotifier {
                   '$appTempPath/${response['results']['data']['profile_pic'].split('/').last}');
             }
             await prefs.setString('phone', phoneController.text);
-
-            isLogin = true;
-            await prefs.setBool('isLogin', isLogin);
-            notifyListeners();
           } else {
             Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
           }
         }
-        print("it's url Hit ${response['results']['data']}");
+        debugPrint("it's url Hit ${response['results']['data']}");
       } else {
         showNetWorkToast();
         if (cacheExist) {
           response = jsonDecode(
               (await APICacheManager().getCacheData('login')).syncData);
-          print("it's cache Hit");
-          print("it's cache Hit ${response['results']['data']}");
+          debugPrint("it's cache Hit");
+          debugPrint("it's cache Hit ${response['results']['data']}");
         }
       }
 
       if (response != null) {
         var up = Provider.of<UserProvider>(Get.context!, listen: false);
         var dp = Provider.of<DashboardProvider>(Get.context!, listen: false);
-        print('creating user');
+        debugPrint('creating user');
         up.creator = Creator.fromJson(response['results']);
-        print('created user');
+        debugPrint('created user');
 
         if (up.creator.data!.instaFollowers! > 0) {
           onInsta = true;
@@ -227,37 +293,41 @@ class AuthProvider extends ChangeNotifier {
           onYoutube = true;
           ytSubscribers = up.creator.data!.youtubeSubscribers!;
         }
-        print('created user successfully');
+        debugPrint('created user successfully');
         await up.initRecommendedBio();
         token = response['results']['token'];
         await prefs.setString('token', token);
-        print('is route enabled  $route ');
+        debugPrint('is route enabled  $route ');
         await dp.getGenres();
         if (route != null && route) {
           profileCompleted = isProfileCompleted(up);
-          print('is profile completed $profileCompleted');
+          // dp.setBottomIndex(0);
+          debugPrint('is profile completed $profileCompleted');
           phoneController.clear();
           otpController.clear();
         }
+        isLogin = true;
+        await prefs.setBool('isLogin', isLogin);
+        notifyListeners();
         try {
           dp.getTasks();
           dp.getResTasks();
           dp.getWallTasks();
           dp.getUserTasksHistory();
         } catch (e) {
-          print('This is ogin extra error $e');
+          debugPrint('This is ogin extra error $e');
         }
       }
     } catch (e) {
       debugPrint('e e e e e e e -> $e');
     }
-    print('testing login ------ > $imLogging    $response');
+    debugPrint('testing login ------ > $imLogging    $response');
 
     if (imLogging != null && !isOnline) {
       response = null;
     }
     if (imLogging != null) {
-      print('making loading false');
+      debugPrint('making loading false');
       hoverBlankLoadingDialog(false);
     }
     return response;
