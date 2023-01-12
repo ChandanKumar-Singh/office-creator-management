@@ -288,8 +288,8 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 50,
-                        width: 50,
+                        height: 70,
+                        width: 70,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Hero(

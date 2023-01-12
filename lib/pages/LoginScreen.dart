@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     const Spacer(),
-                    h2Text(
+                    h3Text(
                       'Hello',
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -109,8 +109,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (val.length == 10) {
                               FocusManager.instance.primaryFocus?.unfocus();
                             }
+                            setState(() {
+
+                            });
                           },
                           decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.only(left: 10, top: 20, bottom: 20),
                             hintText: 'Enter Mobile No.',
                             hintStyle: TextStyle(
                               fontWeight: FontWeight.normal,
@@ -144,17 +149,35 @@ class _LoginScreenState extends State<LoginScreen> {
                                   });
                                 }
                               },
-                              child: Container(
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 15),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.grey[400],
-                                ),
-                                padding: const EdgeInsets.all(5),
-                                child: const Icon(
-                                  Icons.arrow_forward_ios_outlined,
-                                  color: Colors.white,
+                              child: SizedBox(
+                                height: 50,
+                                width: 100,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      // height: 20,
+
+                                      margin:
+                                          const EdgeInsets.symmetric(horizontal: 15),
+                                      decoration: BoxDecoration(
+                                        // shape: BoxShape.circle,
+                                        borderRadius: BorderRadius.circular(100),
+                                        color: ap.phoneController.text.isEmpty?Colors.transparent:Colors.grey[400],
+                                      ),
+                                      padding: const EdgeInsets.all(5),
+                                      child: Center(
+                                          child: h6Text(
+                                        'Login',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      )),
+                                      // child: const Icon(
+                                      //   Icons.arrow_forward_ios_outlined,
+                                      //   color: Colors.white,
+                                      // ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

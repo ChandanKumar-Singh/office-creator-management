@@ -64,7 +64,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     return Scaffold(
         key: _scaffoldKey,
         // backgroundColor: Get.theme.colorScheme.secondary.withOpacity(0.8),
-        drawer: const CustomDrawer(),
+        // drawer: const CustomDrawer(),
         bottomNavigationBar: widget.response != null && widget.response == 0
             ? TaskDetailsAcceptRejectButtons(
                 taskId: task.id!,
@@ -99,54 +99,56 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                         children: [
                           Row(
                             children: [
-                              GestureDetector(
-                                onTap: () {
-                                  _scaffoldKey.currentState?.openDrawer();
-                                },
-                                child: Container(
-                                  color: Colors.transparent,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 3,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.white,
-                                        ),
-                                        width: 45,
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Container(
-                                        height: 3,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.white,
-                                        ),
-                                        width: 35,
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Container(
-                                        height: 3,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.white,
-                                        ),
-                                        width: 45,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 10),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     _scaffoldKey.currentState?.openDrawer();
+                              //   },
+                              //   child: Container(
+                              //     color: Colors.transparent,
+                              //     child: Column(
+                              //       mainAxisAlignment: MainAxisAlignment.start,
+                              //       crossAxisAlignment:
+                              //           CrossAxisAlignment.start,
+                              //       children: [
+                              //         Container(
+                              //           height: 3,
+                              //           decoration: BoxDecoration(
+                              //             borderRadius:
+                              //                 BorderRadius.circular(10),
+                              //             color: Colors.white,
+                              //           ),
+                              //           width: 45,
+                              //         ),
+                              //         const SizedBox(height: 10),
+                              //         Container(
+                              //           height: 3,
+                              //           decoration: BoxDecoration(
+                              //             borderRadius:
+                              //                 BorderRadius.circular(10),
+                              //             color: Colors.white,
+                              //           ),
+                              //           width: 35,
+                              //         ),
+                              //         const SizedBox(height: 10),
+                              //         Container(
+                              //           height: 3,
+                              //           decoration: BoxDecoration(
+                              //             borderRadius:
+                              //                 BorderRadius.circular(10),
+                              //             color: Colors.white,
+                              //           ),
+                              //           width: 45,
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ),
+                              // ),
+                              // const SizedBox(width: 10),
                               Expanded(
-                                child: h4Text(
+                                child: h5Text(
                                   task.title??'',
+                                  height: 1,
+                                  textAlign:TextAlign.center,
                                   color: Colors.white,
                                   maxLine: 3,
                                   overflow: TextOverflow.ellipsis,

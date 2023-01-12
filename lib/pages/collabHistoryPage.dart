@@ -325,8 +325,8 @@ class _CollabHistoryPageState extends State<CollabHistoryPage> {
                       Hero(
                           tag: heroTag,
                           child: SizedBox(
-                            height: 50,
-                            width: 50,
+                            height: 70,
+                            width: 70,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: isOnline

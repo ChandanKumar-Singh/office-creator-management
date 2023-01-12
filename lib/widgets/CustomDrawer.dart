@@ -34,6 +34,7 @@ class CustomDrawer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Column(
@@ -150,6 +151,8 @@ class CustomDrawer extends StatelessWidget {
                   ),
                 ),
                 const Divider(),
+
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Row(
@@ -228,6 +231,8 @@ class CustomDrawer extends StatelessWidget {
                     ],
                   ),
                 ),
+
+
                 // if (onInsta)
                 //   Column(
                 //     children: [
@@ -339,6 +344,8 @@ class CustomDrawer extends StatelessWidget {
                 //       const SizedBox(height: 10),
                 //     ],
                 //   ),
+                // const Spacer(),
+
                 const Spacer(),
                 // ListTile(
                 //   leading: const Icon(
