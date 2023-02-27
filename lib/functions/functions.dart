@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
+// import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:creater_management/pages/homePage.dart';
 import 'package:creater_management/providers/authProvider.dart';
 import 'package:creater_management/providers/userController.dart';
@@ -13,9 +13,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_version_checker/flutter_app_version_checker.dart';
+// import 'package:flutter_app_version_checker/flutter_app_version_checker.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+// import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -216,7 +216,7 @@ Route slideLeftRoute(
 }
 
 String token = '';
-bool isOnline = false;
+bool isOnline = true;
 
 bool profileCompleted = false;
 bool onInsta = false;
@@ -234,58 +234,58 @@ late SharedPreferences prefs;
 var downloadedProfileImagePath = '';
 late String appTempPath;
 FirebaseAuth auth = FirebaseAuth.instance;
-final _checker = AppVersionChecker(appId: 'com.crm.sca_crm');
+// final _checker = AppVersionChecker(appId: 'com.crm.sca_crm');
 
-Future<void> checkVersion() async {
-  try {
-    _checker.checkUpdate().then((value) {
-      // updateAvailable = value.canUpdate;
-      appPlayStoreUrl = value.appURL ?? '';
-      // if (value.newVersion != null) {
-      //   String _version = value.newVersion!;
-      //   debugPrint(_version);
-      //   debugPrint(value.canUpdate); //return true if update is available
-      //   debugPrint(value.currentVersion); //return current app version
-      //   debugPrint(value.newVersion); //return the new app version
-      //   debugPrint(value.appURL); //return the app url
-      //   debugPrint(value.errorMessage);
-      //   var version = _version.toString().split('.');
-      //   var package = value.currentVersion.toString().split('.');
-      //   // for (var i = 0; i < version.length || i < package.length; i++) {
-      //   //   if (i < version.length && i < package.length) {
-      //   //     if (int.parse(package[i]) < int.parse(version[i])) {
-      //   //       updateAvailable = true;
-      //   //       break;
-      //   //     } else if (int.parse(package[i]) > int.parse(version[i])) {
-      //   //       updateAvailable = false;
-      //   //       break;
-      //   //     }
-      //   //   } else if (i >= version.length && i < package.length) {
-      //   //     updateAvailable = false;
-      //   //     break;
-      //   //   } else if (i < version.length && i >= package.length) {
-      //   //     updateAvailable = true;
-      //   //     break;
-      //   //   }
-      //   // }
-      // }
-
-      //return error message if found else it will return null
-    });
-  } catch (e) {
-    debugPrint('App update check error $e');
-  }
-}
+// Future<void> checkVersion() async {
+//   try {
+//     _checker.checkUpdate().then((value) {
+//       // updateAvailable = value.canUpdate;
+//       appPlayStoreUrl = value.appURL ?? '';
+//       // if (value.newVersion != null) {
+//       //   String _version = value.newVersion!;
+//       //   debugPrint(_version);
+//       //   debugPrint(value.canUpdate); //return true if update is available
+//       //   debugPrint(value.currentVersion); //return current app version
+//       //   debugPrint(value.newVersion); //return the new app version
+//       //   debugPrint(value.appURL); //return the app url
+//       //   debugPrint(value.errorMessage);
+//       //   var version = _version.toString().split('.');
+//       //   var package = value.currentVersion.toString().split('.');
+//       //   // for (var i = 0; i < version.length || i < package.length; i++) {
+//       //   //   if (i < version.length && i < package.length) {
+//       //   //     if (int.parse(package[i]) < int.parse(version[i])) {
+//       //   //       updateAvailable = true;
+//       //   //       break;
+//       //   //     } else if (int.parse(package[i]) > int.parse(version[i])) {
+//       //   //       updateAvailable = false;
+//       //   //       break;
+//       //   //     }
+//       //   //   } else if (i >= version.length && i < package.length) {
+//       //   //     updateAvailable = false;
+//       //   //     break;
+//       //   //   } else if (i < version.length && i >= package.length) {
+//       //   //     updateAvailable = true;
+//       //   //     break;
+//       //   //   }
+//       //   // }
+//       // }
+//
+//       //return error message if found else it will return null
+//     });
+//   } catch (e) {
+//     debugPrint('App update check error $e');
+//   }
+// }
 
 void connectionSetup() async {
-  var connection = await Connectivity().checkConnectivity();
-  isOnline = connection != ConnectivityResult.none;
-
-  Connectivity().onConnectivityChanged.listen((event) {
-    isOnline = event != ConnectivityResult.none;
-    debugPrint(' now we are online $isOnline');
-    showNetWorkToast();
-  });
+  // var connection = await Connectivity().checkConnectivity();
+  // isOnline = connection != ConnectivityResult.none;
+  //
+  // Connectivity().onConnectivityChanged.listen((event) {
+  //   isOnline = event != ConnectivityResult.none;
+  //   debugPrint(' now we are online $isOnline');
+  //   showNetWorkToast();
+  // });
 }
 
 void checkLogin() async {
@@ -852,9 +852,9 @@ void showShortSheetActions(
       });
 }
 
-Future<bool?> callNumber(String number) async {
-  return await FlutterPhoneDirectCaller.callNumber(number);
-}
+// Future<bool?> callNumber(String number) async {
+//   return await FlutterPhoneDirectCaller.callNumber(number);
+// }
 
 // Future<void> pickImageDialog(UserProvider up) async {
 //   return showShortSheetActions(

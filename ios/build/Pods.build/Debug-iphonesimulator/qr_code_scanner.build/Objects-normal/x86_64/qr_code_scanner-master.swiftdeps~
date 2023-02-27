@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "7329b83645cffef6795e3d3d4017e35b393fbb8c3591d0b5e59dd16f3f2aecb1"
+build_start_time: [1674023041, 93090057]
+build_end_time: [1674023041, 185242176]
+inputs:
+  "/Users/manojsingh/src/flutter/.pub-cache/hosted/pub.dartlang.org/qr_code_scanner-1.0.1/ios/Classes/QRView.swift": !private [1672307843, 490721702]
+  "/Users/manojsingh/src/flutter/.pub-cache/hosted/pub.dartlang.org/qr_code_scanner-1.0.1/ios/Classes/QRViewFactory.swift": !private [1672307843, 490585803]
+  "/Users/manojsingh/src/flutter/.pub-cache/hosted/pub.dartlang.org/qr_code_scanner-1.0.1/ios/Classes/SwiftFlutterQrPlugin.swift": !private [1672307843, 490286111]

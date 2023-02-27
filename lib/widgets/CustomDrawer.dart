@@ -200,14 +200,14 @@ class CustomDrawer extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              onTap: () async {
-                                bool? canCall = await callNumber(
-                                    up.creator.call_relationship_manager ?? '');
-                                if (canCall != null && !canCall) {
-                                  Fluttertoast.showToast(
-                                      msg: 'Can\'t call on this number');
-                                }
-                              },
+                              // onTap: () async {
+                              //   bool? canCall = await callNumber(
+                              //       up.creator.call_relationship_manager ?? '');
+                              //   if (canCall != null && !canCall) {
+                              //     Fluttertoast.showToast(
+                              //         msg: 'Can\'t call on this number');
+                              //   }
+                              // },
                               title: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [

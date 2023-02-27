@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "9ba3075606cb877534ccea440497157268c9d1d9f08b786fcf8f4723a01a2997"
+build_start_time: [1673877973, 830945968]
+build_end_time: [1673877973, 866793155]
+inputs:
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Runner/AppDelegate.swift"
+  : !private [1673876410, 374515533]

@@ -51,7 +51,7 @@ class _CollabHistoryPageState extends State<CollabHistoryPage> {
               child: SwipeRefresh.builder(
                 stateStream: _stream,
                 onRefresh: _refresh,
-                refreshIndicatorExtent: 300,
+                refreshIndicatorExtent: 100,
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 // indicatorBuilder: (context,mode,d1,d2,d3){
                 //   return LinearProgressIndicator();
