@@ -88,11 +88,12 @@ class _HomePageState extends State<HomePage> {
       child: Consumer<DashboardProvider>(builder: (context, dp, _) {
         return Scaffold(
           key: dp.scaffoldKey,
-          // backgroundColor: Get.theme.colorScheme.secondary.withOpacity(0.8),
+          backgroundColor: Get.theme.scaffoldBackgroundColor.withOpacity(0.98),
           drawer: const CustomDrawer(),
           bottomNavigationBar: Container(
             width: double.infinity,
             height: 70,
+            color: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -106,18 +107,24 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     child: Container(
-                      // color: Colors.red,
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Text(e,
-                          style: TextStyle(
-                            color: dp.selectedBottomIndex == index
-                                ? Colors.black
-                                : Colors.black54,
-                            fontWeight: dp.selectedBottomIndex == index
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                            fontSize: dp.selectedBottomIndex == index ? 20 : 18,
-                          )),
+                      color: Colors.transparent,
+                      height: 60,
+                      child: Center(
+                        child: capText(
+                          e,
+                          style: Theme.of(context).textTheme.caption!.copyWith(
+                              color: dp.selectedBottomIndex == index
+                                  ? Colors.black
+                                  : Colors.black45,
+                              fontWeight: dp.selectedBottomIndex == index
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                              fontSize:
+                                  dp.selectedBottomIndex == index ? 18 : 16,
+                              letterSpacing: 0,
+                              height: 0),
+                        ),
+                      ),
                     ),
                   );
                 }),
@@ -209,19 +216,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            // Positioned(
-            //   bottom: 0,
-            //   left: 10,
-            //   child: Row(
-            //     children: [
-            //       const Text('Total: '),
-            //       Text(
-            //         dp.tasks.length.toString(),
-            //         style: const TextStyle(color: Colors.blue),
-            //       ),
-            //     ],
-            //   ),
-            // ),
           ],
         ),
         Expanded(
@@ -295,12 +289,7 @@ class _HomePageState extends State<HomePage> {
                           child: Hero(
                             tag: heroTag,
                             child: isOnline
-                                ?
-                                // Image.network(
-                                //         imageUrl,
-                                //         fit: BoxFit.fill,
-                                //       )
-                                buildCachedNetworkImage(
+                                ? buildCachedNetworkImage(
                                     imageUrl:
                                         App.imageBase + (task.image ?? ''))
                                 : Image.asset('assets/images/noInternet.png'),
@@ -320,10 +309,12 @@ class _HomePageState extends State<HomePage> {
                           Expanded(
                             child: Text(
                               task.mainTitle ?? "",
-                              maxLines: 2,
+                              maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
-                                  fontSize: 16, color: Colors.grey),
+                                // fontSize: 16,
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 7),
@@ -333,29 +324,28 @@ class _HomePageState extends State<HomePage> {
                                 : Icons.favorite_outline,
                             color:
                                 task.isFeatured == 1 ? Colors.red : Colors.grey,
+                            size: 18,
                           ),
                         ],
                       ),
                       Row(
                         children: [
                           Expanded(
-                            child: Text(
-                              task.title ?? "",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            child: Text(task.title ?? "",
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context).textTheme.bodyText1),
                           ),
                         ],
                       ),
                       Row(
                         children: [
                           Text(
-                            NumberFormat.simpleCurrency(name: 'Rs.')
-                                .format(double.parse(task.amount ?? '0')),
+                            NumberFormat.simpleCurrency(
+                              name: '₹',
+                              // locale: 'Rs.',
+                            ).format(double.parse(task.amount ?? '0')),
+                            style: Theme.of(context).textTheme.caption,
                           ),
                         ],
                       ),

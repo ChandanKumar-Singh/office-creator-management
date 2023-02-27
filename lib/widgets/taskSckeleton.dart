@@ -16,7 +16,7 @@ class TaskSkeleton extends StatelessWidget {
       margin: const EdgeInsets.all(0),
       child: Container(
         padding: const EdgeInsets.all(10),
-        // height: 150,
+        height: 100,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -25,16 +25,19 @@ class TaskSkeleton extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Skeleton(
-                      height: 50,
-                      width: 50,
-                      style: SkeletonStyle.box,
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Skeleton(
+                        height: 60,
+                        width: 60,
+                        style: SkeletonStyle.box,
+                      ),
                     ),
                   ),
+                  Spacer()
                 ],
               ),
             ),
@@ -49,30 +52,30 @@ class TaskSkeleton extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 5,
-                        child: Skeleton(height: 20, style: SkeletonStyle.text),
+                        child: Skeleton(height: 12, style: SkeletonStyle.text),
                       ),
                       const SizedBox(width: 100),
                       Skeleton(
-                          height: 20, width: 20, style: SkeletonStyle.text),
+                          height: 12, width: 20, style: SkeletonStyle.text),
                     ],
                   ),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 7),
                   Row(
                     children: [
                       Expanded(
                         flex: 5,
-                        child: Skeleton(height: 20, style: SkeletonStyle.text),
+                        child: Skeleton(height: 14, style: SkeletonStyle.text),
                       ),
                       const Spacer(
                         flex: 1,
                       ),
                     ],
                   ),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       Expanded(
-                        flex: 5,
+                        flex: 3,
                         child: Skeleton(height: 10, style: SkeletonStyle.text),
                       ),
                       const Spacer(
@@ -85,7 +88,7 @@ class TaskSkeleton extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Spacer(
-                        flex: 10,
+                        flex: 3,
                       ),
                       Expanded(
                           flex: 1,

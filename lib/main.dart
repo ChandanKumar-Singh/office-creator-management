@@ -19,17 +19,17 @@ void main() async {
   await initFCM();
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
-  runApp(const CreaterManagementApp());
+  runApp(const CreatorManagementApp());
 }
 
-class CreaterManagementApp extends StatefulWidget {
-  const CreaterManagementApp({Key? key}) : super(key: key);
+class CreatorManagementApp extends StatefulWidget {
+  const CreatorManagementApp({Key? key}) : super(key: key);
 
   @override
-  State<CreaterManagementApp> createState() => _CreaterManagementAppState();
+  State<CreatorManagementApp> createState() => _CreatorManagementAppState();
 }
 
-class _CreaterManagementAppState extends State<CreaterManagementApp> {
+class _CreatorManagementAppState extends State<CreatorManagementApp> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -42,15 +42,16 @@ class _CreaterManagementAppState extends State<CreaterManagementApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textTheme: TextTheme(
-            headline6: GoogleFonts.poppins(),
-            headline5: GoogleFonts.poppins(),
-            headline4: GoogleFonts.poppins(),
-            headline3: GoogleFonts.poppins(),
-            headline2: GoogleFonts.poppins(),
-            headline1: GoogleFonts.poppins(),
-            bodyText2: GoogleFonts.poppins(),
-            bodyText1: GoogleFonts.poppins(),
-            caption: GoogleFonts.poppins(),
+            headline6: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.w600,letterSpacing: 0,height: 1.0)),
+            headline5: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.w600,letterSpacing: 0)),
+            headline4: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.w600,letterSpacing: 0,height: 1.0)),
+            headline3: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.w400,letterSpacing: 0)),
+            headline2: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.w600,letterSpacing: 0)),
+            headline1: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.w600,letterSpacing: 0)),
+            bodyText2: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.w700,letterSpacing: 0,height: 1.0)),
+            bodyText1: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.w900,
+                letterSpacing: 0,height: 1.0)),
+            caption: GoogleFonts.poppins(textStyle: TextStyle(fontWeight: FontWeight.w600,fontSize: 12)),
             // caption: GoogleFonts.actor(),
           ),
           primarySwatch: MaterialColor(

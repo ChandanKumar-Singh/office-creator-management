@@ -8,7 +8,7 @@ Widget buildCachedNetworkImage({required String imageUrl}) {
       imageUrl,
       fit: BoxFit.fill,
     ),
-    placeholder: (context, url) => const CircularProgressIndicator(),
-    errorWidget: (context, url, error) => const Icon(Icons.error),
+    placeholder: (context, url) => const  CircularProgressIndicator(),
+    errorWidget: (context, url, error) => Image.asset('assets/images/placeholder.jfif',fit: BoxFit.cover,),
   );
 }

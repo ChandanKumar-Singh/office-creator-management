@@ -669,7 +669,8 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                                         loadingInsta = true;
                                       });
                                       var countText = await getInstaSubscribers(
-                                          up.instaUserNameController.text);
+                                          // up.instaUserNameController.text);
+                                         'apnamotiv');
                                       debugPrint(countText.toString());
 
                                       Future.delayed(const Duration(seconds: 1),

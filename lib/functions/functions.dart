@@ -461,7 +461,8 @@ Future<int> getInstaSubscribers(String username) async {
   try {
     FlutterInsta flutterInsta = FlutterInsta();
     // await flutterInsta.getProfileData("sumit7376sharma"); //instagram username
-    await flutterInsta.getProfileData(username); //instagram username
+    await flutterInsta.getProfileData("apnamotiv"); //instagram username
+    // await flutterInsta.getProfileData(username); //instagram username
     debugPrint(flutterInsta.followers);
 
     followers = int.parse(flutterInsta.followers ?? '0');
