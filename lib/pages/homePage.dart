@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -422,7 +423,9 @@ shareThisTask(TaskModel task) async {
 
   await Share.share(
     'Hey there is an interesting collaboration on wecollab, #${task.title ?? ''}# ${task.mainTitle != null ? 'by #${task.mainTitle}#' : ''} Go and check now #link for app#',
-    subject: 'subject',
+    subject: Platform.isIOS
+        ? 'Hey there is an interesting collaboration on wecollab, #${task.title ?? ''}# ${task.mainTitle != null ? 'by #${task.mainTitle}#' : ''} Go and check now #link for app#'
+        : '',
     sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
   );
 }

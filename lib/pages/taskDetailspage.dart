@@ -106,7 +106,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                                   child: Container(
                                     padding: const EdgeInsets.all(8),
                                     decoration: const BoxDecoration(
-                                        color: Colors.white, shape: BoxShape.circle),
+                                        color: Colors.white,
+                                        shape: BoxShape.circle),
                                     child: const Center(
                                       child: Icon(Icons.arrow_back_rounded,
                                           color: Colors.black),
@@ -628,20 +629,22 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
               // style: ElevatedButton.styleFrom(
               //   backgroundColor: App.themecolor.withOpacity(0.8),
               // ),
-              onTap: () async {
-                Navigator.push(
-                    Get.context!,
-                    slideLeftRoute(
-                      UploadProofPage(
-                        task: task,
-                        reason: reason,
-                      ),
-                      effect: PageTransitionType.rightToLeftJoined,
-                      current: TaskDetailsPage(
-                        task: task,
-                      ),
-                    ));
-              },
+              onTap: status == 1
+                  ? null
+                  : () async {
+                      Navigator.push(
+                          Get.context!,
+                          slideLeftRoute(
+                            UploadProofPage(
+                              task: task,
+                              reason: reason,
+                            ),
+                            effect: PageTransitionType.rightToLeftJoined,
+                            current: TaskDetailsPage(
+                              task: task,
+                            ),
+                          ));
+                    },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.symmetric(vertical: 5),
@@ -649,7 +652,8 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     // color: App.themecolor,
                     border: Border.all(
-                      color: Colors.grey,
+                      color:  status == 1
+                          ?Colors.grey[300]!:Colors.grey,
                       width: 0.8,
                     )),
                 child: Column(
