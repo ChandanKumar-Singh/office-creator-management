@@ -133,10 +133,10 @@ class UserProvider extends ChangeNotifier {
           "insta_username": instaUserNameController.text,
           'genre_ids': selectedGenres.map((e) => e.value).toList()
         };
-        print('complete profile update parameters $body');
+        // print('complete profile update parameters $body');
         var res = await http.post(Uri.parse(url),
             headers: headers, body: jsonEncode(body));
-        print('complete profile response ${res.body}');
+        // print('complete profile response ${res.body}');
 
         if (res.statusCode == 200) {
           if (jsonDecode(res.body)['status'] == 200) {

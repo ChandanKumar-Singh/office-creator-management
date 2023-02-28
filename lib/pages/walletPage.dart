@@ -50,26 +50,32 @@ class _WalletPageState extends State<WalletPage> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: SwipeRefresh.builder(
-                stateStream: _stream,
-                onRefresh: _refresh,
-                refreshIndicatorExtent: 300,
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                itemCount: dp.wallTasks.length,
-                itemBuilder: (context, index) => Column(
-                  children: [
-                    dp.loadingWalletTasks
-                        ? buildTasksHisSkeleton(context)
-                        : buildTaskHisCard(dp.wallTasks[index], context),
-                    if (index != dp.wallTasks.length - 1) const Divider()
-                  ],
-                ),
-              ),
+              child: !dp.loadingWalletTasks && dp.wallTasks.isEmpty
+                  ? buildNoHistory('No transaction yet')
+                  : buildSwipeRefresh(dp),
             ),
           ),
         ],
       );
     });
+  }
+
+  SwipeRefresh buildSwipeRefresh(DashboardProvider dp) {
+    return SwipeRefresh.builder(
+      stateStream: _stream,
+      onRefresh: _refresh,
+      refreshIndicatorExtent: 300,
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      itemCount: dp.wallTasks.length,
+      itemBuilder: (context, index) => Column(
+        children: [
+          dp.loadingWalletTasks
+              ? buildTasksHisSkeleton(context)
+              : buildTaskHisCard(dp.wallTasks[index], context),
+          if (index != dp.wallTasks.length - 1) const Divider()
+        ],
+      ),
+    );
   }
 
   Widget buildHeader(DashboardProvider dp) {
@@ -152,7 +158,7 @@ class _WalletPageState extends State<WalletPage> {
                       child: Text('My wallet',
                           style:
                               Theme.of(context).textTheme.headline4!.copyWith(
-                                // fontSize: 40,
+                                    // fontSize: 40,
                                     color: Colors.white,
                                     // fontWeight: FontWeight.normal,
                                   )),
@@ -164,7 +170,7 @@ class _WalletPageState extends State<WalletPage> {
           ),
         ),
         Positioned(
-          bottom: 30,
+          bottom: 20,
           left: 20,
           right: 20,
           child: Card(
@@ -173,7 +179,7 @@ class _WalletPageState extends State<WalletPage> {
               borderRadius: BorderRadius.circular(25),
             ),
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -358,4 +364,19 @@ class _WalletPageState extends State<WalletPage> {
       ),
     );
   }
+}
+
+Column buildNoHistory(text, [double height = 100]) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      SizedBox(
+        height: height,
+        child: Image.asset('assets/images/time_loading_no_bg.gif',
+            fit: BoxFit.cover)
+      ),
+      const SizedBox(height: 20),
+      h5Text(text),
+    ],
+  );
 }

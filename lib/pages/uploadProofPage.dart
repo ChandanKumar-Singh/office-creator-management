@@ -58,7 +58,19 @@ class _TaskDetailsPageState extends State<UploadProofPage> {
                     children: [
                       Row(
                         children: [
-                          DrawerButton(scaffoldKey: _scaffoldKey),
+                          GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: const BoxDecoration(
+                                  color: Colors.white, shape: BoxShape.circle),
+                              child: const Center(
+                                child: Icon(Icons.arrow_back_rounded,
+                                    color: Colors.black),
+                              ),
+                            ),
+                          ),
+                          // DrawerButton(scaffoldKey: _scaffoldKey),
                           const SizedBox(width: 10),
                         ],
                       )
@@ -125,7 +137,8 @@ class _TaskDetailsPageState extends State<UploadProofPage> {
                                     borderRadius: BorderRadius.circular(5),
                                   ),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       b1Text(
                                         "Reason: ",
@@ -141,7 +154,6 @@ class _TaskDetailsPageState extends State<UploadProofPage> {
                                   ),
                                 ),
                                 const SizedBox(height: 15),
-
                               ],
                             ),
                           buildUploadButton(dp),
@@ -204,7 +216,8 @@ class _TaskDetailsPageState extends State<UploadProofPage> {
               child: TextFormField(
                 controller: urlController,
                 decoration: InputDecoration(
-                    border: const OutlineInputBorder(borderRadius: BorderRadius.zero),
+                    border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.zero),
                     hintText: 'Paste Published Link',
                     hintStyle: TextStyle(
                         fontSize: 18,
@@ -229,8 +242,8 @@ class _TaskDetailsPageState extends State<UploadProofPage> {
                 controller: desController,
                 maxLines: 6,
                 decoration: InputDecoration(
-                    border: const OutlineInputBorder(borderRadius: BorderRadius.zero),
-
+                    border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.zero),
                     hintText: 'Anything more you want to tell?',
                     hintStyle: TextStyle(
                         fontSize: 18,

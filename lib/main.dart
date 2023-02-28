@@ -122,8 +122,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             Positioned(
-              right: 5,
-
+              right: 0,
               child: Container(
                 height: 10,
                 width: 10,

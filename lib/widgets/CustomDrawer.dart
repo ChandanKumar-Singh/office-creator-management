@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:creater_management/constants/app.dart';
 import 'package:creater_management/constants/widgets.dart';
+import 'package:creater_management/models/createrModel.dart';
 import 'package:creater_management/pages/completeProfile.dart';
 import 'package:creater_management/providers/dashBoardController.dart';
 import 'package:creater_management/providers/userController.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -84,8 +86,7 @@ class CustomDrawer extends StatelessWidget {
                                                     .toString()),
                                                 // countInKMB(9374393
                                                 //     .toString()),
-                                                overflow:
-                                                    TextOverflow.ellipsis,
+                                                overflow: TextOverflow.ellipsis,
                                                 // color: Colors.grey,
                                               ),
                                             ],
@@ -98,8 +99,7 @@ class CustomDrawer extends StatelessWidget {
                                               Image.asset(
                                                 'assets/images/youtubeLogo.jpg',
                                                 height: 13,
-                                                color:
-                                                    const Color(0xFFD50606),
+                                                color: const Color(0xFFD50606),
                                               ),
                                               const SizedBox(width: 5),
                                               Text(
@@ -108,8 +108,7 @@ class CustomDrawer extends StatelessWidget {
                                                 // countInKMB(up.creator.data!
                                                 //     .youtubeSubscribers
                                                 //     .toString()),
-                                                overflow:
-                                                    TextOverflow.ellipsis,
+                                                overflow: TextOverflow.ellipsis,
                                               ),
                                             ],
                                           ),
@@ -129,8 +128,8 @@ class CustomDrawer extends StatelessWidget {
                                                 style: TextStyle(
                                                   color: App.themecolor,
                                                   height: 1.5,
-                                                  decoration: TextDecoration
-                                                      .underline,
+                                                  decoration:
+                                                      TextDecoration.underline,
                                                 ),
                                               )),
                                         ],
@@ -146,7 +145,10 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Divider(thickness: 2,height: 0,),
+                    child: Divider(
+                      thickness: 2,
+                      height: 0,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
@@ -159,7 +161,8 @@ class CustomDrawer extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             onTap: () async {
-                              Fluttertoast.showToast(msg: 'Coming soon!');
+                              generateMyLink(up.creator);
+                              // Fluttertoast.showToast(msg: 'Coming soon!');
                             },
                             title: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -197,6 +200,7 @@ class CustomDrawer extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             onTap: () async {
+                              ///TODO:8800734115 mobile number
                               bool? canCall = await callNumber(
                                   up.creator.call_relationship_manager ?? '');
                               if (canCall != null && !canCall) {
@@ -279,6 +283,19 @@ class CustomDrawer extends StatelessWidget {
         }),
       ),
     );
+  }
+
+  void generateMyLink(Creator creator) async {
+    hoverBlankLoadingDialog(true, true);
+    await Clipboard.setData(ClipboardData(
+            text: 'https://techkaro.in/creator.php?id=${creator.data!.id}'))
+        .then((value) async => await Future.delayed(const Duration(seconds: 3))
+                .then((value) async {
+              Fluttertoast.showToast(
+                  msg: 'You successfully copied your collaboration link.',
+                  backgroundColor: App.themecolor);
+            }));
+    hoverBlankLoadingDialog(false);
   }
 }
 

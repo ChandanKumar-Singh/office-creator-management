@@ -33,8 +33,8 @@ class DashboardProvider extends ChangeNotifier {
 
   Future<void> getTasks() async {
     var response;
-    // tasks.clear();
-    // notifyListeners();
+    loadingTasks = true;
+    notifyListeners();
     try {
       bool cacheExist = await APICacheManager().isAPICacheKeyExist('tasks');
       getTasksPage = 1;
@@ -59,12 +59,12 @@ class DashboardProvider extends ChangeNotifier {
             Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
           }
         }
-        debugPrint("it's url Hit  $response ");
+        // debugPrint("it's url Hit  $response ");
       } else {
         showNetWorkToast();
         if (cacheExist) {
           response = (await APICacheManager().getCacheData('tasks')).syncData;
-          debugPrint("it's cache Hit $response");
+          // debugPrint("it's cache Hit $response");
         }
       }
       response = jsonDecode(response);
@@ -90,6 +90,7 @@ class DashboardProvider extends ChangeNotifier {
     }
 
     debugPrint('testing tasks ------ >$total    ${tasks.length}');
+    loadingTasks = false;
     notifyListeners();
   }
 
@@ -138,7 +139,8 @@ class DashboardProvider extends ChangeNotifier {
     //     .creator
     //     .data!
     //     .toJson());
-
+    loadingResTasks = true;
+    notifyListeners();
     try {
       bool cacheExist = await APICacheManager().isAPICacheKeyExist('resTasks');
       getResTasksPage = 1;
@@ -161,7 +163,7 @@ class DashboardProvider extends ChangeNotifier {
             Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
           }
         }
-        debugPrint("it's url Hit  $response ");
+        // debugPrint("it's url Hit  $response ");
       } else {
         showNetWorkToast();
         if (cacheExist) {
@@ -188,6 +190,7 @@ class DashboardProvider extends ChangeNotifier {
     }
 
     debugPrint('testing tasks ------ >$resTotal    ${resTasks.length}');
+    loadingResTasks = false;
     notifyListeners();
   }
 
@@ -228,8 +231,8 @@ class DashboardProvider extends ChangeNotifier {
 
   Future<void> getWallTasks() async {
     var response;
-    // tasks.clear();
-    // notifyListeners();
+    loadingWalletTasks = true;
+    notifyListeners();
     try {
       bool cacheExist = await APICacheManager().isAPICacheKeyExist('wallet');
       getWallTasksPage = 1;
@@ -278,6 +281,7 @@ class DashboardProvider extends ChangeNotifier {
     }
 
     debugPrint('testing tasks ------ >$wallTotal    ${wallTasks.length}');
+    loadingWalletTasks = false;
     notifyListeners();
   }
 
@@ -308,13 +312,13 @@ class DashboardProvider extends ChangeNotifier {
             Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
           }
         }
-        debugPrint("it's url get UserTasksHistory Hit  $response ");
+        // debugPrint("it's url get UserTasksHistory Hit  $response ");
       } else {
         showNetWorkToast();
         if (cacheExist) {
           response = (await APICacheManager().getCacheData('UserTasksHistory'))
               .syncData;
-          debugPrint("it's UserTasksHistory cache Hit $response");
+          // debugPrint("it's UserTasksHistory cache Hit $response");
         }
       }
       response = jsonDecode(response);
@@ -511,12 +515,12 @@ class DashboardProvider extends ChangeNotifier {
             Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
           }
         }
-        debugPrint("it's url get genres Hit  $response ");
+        // debugPrint("it's url get genres Hit  $response ");
       } else {
         showNetWorkToast();
         if (cacheExist) {
           response = (await APICacheManager().getCacheData('genres')).syncData;
-          debugPrint("it's genres cache Hit $response");
+          // debugPrint("it's genres cache Hit $response");
         }
       }
       response = jsonDecode(response);

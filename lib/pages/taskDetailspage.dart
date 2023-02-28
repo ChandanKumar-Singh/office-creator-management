@@ -69,9 +69,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             ? TaskDetailsAcceptRejectButtons(
                 taskId: task.id!,
               )
-            : widget.status == 0 || widget.status == 3
+            : widget.status == 0 || widget.status == 3 || widget.status == 1
                 ? TaskDetailsUploadDocsButtons(
-                    task: task, reason: widget.reason)
+                    task: task, reason: widget.reason, status: widget.status)
                 : const SizedBox.shrink(),
         body: Container(
           color: Get.theme.scaffoldBackgroundColor.withOpacity(0.7),
@@ -399,36 +399,47 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
               ],
             ),
             const SizedBox(height: 7),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Skeleton(height: 10, width: 50, style: SkeletonStyle.text),
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Skeleton(height: 10, width: 100, style: SkeletonStyle.text),
-            const SizedBox(height: 30),
             Row(
               children: [
                 h6Text(
@@ -438,49 +449,62 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
               ],
             ),
             const SizedBox(height: 7),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Skeleton(height: 10, width: 150, style: SkeletonStyle.text),
+                ],
+              ),
             ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Skeleton(height: 10, width: 150, style: SkeletonStyle.text),
             const SizedBox(height: 30),
           ],
         ),
@@ -502,7 +526,7 @@ class TaskDetailsAcceptRejectButtons extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.only(bottom: 20),
       child: Row(
         children: <Widget>[
           const SizedBox(width: 10),
@@ -519,13 +543,16 @@ class TaskDetailsAcceptRejectButtons extends StatelessWidget {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: App.themecolor1,
+                backgroundColor: App.themecolor.withOpacity(0.7),
               ),
-              child: const Text(
-                'REJECT',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.bold,
+              child: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'REJECT',
+                  style: TextStyle(
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -547,11 +574,14 @@ class TaskDetailsAcceptRejectButtons extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
               ),
-              child: const Text(
-                'ACCEPT',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.bold,
+              child: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'ACCEPT',
+                  style: TextStyle(
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -568,10 +598,12 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
     Key? key,
     required this.task,
     this.reason,
+    this.status,
   }) : super(key: key);
 
   final TaskModel task;
   final String? reason;
+  final int? status;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -599,7 +631,7 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
                     ));
               },
               child: Container(
-                // height: 60,
+                height: 45,
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
@@ -608,13 +640,36 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
                       color: Colors.grey,
                       width: 0.8,
                     )),
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    h6Text('UPLOAD PROOF OF WORK',
-                        fontWeight: FontWeight.bold,
-                        color: App.themecolor,
-                        height: 1.5)
+                    if (status == 1)
+                      Image.asset(
+                        'assets/images/time_loading_no_bg.gif',
+                        fit: BoxFit.cover,
+                        height: 23,
+                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                            status != 1
+                                ? 'UPLOAD PROOF OF WORK'
+                                : 'Under Moderate*',
+                            style: TextStyle(
+                                fontWeight: status != 1
+                                    ? FontWeight.bold
+                                    : FontWeight.w300,
+                                fontSize: status != 1
+                                    ? Theme.of(context)
+                                        .textTheme
+                                        .headline6!
+                                        .fontSize
+                                    : 9,
+                                color: App.themecolor,
+                                height: status != 1 ? 1.5 : 1.0))
+                      ],
+                    ),
                   ],
                 ),
               ),

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:creater_management/constants/app.dart';
 import 'package:creater_management/models/taskModel.dart';
 import 'package:creater_management/pages/taskDetailspage.dart';
+import 'package:creater_management/pages/walletPage.dart';
 import 'package:creater_management/providers/authProvider.dart';
 import 'package:creater_management/providers/dashBoardController.dart';
 import 'package:creater_management/widgets/buildCacheImageNetwork.dart';
@@ -18,6 +19,7 @@ import 'package:swipe_refresh/swipe_refresh.dart';
 import '../constants/widgets.dart';
 import '../functions/functions.dart';
 import '../widgets/taskSckeleton.dart';
+import 'homePage.dart';
 
 class CollabHistoryPage extends StatefulWidget {
   const CollabHistoryPage({Key? key}) : super(key: key);
@@ -48,29 +50,35 @@ class _CollabHistoryPageState extends State<CollabHistoryPage> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
-              child: SwipeRefresh.builder(
-                stateStream: _stream,
-                onRefresh: _refresh,
-                refreshIndicatorExtent: 300,
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                // indicatorBuilder: (context,mode,d1,d2,d3){
-                //   return LinearProgressIndicator();
-                // },
-                itemCount: dp.resTasks.length,
-                itemBuilder: (context, index) => Column(
-                  children: [
-                    dp.loadingResTasks
-                        ? buildTasksHisSkeleton(context)
-                        : buildTaskHisCard(dp.resTasks[index], context),
-                    if (index != dp.resTasks.length - 1) const Divider()
-                  ],
-                ),
-              ),
+              child: !dp.loadingResTasks && dp.resTasks.isEmpty
+                  ? buildNoHistory('No collaboration')
+                  : buildSwipeRefresh(dp),
             ),
           ),
         ],
       );
     });
+  }
+
+  SwipeRefresh buildSwipeRefresh(DashboardProvider dp) {
+    return SwipeRefresh.builder(
+      stateStream: _stream,
+      onRefresh: _refresh,
+      refreshIndicatorExtent: 300,
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      // indicatorBuilder: (context,mode,d1,d2,d3){
+      //   return LinearProgressIndicator();
+      // },
+      itemCount: dp.loadingResTasks?5:dp.resTasks.length,
+      itemBuilder: (context, index) => Column(
+        children: [
+          dp.loadingResTasks
+              ? buildTasksHisSkeleton(context)
+              : buildTaskHisCard(dp.resTasks[index], context),
+          if (index != dp.resTasks.length - 1) const Divider()
+        ],
+      ),
+    );
   }
 
   Widget buildHeader(DashboardProvider dp) {
@@ -258,14 +266,10 @@ class _CollabHistoryPageState extends State<CollabHistoryPage> {
                             ),
                           ),
                           const SizedBox(width: 7),
-                          Icon(
-                            task.task!.isFeatured == 1
-                                ? Icons.favorite
-                                : Icons.favorite_outline,
-                            color: task.task!.isFeatured == 1
-                                ? Colors.red
-                                : Colors.grey,
-                            size: 18,
+                          GestureDetector(
+                            onTap: () async => shareThisTask(task.task!),
+                            child: Image.asset('assets/images/share.png',
+                                width: 20),
                           ),
                         ],
                       ),

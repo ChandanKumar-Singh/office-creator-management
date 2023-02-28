@@ -198,11 +198,14 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
         ),
         if (up.selectedGenres.isEmpty)
           Row(
-            children: const [
+            children: [
               Expanded(
-                  child: Text(
-                'You must have to choose your genres',
-                style: TextStyle(color: Colors.white),
+                  child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: capText(
+                  'You must have to choose your genres',
+                  style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),
+                ),
               ))
             ],
           ),
@@ -215,7 +218,9 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
             children: [
               ...up.selectedGenres.map(
                 (e) => Chip(
-                  label: Text(e.name),
+                  label: capText(
+                    e.name,
+                  ),
                   deleteIcon: const Icon(
                     Icons.clear,
                     color: Colors.red,
@@ -484,9 +489,11 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
           Row(
             children: [
               Expanded(
-                  child: Text(
-                'You have ${up.ytSubscribersController.text} subscribers on Youtube',
-                style: const TextStyle(color: Colors.white),
+                  child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  'You have ${up.ytSubscribersController.text} subscribers on Youtube',
+                  style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),                ),
               ))
             ],
           ),
@@ -670,7 +677,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                                       });
                                       var countText = await getInstaSubscribers(
                                           // up.instaUserNameController.text);
-                                         'apnamotiv');
+                                          'apnamotiv');
                                       debugPrint(countText.toString());
 
                                       Future.delayed(const Duration(seconds: 1),
@@ -744,9 +751,11 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
           Row(
             children: [
               Expanded(
-                  child: Text(
-                'You have ${up.instaFollowersController.text} followers on instagram',
-                style: const TextStyle(color: Colors.white),
+                  child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  'You have ${up.instaFollowersController.text} followers on instagram',
+                  style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),                ),
               ))
             ],
           ),
@@ -833,7 +842,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
                 decoration: InputDecoration(
                     labelStyle: const TextStyle(
@@ -866,12 +875,14 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
         ),
         if (showErrorText)
           Row(
-            children: const [
-              Expanded(
-                  child: Text(
-                '* Address is Required',
-                style: TextStyle(color: Colors.white),
-              ))
+            children:  [
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Expanded(
+                    child: Text(
+                  '* Address is Required',
+                      style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),                )),
+              )
             ],
           ),
       ],
@@ -1083,12 +1094,14 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
         ),
         if (showErrorText)
           Row(
-            children: const [
-              Expanded(
-                  child: Text(
-                '* Name is Required',
-                style: TextStyle(color: Colors.white),
-              ))
+            children:  [
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Expanded(
+                    child: Text(
+                  '* Name is Required',
+                      style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),                )),
+              )
             ],
           ),
       ],
@@ -1100,7 +1113,8 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
         up.addressController.text.isEmpty ||
         (up.instaFollowersController.text.isEmpty &&
             up.ytSubscribersController.text.isEmpty) ||
-        up.phoneController.text.isEmpty ||up.selectedGenres.isEmpty) {
+        up.phoneController.text.isEmpty ||
+        up.selectedGenres.isEmpty) {
       setState(() {
         showErrorText = true;
       });
