@@ -63,302 +63,320 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     print(widget.status);
     return Scaffold(
         key: _scaffoldKey,
-        // backgroundColor: Get.theme.colorScheme.secondary.withOpacity(0.8),
+        // backgroundColor: Get.theme.scaffoldBackgroundColor.withOpacity(0.8),
         // drawer: const CustomDrawer(),
         bottomNavigationBar: widget.response != null && widget.response == 0
             ? TaskDetailsAcceptRejectButtons(
                 taskId: task.id!,
               )
-            : widget.status == 0 || widget.status == 3
+            : widget.status == 0 || widget.status == 3 || widget.status == 1
                 ? TaskDetailsUploadDocsButtons(
-                    task: task, reason: widget.reason)
+                    task: task, reason: widget.reason, status: widget.status)
                 : const SizedBox.shrink(),
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 300,
-                ),
-                ClipPath(
-                  clipper: DiagonalPathClipperOne(),
-                  child: Container(
-                    height: 250,
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          App.themecolor,
-                          App.themecolor1,
-                        ],
-                      ),
-                    ),
-                    child: SafeArea(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              // GestureDetector(
-                              //   onTap: () {
-                              //     _scaffoldKey.currentState?.openDrawer();
-                              //   },
-                              //   child: Container(
-                              //     color: Colors.transparent,
-                              //     child: Column(
-                              //       mainAxisAlignment: MainAxisAlignment.start,
-                              //       crossAxisAlignment:
-                              //           CrossAxisAlignment.start,
-                              //       children: [
-                              //         Container(
-                              //           height: 3,
-                              //           decoration: BoxDecoration(
-                              //             borderRadius:
-                              //                 BorderRadius.circular(10),
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: 45,
-                              //         ),
-                              //         const SizedBox(height: 10),
-                              //         Container(
-                              //           height: 3,
-                              //           decoration: BoxDecoration(
-                              //             borderRadius:
-                              //                 BorderRadius.circular(10),
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: 35,
-                              //         ),
-                              //         const SizedBox(height: 10),
-                              //         Container(
-                              //           height: 3,
-                              //           decoration: BoxDecoration(
-                              //             borderRadius:
-                              //                 BorderRadius.circular(10),
-                              //             color: Colors.white,
-                              //           ),
-                              //           width: 45,
-                              //         ),
-                              //       ],
-                              //     ),
-                              //   ),
-                              // ),
-                              // const SizedBox(width: 10),
-                              Expanded(
-                                child: h5Text(
-                                  task.title??'',
-                                  height: 1,
-                                  textAlign:TextAlign.center,
-                                  color: Colors.white,
-                                  maxLine: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+        body: Container(
+          color: Get.theme.scaffoldBackgroundColor.withOpacity(0.7),
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: 300,
                   ),
-                ),
-                Positioned.fill(
-                  bottom: 0,
-                  right: 0,
-                  left: 0,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      if (widget.response == 0)
-                        Hero(
-                          tag: widget.heroTag ?? task.title!,
-                          child: isOnline
-                              ? SizedBox(
-                                  height: 70,
-                                  width: 70,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: buildCachedNetworkImage(
-                                        imageUrl:
-                                            App.imageBase + (task.image ?? '')),
-                                  ),
-                                )
-                              : Image.asset(
-                                  'assets/images/noInternet.png',
-                                  width: 100,
-                                ),
+                  ClipPath(
+                    clipper: DiagonalPathClipperOne(),
+                    child: Container(
+                      height: 250,
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            App.themecolor,
+                            App.themecolor1,
+                          ],
                         ),
-                      if (widget.response == 1)
-                        Hero(
-                          tag: widget.heroTag ?? task.title!,
-                          child: isOnline
-                              ? SizedBox(
-                                  height: 70,
-                                  width: 70,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: buildCachedNetworkImage(
-                                        imageUrl:
-                                            App.imageBase + (task.image ?? '')),
-                                  ),
-                                )
-                              : Image.asset('assets/images/noInternet.png',
-                                  width: 100),
-                        ),
-                      const SizedBox(width: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(
-                            child: h6Text(
-                              task.mainTitle ?? '',
-                              textAlign: TextAlign.center,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(
-                            child: h6Text(
-                              'Payment ${NumberFormat.simpleCurrency(name: 'Rs.').format(double.parse(task.amount ?? '0'))}',
-                              textAlign: TextAlign.center,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10),
-                child: Consumer<DashboardProvider>(builder: (context, dp, _) {
-                  return dp.loadingTasks
-                      ? buildTaskDetailsSkeleton()
-                      : Card(
-                          elevation: 3,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          margin: const EdgeInsets.all(0),
-                          child: Container(
-                            padding: const EdgeInsets.all(15),
-                            // height: 150,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Column(
+                      child: SafeArea(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
                               children: [
-                                Row(
-                                  children: [
-                                    h6Text(
-                                      'Deliverables',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ],
-                                ),
-                                Expanded(
-                                  child: Scrollbar(
-                                    controller: deliverablesCtrl,
-                                    // thumbVisibility: true,
-                                    thickness: 10,
-                                    radius: const Radius.circular(10),
-                                    trackVisibility: true,
-                                    child: ListView(
-                                      controller: deliverablesCtrl,
-                                      padding: const EdgeInsets.all(0),
+                                GestureDetector(
+                                  onTap: () {
+                                    _scaffoldKey.currentState?.openDrawer();
+                                  },
+                                  child: Container(
+                                    color: Colors.transparent,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        SelectableLinkify(
-                                            onOpen: (link) async {
-                                              var url = link.url;
-                                              if (await canLaunchUrl(
-                                                  Uri.parse(url))) {
-                                                try {
-                                                  await launchUrl(
-                                                      Uri.parse(url),
-                                                      mode: LaunchMode
-                                                          .externalApplication);
-                                                } catch (e) {
-                                                  log(e.toString());
-                                                }
-                                              } else {
-                                                Fluttertoast.showToast(
-                                                    msg:
-                                                        'Could not open the url');
-                                                throw 'Could not launch $link';
-                                              }
-                                            },
-                                            text: task.description ?? '')
+                                        Container(
+                                          height: 3,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.white,
+                                          ),
+                                          width: 45,
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Container(
+                                          height: 3,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.white,
+                                          ),
+                                          width: 35,
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Container(
+                                          height: 3,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.white,
+                                          ),
+                                          width: 45,
+                                        ),
                                       ],
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 30),
-                                Row(
-                                  children: [
-                                    h6Text(
-                                      'Terms & Conditions',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ],
-                                ),
+                                const SizedBox(width: 10),
                                 Expanded(
-                                  child: Scrollbar(
-                                    controller: termsConditionCtrl,
-                                    // thumbVisibility: true,
-                                    thickness: 10,
-                                    radius: const Radius.circular(10),
-                                    trackVisibility: true,
-                                    child: ListView(
-                                      controller: termsConditionCtrl,
-                                      padding: const EdgeInsets.all(0),
-                                      children: [
-                                        SelectableLinkify(
-                                            onOpen: (link) async {
-                                              var url = link.url;
-                                              if (await canLaunchUrl(
-                                                  Uri.parse(url))) {
-                                                try {
-                                                  await launchUrl(
-                                                      Uri.parse(url),
-                                                      mode: LaunchMode
-                                                          .externalApplication);
-                                                } catch (e) {
-                                                  log(e.toString());
-                                                }
-                                              } else {
-                                                Fluttertoast.showToast(
-                                                    msg:
-                                                        'Could not open the url');
-                                                throw 'Could not launch $link';
-                                              }
-                                            },
-                                            text: task.termsConditions ?? '')
-                                      ],
-                                    ),
+                                  child: h5Text(
+                                    task.title ?? '',
+                                    height: 1,
+                                    textAlign: TextAlign.center,
+                                    color: Colors.white,
+                                    maxLine: 3,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ],
-                            ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned.fill(
+                    bottom: 0,
+                    right: 0,
+                    left: 0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        if (widget.response == 0)
+                          Hero(
+                            tag: widget.heroTag ?? task.title!,
+                            child: isOnline
+                                ? SizedBox(
+                                    height: 70,
+                                    width: 70,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: buildCachedNetworkImage(
+                                          imageUrl: App.imageBase +
+                                              (task.image ?? '')),
+                                    ),
+                                  )
+                                : Image.asset(
+                                    'assets/images/noInternet.png',
+                                    width: 100,
+                                  ),
                           ),
-                        );
-                }),
+                        if (widget.response == 1)
+                          Hero(
+                            tag: widget.heroTag ?? task.title!,
+                            child: isOnline
+                                ? SizedBox(
+                                    height: 70,
+                                    width: 70,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: buildCachedNetworkImage(
+                                          imageUrl: App.imageBase +
+                                              (task.image ?? '')),
+                                    ),
+                                  )
+                                : Image.asset('assets/images/noInternet.png',
+                                    width: 100),
+                          ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Expanded(
+                              child: h6Text(task.mainTitle ?? ' ',
+                                  maxLine: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.center,
+                                  color: Colors.grey[700]),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Expanded(
+                              child: Text(
+                                'Payment ${NumberFormat.simpleCurrency(name: '₹ ').format(double.parse(task.amount ?? '0'))}',
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .caption!
+                                    .copyWith(fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
-            ),
-          ],
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 18.0, vertical: 10),
+                  child: Consumer<DashboardProvider>(builder: (context, dp, _) {
+                    return dp.loadingTasks
+                        ? buildTaskDetailsSkeleton()
+                        : Card(
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            margin: const EdgeInsets.all(0),
+                            child: Container(
+                              padding: const EdgeInsets.all(15),
+                              // height: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                // color: Colors.grey
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      h6Text('Deliverables',
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey[700]),
+                                    ],
+                                  ),
+                                  Expanded(
+                                    child: Scrollbar(
+                                      controller: deliverablesCtrl,
+                                      // thumbVisibility: true,
+                                      thickness: 10,
+                                      radius: const Radius.circular(10),
+                                      trackVisibility: true,
+                                      child: ListView(
+                                        controller: deliverablesCtrl,
+                                        padding: const EdgeInsets.all(0),
+                                        children: [
+                                          SelectableLinkify(
+                                            onOpen: (link) async {
+                                              var url = link.url;
+                                              if (await canLaunchUrl(
+                                                  Uri.parse(url))) {
+                                                try {
+                                                  await launchUrl(
+                                                      Uri.parse(url),
+                                                      mode: LaunchMode
+                                                          .externalApplication);
+                                                } catch (e) {
+                                                  log(e.toString());
+                                                }
+                                              } else {
+                                                Fluttertoast.showToast(
+                                                    msg:
+                                                        'Could not open the url');
+                                                throw 'Could not launch $link';
+                                              }
+                                            },
+                                            text: task.description ?? '',
+                                            style: TextStyle(
+                                              color: Colors.grey[500],
+                                              fontSize: 13,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 30),
+                                  Row(
+                                    children: [
+                                      h6Text(
+                                        'Terms & Conditions',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[700],
+                                      ),
+                                    ],
+                                  ),
+                                  Expanded(
+                                    child: Scrollbar(
+                                      controller: termsConditionCtrl,
+                                      // thumbVisibility: true,
+                                      thickness: 10,
+                                      radius: const Radius.circular(10),
+                                      trackVisibility: true,
+                                      child: ListView(
+                                        controller: termsConditionCtrl,
+                                        padding: const EdgeInsets.all(0),
+                                        children: [
+                                          SelectableLinkify(
+                                            onOpen: (link) async {
+                                              var url = link.url;
+                                              if (await canLaunchUrl(
+                                                  Uri.parse(url))) {
+                                                try {
+                                                  await launchUrl(
+                                                      Uri.parse(url),
+                                                      mode: LaunchMode
+                                                          .externalApplication);
+                                                } catch (e) {
+                                                  log(e.toString());
+                                                }
+                                              } else {
+                                                Fluttertoast.showToast(
+                                                    msg:
+                                                        'Could not open the url');
+                                                throw 'Could not launch $link';
+                                              }
+                                            },
+                                            text: task.termsConditions ?? '',
+                                            style: TextStyle(
+                                              color: Colors.grey[500],
+                                              fontSize: 13,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                  }),
+                ),
+              ),
+            ],
+          ),
         ));
   }
 
   Widget buildTaskDetailsSkeleton() {
     return Card(
-      elevation: 0.3,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -381,36 +399,47 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
               ],
             ),
             const SizedBox(height: 7),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Skeleton(height: 10, width: 50, style: SkeletonStyle.text),
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Skeleton(height: 10, width: 100, style: SkeletonStyle.text),
-            const SizedBox(height: 30),
             Row(
               children: [
                 h6Text(
@@ -420,49 +449,62 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
               ],
             ),
             const SizedBox(height: 7),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                          child:
+                              Skeleton(height: 10, style: SkeletonStyle.text)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Skeleton(height: 10, width: 150, style: SkeletonStyle.text),
+                ],
+              ),
             ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Row(
-              children: [
-                Expanded(
-                    child: Skeleton(height: 10, style: SkeletonStyle.text)),
-              ],
-            ),
-            const SizedBox(height: 5),
-            Skeleton(height: 10, width: 150, style: SkeletonStyle.text),
             const SizedBox(height: 30),
           ],
         ),
@@ -484,6 +526,7 @@ class TaskDetailsAcceptRejectButtons extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.only(bottom: 20),
       child: Row(
         children: <Widget>[
           const SizedBox(width: 10),
@@ -500,13 +543,16 @@ class TaskDetailsAcceptRejectButtons extends StatelessWidget {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: App.themecolor1,
+                backgroundColor: App.themecolor.withOpacity(0.7),
               ),
-              child: const Text(
-                'REJECT',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.bold,
+              child: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'REJECT',
+                  style: TextStyle(
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -528,11 +574,14 @@ class TaskDetailsAcceptRejectButtons extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
               ),
-              child: const Text(
-                'ACCEPT',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.bold,
+              child: const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'ACCEPT',
+                  style: TextStyle(
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -549,14 +598,17 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
     Key? key,
     required this.task,
     this.reason,
+    this.status,
   }) : super(key: key);
 
   final TaskModel task;
   final String? reason;
+  final int? status;
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 5),
+      margin: const EdgeInsets.symmetric(vertical: 18),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -568,32 +620,56 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
                 Navigator.push(
                     Get.context!,
                     slideLeftRoute(
-                        UploadProofPage(
-                          task: task,
-                          reason: reason,
-                        ),
-                        effect: PageTransitionType.rightToLeftJoined,
-                        current: TaskDetailsPage(
-                          task: task,
-                        )));
+                      UploadProofPage(
+                        task: task,
+                        reason: reason,
+                      ),
+                      effect: PageTransitionType.rightToLeftJoined,
+                      current: TaskDetailsPage(
+                        task: task,
+                      ),
+                    ));
               },
               child: Container(
-                height: 60,
+                height: 45,
+                padding: const EdgeInsets.symmetric(vertical: 5),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(0),
+                    borderRadius: BorderRadius.circular(5),
                     // color: App.themecolor,
                     border: Border.all(
-                      color: App.themecolor,
-                      width: 2,
+                      color: Colors.grey,
+                      width: 0.8,
                     )),
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    h5Text(
-                      'UPLOAD PROOF OF WORK',
-                      fontWeight: FontWeight.bold,
-                      color: App.themecolor,
-                    )
+                    if (status == 1)
+                      Image.asset(
+                        'assets/images/time_loading_no_bg.gif',
+                        fit: BoxFit.cover,
+                        height: 23,
+                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                            status != 1
+                                ? 'UPLOAD PROOF OF WORK'
+                                : 'Under Moderate*',
+                            style: TextStyle(
+                                fontWeight: status != 1
+                                    ? FontWeight.bold
+                                    : FontWeight.w300,
+                                fontSize: status != 1
+                                    ? Theme.of(context)
+                                        .textTheme
+                                        .headline6!
+                                        .fontSize
+                                    : 9,
+                                color: App.themecolor,
+                                height: status != 1 ? 1.5 : 1.0))
+                      ],
+                    ),
                   ],
                 ),
               ),

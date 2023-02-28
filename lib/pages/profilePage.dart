@@ -45,13 +45,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Card(
-                    elevation: 7,
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 15.0, horizontal: 20),
+                          vertical: 7.0, horizontal: 20),
                       child: onInsta || onYoutube
                           ? Row(
                               children: [
@@ -61,14 +61,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                     children: [
                                       Image.asset(
                                         'assets/images/instaLogo.png',
-                                        width: 30,
+                                        height: 25,
                                       ),
                                       const SizedBox(width: 10),
-                                      h5Text(
+                                      h6Text(
                                         countInKMB(up
                                             .creator.data!.instaFollowers
                                             .toString()),
-                                        // color: Colors.grey,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ],
@@ -80,52 +79,42 @@ class _ProfilePageState extends State<ProfilePage> {
                                     children: [
                                       Image.asset(
                                         'assets/images/youtubeLogo.jpg',
-                                        width: 30,
-                                        height: 40,
+                                        width: 35,
+                                        height: 25,
+                                        fit: BoxFit.fill,
+                                        color: const Color(0xFFD50606),
                                       ),
                                       const SizedBox(width: 10),
                                       Row(
                                         children: [
-                                          // h6Text(
-                                          //   'Subscribers:',
-                                          //   color: Colors.grey,
-                                          // ),
-                                          // const SizedBox(width: 10),
-                                          h5Text(
+                                          h6Text(
                                             countInKMB(up.creator.data!
                                                 .youtubeSubscribers
                                                 .toString()),
-                                            // color: Colors.grey,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ],
                                       ),
                                     ],
                                   ),
-                                // Row(
-                                //   mainAxisAlignment: MainAxisAlignment.end,
-                                //   children: [
-                                //     const Icon(
-                                //       Icons.circle,
-                                //       color: Colors.red,
-                                //       size: 15,
-                                //     ),
-                                //     const SizedBox(width: 5),
-                                //     b1Text(
-                                //       'Live Count',
-                                //       color: Colors.red,
-                                //     ),
-                                //   ],
-                                // )
                               ],
                             )
-                          : Row(
-                              children: [
-                                b1Text(
-                                    'You have not any subscriber or follower',
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLine: 2),
-                              ],
+                          : SizedBox(
+                              width: MediaQuery.of(context).size.width - 100,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      'You have not any subscriber or follower',
+                                      overflow: TextOverflow.ellipsis,
+                                      style:
+                                          Theme.of(context).textTheme.caption,
+                                      maxLines: 2,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                     ),
                   ),
@@ -137,562 +126,164 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Card(
-                  elevation: 3,
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Scaffold(
                     backgroundColor: Colors.transparent,
-                    body: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: h4Text(
-                                                dp.userTasksHistory.total_collab
-                                                    .toString(),
-                                                color: Colors.grey,
-                                                textAlign: TextAlign.center,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: h6Text('Total Collab',
-                                                textAlign: TextAlign.center,
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                    body: Column(
+                      children: [
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: h3Text(
+                                              dp.userTasksHistory.total_collab
+                                                  .toString(),
+                                              color: Colors.grey[600],
+                                              textAlign: TextAlign.center,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text('Total Collab',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: Colors.grey[600],
+                                                  fontWeight:
+                                                      FontWeight.normal)),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                                const VerticalDivider(
-                                    width: 1, thickness: 1, color: Colors.grey),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: h4Text(
-                                                dp.userTasksHistory.pending_task
-                                                    .toString(),
-                                                color: Colors.grey,
-                                                textAlign: TextAlign.center,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: h6Text('Pending Tasks',
-                                                textAlign: TextAlign.center,
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                              ),
+                              const VerticalDivider(
+                                  width: 1, thickness: 1, color: Colors.grey),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: h3Text(
+                                              dp.userTasksHistory.pending_task
+                                                  .toString(),
+                                              color: Colors.grey[600],
+                                              textAlign: TextAlign.center,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text('Pending Tasks',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: Colors.grey[600],
+                                                  fontWeight:
+                                                      FontWeight.normal)),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          const Divider(
-                              height: 0, thickness: 1, color: Colors.grey),
-                          Expanded(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: h4Text(
-                                                dp.userTasksHistory
-                                                    .completed_collab
-                                                    .toString(),
-                                                color: Colors.grey,
-                                                textAlign: TextAlign.center,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: h6Text('Completed Collab',
-                                                textAlign: TextAlign.center,
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                        ),
+                        const Divider(
+                            height: 0, thickness: 1, color: Colors.grey),
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: h3Text(
+                                              dp.userTasksHistory
+                                                  .completed_collab
+                                                  .toString(),
+                                              color: Colors.grey[600],
+                                              textAlign: TextAlign.center,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text('Completed Collab',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: Colors.grey[600],
+                                                  fontWeight:
+                                                      FontWeight.normal)),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                                const VerticalDivider(
-                                    width: 1, thickness: 1, color: Colors.grey),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: h4Text(
-                                                dp.userTasksHistory
-                                                    .rajected_collab
-                                                    .toString(),
-                                                color: Colors.grey,
-                                                textAlign: TextAlign.center,
-                                                fontWeight: FontWeight.bold),
+                              ),
+                              const VerticalDivider(
+                                  width: 1, thickness: 1, color: Colors.grey),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: h3Text(
+                                              dp.userTasksHistory
+                                                  .rajected_collab
+                                                  .toString(),
+                                              color: Colors.grey[600],
+                                              textAlign: TextAlign.center,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            'Rejected Collab',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.grey[600],
+                                                fontWeight: FontWeight.normal),
                                           ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: h6Text('Rejected Collab',
-                                                textAlign: TextAlign.center,
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      // child: SingleChildScrollView(
-                      //   child: Column(
-                      //     children: [
-                      //       // Row(
-                      //       //   children: [
-                      //       //     Expanded(
-                      //       //         child: TextFormField(
-                      //       //       readOnly: true,
-                      //       //       controller: up.firstNameController,
-                      //       //       cursorHeight: 25,
-                      //       //       keyboardType: TextInputType.text,
-                      //       //       // cursorColor: Colors.white,
-                      //       //       style: const TextStyle(
-                      //       //         fontWeight: FontWeight.normal,
-                      //       //         // color: Colors.white,
-                      //       //         fontSize: 20,
-                      //       //       ),
-                      //       //       onChanged: (val) {
-                      //       //         // if (val.length > 10) {
-                      //       //         //   setState(() {
-                      //       //         //     ap.phoneController.text =
-                      //       //         //         val.substring(0, 10);
-                      //       //         //   });
-                      //       //         // }
-                      //       //         // if (val.length == 10) {
-                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
-                      //       //         // }
-                      //       //       },
-                      //       //       decoration: InputDecoration(
-                      //       //         hintText: 'First Name',
-                      //       //         hintStyle: const TextStyle(
-                      //       //           fontWeight: FontWeight.normal,
-                      //       //           color: Colors.grey,
-                      //       //           fontSize: 20,
-                      //       //         ),
-                      //       //         border: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         enabledBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         focusedBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //       ),
-                      //       //     ))
-                      //       //   ],
-                      //       // ),
-                      //       // const SizedBox(height: 15),
-                      //       // Row(
-                      //       //   children: [
-                      //       //     Expanded(
-                      //       //         child: TextFormField(
-                      //       //       readOnly: true,
-                      //       //
-                      //       //       controller: up.lastNameController,
-                      //       //       cursorHeight: 25,
-                      //       //       keyboardType: TextInputType.text,
-                      //       //       // cursorColor: Colors.white,
-                      //       //       style: const TextStyle(
-                      //       //         fontWeight: FontWeight.normal,
-                      //       //         // color: Colors.white,
-                      //       //         fontSize: 20,
-                      //       //       ),
-                      //       //       onChanged: (val) {
-                      //       //         // if (val.length > 10) {
-                      //       //         //   setState(() {
-                      //       //         //     ap.phoneController.text =
-                      //       //         //         val.substring(0, 10);
-                      //       //         //   });
-                      //       //         // }
-                      //       //         // if (val.length == 10) {
-                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
-                      //       //         // }
-                      //       //       },
-                      //       //       decoration: InputDecoration(
-                      //       //         hintText: 'Last Name',
-                      //       //         hintStyle: const TextStyle(
-                      //       //           fontWeight: FontWeight.normal,
-                      //       //           color: Colors.grey,
-                      //       //           fontSize: 20,
-                      //       //         ),
-                      //       //         border: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         enabledBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         focusedBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //       ),
-                      //       //     ))
-                      //       //   ],
-                      //       // ),
-                      //       // const SizedBox(height: 15),
-                      //       Row(
-                      //         children: [
-                      //           Expanded(
-                      //               child: TextFormField(
-                      //             controller: up.emailController,
-                      //             // readOnly: true,
-                      //
-                      //             cursorHeight: 25,
-                      //             keyboardType: TextInputType.emailAddress,
-                      //             // cursorColor: Colors.white,
-                      //             style: const TextStyle(
-                      //               fontWeight: FontWeight.normal,
-                      //               // color: Colors.white,
-                      //               fontSize: 20,
-                      //             ),
-                      //             onChanged: (val) {
-                      //               // if (val.length > 10) {
-                      //               //   setState(() {
-                      //               //     ap.phoneController.text =
-                      //               //         val.substring(0, 10);
-                      //               //   });
-                      //               // }
-                      //               // if (val.length == 10) {
-                      //               //   FocusManager.instance.primaryFocus?.unfocus();
-                      //               // }
-                      //             },
-                      //             decoration: InputDecoration(
-                      //               hintText: 'Email Address',
-                      //               hintStyle: const TextStyle(
-                      //                 fontWeight: FontWeight.normal,
-                      //                 color: Colors.grey,
-                      //                 fontSize: 20,
-                      //               ),
-                      //               border: OutlineInputBorder(
-                      //                 borderRadius: BorderRadius.circular(15),
-                      //                 borderSide: const BorderSide(
-                      //                   color: Colors.grey,
-                      //                 ),
-                      //               ),
-                      //               enabledBorder: OutlineInputBorder(
-                      //                 borderRadius: BorderRadius.circular(15),
-                      //                 borderSide: const BorderSide(
-                      //                   color: Colors.grey,
-                      //                 ),
-                      //               ),
-                      //               focusedBorder: OutlineInputBorder(
-                      //                 borderRadius: BorderRadius.circular(15),
-                      //                 borderSide: const BorderSide(
-                      //                   color: Colors.grey,
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ))
-                      //         ],
-                      //       ),
-                      //       const SizedBox(height: 15),
-                      //       // Row(
-                      //       //   children: [
-                      //       //     Expanded(
-                      //       //         child: TextFormField(
-                      //       //       readOnly: true,
-                      //       //       controller: up.phoneController,
-                      //       //       cursorHeight: 25,
-                      //       //       keyboardType: TextInputType.phone,
-                      //       //       // cursorColor: Colors.white,
-                      //       //       style: const TextStyle(
-                      //       //         fontWeight: FontWeight.normal,
-                      //       //         // color: Colors.white,
-                      //       //         fontSize: 20,
-                      //       //       ),
-                      //       //       onChanged: (val) {
-                      //       //         // if (val.length > 10) {
-                      //       //         //   setState(() {
-                      //       //         //     ap.phoneController.text =
-                      //       //         //         val.substring(0, 10);
-                      //       //         //   });
-                      //       //         // }
-                      //       //         // if (val.length == 10) {
-                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
-                      //       //         // }
-                      //       //       },
-                      //       //       decoration: InputDecoration(
-                      //       //         hintText: 'Mobile No.',
-                      //       //         hintStyle: const TextStyle(
-                      //       //           fontWeight: FontWeight.normal,
-                      //       //           color: Colors.grey,
-                      //       //           fontSize: 20,
-                      //       //         ),
-                      //       //         border: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         enabledBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         focusedBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //       ),
-                      //       //     ))
-                      //       //   ],
-                      //       // ),
-                      //       // const SizedBox(height: 15),
-                      //       Row(
-                      //         children: [
-                      //           Expanded(
-                      //               child: TextFormField(
-                      //             // readOnly: true,
-                      //
-                      //             controller: up.addressController,
-                      //             cursorHeight: 25,
-                      //             keyboardType: TextInputType.emailAddress,
-                      //             // cursorColor: Colors.white,
-                      //             style: const TextStyle(
-                      //               fontWeight: FontWeight.normal,
-                      //               // color: Colors.white,
-                      //               fontSize: 20,
-                      //             ),
-                      //             onChanged: (val) {
-                      //               // if (val.length > 10) {
-                      //               //   setState(() {
-                      //               //     ap.phoneController.text =
-                      //               //         val.substring(0, 10);
-                      //               //   });
-                      //               // }
-                      //               // if (val.length == 10) {
-                      //               //   FocusManager.instance.primaryFocus?.unfocus();
-                      //               // }
-                      //             },
-                      //             maxLines: 2,
-                      //             decoration: InputDecoration(
-                      //               hintText: 'Address',
-                      //               hintStyle: const TextStyle(
-                      //                 fontWeight: FontWeight.normal,
-                      //                 color: Colors.grey,
-                      //                 fontSize: 20,
-                      //               ),
-                      //               border: OutlineInputBorder(
-                      //                 borderRadius: BorderRadius.circular(15),
-                      //                 borderSide: const BorderSide(
-                      //                   color: Colors.grey,
-                      //                 ),
-                      //               ),
-                      //               enabledBorder: OutlineInputBorder(
-                      //                 borderRadius: BorderRadius.circular(15),
-                      //                 borderSide: const BorderSide(
-                      //                   color: Colors.grey,
-                      //                 ),
-                      //               ),
-                      //               focusedBorder: OutlineInputBorder(
-                      //                 borderRadius: BorderRadius.circular(15),
-                      //                 borderSide: const BorderSide(
-                      //                   color: Colors.grey,
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //           ))
-                      //         ],
-                      //       ),
-                      //       // const SizedBox(height: 15),
-                      //       // Row(
-                      //       //   children: [
-                      //       //     Expanded(
-                      //       //         child: TextFormField(
-                      //       //       controller: up.instaFollowersController,
-                      //       //       // readOnly: true,
-                      //       //
-                      //       //       cursorHeight: 25,
-                      //       //       keyboardType: TextInputType.number,
-                      //       //       // cursorColor: Colors.white,
-                      //       //       style: const TextStyle(
-                      //       //         fontWeight: FontWeight.normal,
-                      //       //         // color: Colors.white,
-                      //       //         fontSize: 20,
-                      //       //       ),
-                      //       //       onChanged: (val) {
-                      //       //         // if (val.length > 10) {
-                      //       //         //   setState(() {
-                      //       //         //     ap.phoneController.text =
-                      //       //         //         val.substring(0, 10);
-                      //       //         //   });
-                      //       //         // }
-                      //       //         // if (val.length == 10) {
-                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
-                      //       //         // }
-                      //       //       },
-                      //       //       decoration: InputDecoration(
-                      //       //         hintText: 'Instagram Followers',
-                      //       //         labelText: 'Instagram Followers',
-                      //       //         hintStyle: const TextStyle(
-                      //       //           fontWeight: FontWeight.normal,
-                      //       //           color: Colors.grey,
-                      //       //           fontSize: 20,
-                      //       //         ),
-                      //       //         border: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         enabledBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         focusedBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //       ),
-                      //       //     ))
-                      //       //   ],
-                      //       // ),
-                      //       // const SizedBox(height: 15),
-                      //       // Row(
-                      //       //   children: [
-                      //       //     Expanded(
-                      //       //         child: TextFormField(
-                      //       //       controller: up.ytSubscribersController,
-                      //       //       readOnly: true,
-                      //       //
-                      //       //       cursorHeight: 25,
-                      //       //       keyboardType: TextInputType.number,
-                      //       //       // cursorColor: Colors.white,
-                      //       //       style: const TextStyle(
-                      //       //         fontWeight: FontWeight.normal,
-                      //       //         // color: Colors.white,
-                      //       //         fontSize: 20,
-                      //       //       ),
-                      //       //       onChanged: (val) {
-                      //       //         // if (val.length > 10) {
-                      //       //         //   setState(() {
-                      //       //         //     ap.phoneController.text =
-                      //       //         //         val.substring(0, 10);
-                      //       //         //   });
-                      //       //         // }
-                      //       //         // if (val.length == 10) {
-                      //       //         //   FocusManager.instance.primaryFocus?.unfocus();
-                      //       //         // }
-                      //       //       },
-                      //       //       decoration: InputDecoration(
-                      //       //         hintText: 'Youtube Subscribers',
-                      //       //         labelText: 'Youtube Subscribers',
-                      //       //         hintStyle: const TextStyle(
-                      //       //           fontWeight: FontWeight.normal,
-                      //       //           color: Colors.grey,
-                      //       //           fontSize: 20,
-                      //       //         ),
-                      //       //         border: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         enabledBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //         focusedBorder: OutlineInputBorder(
-                      //       //           borderRadius: BorderRadius.circular(15),
-                      //       //           borderSide: const BorderSide(
-                      //       //             color: Colors.grey,
-                      //       //           ),
-                      //       //         ),
-                      //       //       ),
-                      //       //     ))
-                      //       //   ],
-                      //       // ),
-                      //       const SizedBox(height: 15),
-                      //       const SizedBox(height: 20),
-                      //     ],
-                      //   ),
-                      // ),
+                        ),
+                      ],
                     ),
                     // bottomNavigationBar: Padding(
                     //   padding: const EdgeInsets.symmetric(
@@ -729,148 +320,154 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
+            const SizedBox(height: 15),
           ],
         );
       });
     });
   }
 
-  Widget buildHeader(DashboardProvider dp, UserProvider up) {
-    return Stack(
-      children: [
-        Container(height: 300),
-        ClipPath(
-          clipper: DiagonalPathClipperOne(),
-          child: Container(
-            height: 250,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  App.themecolor,
-                  App.themecolor1,
+  Widget buildHeader(DashboardProvider dp, UserProvider up) => Stack(
+        children: [
+          Container(height: 300),
+          ClipPath(
+            clipper: DiagonalPathClipperOne(),
+            child: Container(
+              height: 250,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    App.themecolor,
+                    App.themecolor1,
+                  ],
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          dp.scaffoldKey.currentState?.openDrawer();
+                        },
+                        child: Container(
+                          color: Colors.transparent,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white,
+                                ),
+                                width: 45,
+                              ),
+                              const SizedBox(height: 10),
+                              Container(
+                                height: 3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white,
+                                ),
+                                width: 35,
+                              ),
+                              const SizedBox(height: 10),
+                              Container(
+                                height: 3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white,
+                                ),
+                                width: 45,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                    ],
+                  )
                 ],
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        dp.scaffoldKey.currentState?.openDrawer();
-                      },
-                      child: Container(
-                        color: Colors.transparent,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 3,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
+          ),
+          Positioned(
+            bottom: 0,
+            // left: 20,
+            // right: 20,
+            child: SizedBox(
+              width: Get.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () async {
+                      await up.updateImage(true);
+                    },
+                    child: CircleAvatar(
+                      radius: 60,
+                      backgroundImage: up.creator.data!.profilePic != null &&
+                              up.creator.data!.profilePic != ''
+                          ? FileImage(File(
+                              '$appTempPath/${up.creator.data!.profilePic!.split('/').last}'))
+                          : const AssetImage('assets/images/user.png')
+                              as ImageProvider,
+                      child: up.uploadingImage
+                          ? Center(
+                              child: LoadingBouncingGrid.square(
+                                borderColor: Get.theme.colorScheme.primary,
+                                borderSize: 3.0,
+                                size: 30.0,
+                                inverted: false,
+                                backgroundColor: Colors.white,
+                                duration: const Duration(milliseconds: 2000),
                               ),
-                              width: 45,
-                            ),
-                            const SizedBox(height: 10),
-                            Container(
-                              height: 3,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
-                              ),
-                              width: 35,
-                            ),
-                            const SizedBox(height: 10),
-                            Container(
-                              height: 3,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
-                              ),
-                              width: 45,
-                            ),
-                          ],
-                        ),
-                      ),
+                            )
+                          : const SizedBox.shrink(),
                     ),
-                    const SizedBox(width: 10),
-                  ],
-                )
-              ],
+                  ),
+                  const SizedBox(height: 7),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        (up.creator.data!.fullName ?? 'Your Name'),
+                        textAlign: TextAlign.center,
+                        // fontWeight: FontWeight.bold,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(color: Colors.grey[700]),
+                      ),
+                      const SizedBox(width: 10),
+                      if (up.creator.data!.status == 'Active')
+                        SizedBox(
+                          width: up.creator.data!.status != 'Active' ? 18 : 25,
+                          child: Image.asset(
+                            'assets/images/${up.creator.data!.status != 'Active' ? 'not-' : ''}verified.png',
+                            color: up.creator.data!.status != 'Active'
+                                ? Colors.red
+                                : null,
+                          ),
+                        ),
+                    ],
+                  ),
+                  if (up.creator.data!.status != 'Active')
+                    Text(
+                      'Unverified',
+                      style: TextStyle(
+                          color: Colors.grey[700],
+                          fontWeight: FontWeight.normal),
+                      // color: Colors.green,
+                    ),
+                ],
+              ),
             ),
           ),
-        ),
-        Positioned(
-          bottom: 0,
-          // left: 20,
-          // right: 20,
-          child: SizedBox(
-            width: Get.width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () async {
-                    await up.updateImage(true);
-                  },
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: up.creator.data!.profilePic != null &&
-                            up.creator.data!.profilePic != ''
-                        ? FileImage(File(
-                            '$appTempPath/${up.creator.data!.profilePic!.split('/').last}'))
-                        : const AssetImage('assets/images/user.png')
-                            as ImageProvider,
-                    child: up.uploadingImage
-                        ? Center(
-                            child: LoadingBouncingGrid.square(
-                              borderColor: Get.theme.colorScheme.primary,
-                              borderSize: 3.0,
-                              size: 30.0,
-                              inverted: false,
-                              backgroundColor: Colors.white,
-                              duration: const Duration(milliseconds: 2000),
-                            ),
-                          )
-                        : const SizedBox.shrink(),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    h6Text(
-                      (up.creator.data!.fullName ?? 'Your Name'),
-                      textAlign: TextAlign.center,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    const SizedBox(width: 10),
-                    if (up.creator.data!.status == 'Active')
-                      SizedBox(
-                        width: up.creator.data!.status != 'Active' ? 18 : 25,
-                        child: Image.asset(
-                          'assets/images/${up.creator.data!.status != 'Active' ? 'not-' : ''}verified.png',
-                          color: up.creator.data!.status != 'Active'
-                              ? Colors.red
-                              : null,
-                        ),
-                      ),
-                  ],
-                ),
-                if (up.creator.data!.status != 'Active')
-                  b1Text(
-                    'Unverified',
-
-                    // color: Colors.green,
-                  ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+        ],
+      );
 }

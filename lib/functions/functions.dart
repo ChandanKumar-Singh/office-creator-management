@@ -312,7 +312,7 @@ void checkLogin() async {
       Get.offAll(const LoginScreen());
     } else {
       await initiateUser();
-      // .then((value) => Get.offAll(const HomePage()));
+      // Get.offAll(const LoginScreen());
     }
   });
 }
@@ -461,7 +461,8 @@ Future<int> getInstaSubscribers(String username) async {
   try {
     FlutterInsta flutterInsta = FlutterInsta();
     // await flutterInsta.getProfileData("sumit7376sharma"); //instagram username
-    await flutterInsta.getProfileData(username); //instagram username
+    await flutterInsta.getProfileData("apnamotiv"); //instagram username
+    // await flutterInsta.getProfileData(username); //instagram username
     debugPrint(flutterInsta.followers);
 
     followers = int.parse(flutterInsta.followers ?? '0');
@@ -633,7 +634,7 @@ void showUnderVerificationDialog() {
                                         child: Row(
                                           children: [
                                             Expanded(
-                                                child: b1Text(
+                                                child: capText(
                                               'Thank you for register with us, your account is under review by backend team, once it will be approved you can participate in collab.',
                                               color: Colors.black,
                                             ))
@@ -777,7 +778,7 @@ String timerString(int duration) {
 }
 
 bool blr = false;
-void hoverBlankLoadingDialog(loading) async {
+void hoverBlankLoadingDialog(loading, [bool gif = false]) async {
   if (loading) {
     blr = true;
     await showDialog(
@@ -795,14 +796,25 @@ void hoverBlankLoadingDialog(loading) async {
               height: 100,
               width: 100,
               child: Center(
-                child: LoadingBouncingGrid.square(
-                  borderColor: Get.theme.colorScheme.primary,
-                  borderSize: 3.0,
-                  size: 30.0,
-                  inverted: false,
-                  backgroundColor: Colors.white,
-                  duration: const Duration(milliseconds: 2000),
-                ),
+                child: gif
+                    ? Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: Image.asset(
+                            'assets/images/time_loading_no_bg.gif',
+                            fit: BoxFit.cover),
+                      )
+                    : LoadingBouncingGrid.square(
+                        borderColor: Get.theme.colorScheme.primary,
+                        borderSize: 3.0,
+                        size: 30.0,
+                        inverted: false,
+                        backgroundColor: Colors.white,
+                        duration: const Duration(milliseconds: 2000),
+                      ),
               ),
             ),
           );
@@ -835,7 +847,7 @@ void showShortSheetActions(
               BoxShadow(
                   color: Get.theme.primaryColor.withOpacity(0.6),
                   // color:Colors.red,
-                  offset: Offset(1, 1),
+                  offset: const Offset(1, 1),
                   blurRadius: 15,
                   spreadRadius: 10),
             ],

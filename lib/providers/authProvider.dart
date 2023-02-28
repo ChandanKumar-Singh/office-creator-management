@@ -17,6 +17,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:api_cache_manager/api_cache_manager.dart';
 import 'package:api_cache_manager/models/cache_db_model.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 import '../constants/app.dart';
 import '../functions/functions.dart';
 import 'package:http/http.dart' as http;
@@ -25,6 +26,9 @@ class AuthProvider extends ChangeNotifier {
   TextEditingController phoneController = TextEditingController();
   TextEditingController otpController = TextEditingController();
   OtpFieldController otpFieldController = OtpFieldController();
+
+  TextEditingController otpEditingController = TextEditingController();
+  var messageOtpCode = '';
 
   bool otpSent = false;
   int otpSentCount = 0;
@@ -171,7 +175,7 @@ class AuthProvider extends ChangeNotifier {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (otpTimeOutDuration == 0) {
         _timer.cancel();
-        otpTimeOutDuration = 90;
+        otpTimeOutDuration = 0;
       } else {
         otpTimeOutDuration--;
       }
@@ -179,29 +183,52 @@ class AuthProvider extends ChangeNotifier {
     });
   }
 
-  Future<void> sendOtpApi(String number, {required bool otpScreen}) async {
+  Future<void> sendOtpApi(String number,
+      {required bool otpScreen, bool replace = false}) async {
     hoverBlankLoadingDialog(true);
 
     if (isOnline) {
       notifyListeners();
+      var appSignatureID = await SmsAutoFill().getAppSignature;
+      Map sendOtpData = {
+        "mobile_number": number,
+        "app_signature_id": appSignatureID
+      };
+      print(sendOtpData);
       try {
         var url = App.baseUrl + App.sendOTP;
         var headers = {'Content-Type': 'application/json'};
-        var body = {"phone": number};
+        var body = {"phone": number, "app_signature_id": appSignatureID};
         debugPrint('sendOtpApi parameters $body');
         var res = await http.post(Uri.parse(url),
             headers: headers, body: jsonEncode(body));
         debugPrint('sendOtpApi  ${res.body}');
         var response = jsonDecode(res.body);
+        hoverBlankLoadingDialog(false);
         if (res.statusCode == 200) {
           if (response['data'] != null) {
+            //TODO: SMS Auto fill
             otpSent = true;
-            resOtp = response['data'].toString();
+            resOtp = response['data']['data'].toString();
             notifyListeners();
+            // if(_timer.isActive) {
+            //   _timer.cancel();
+            // }
+            await SmsAutoFill().listenForCode();
             otpTimeOut();
             if (!otpScreen) {
-              Navigator.push(Get.context!,
-                  MaterialPageRoute(builder: (context) => const OtpScreen()));
+              replace
+                  ? Navigator.pushReplacement(
+                      Get.context!,
+                      MaterialPageRoute(
+                          builder: (context) => const OtpScreen()))
+                  :
+                  // MaterialPageRoute(builder: (context) => const OTPVIEW())):
+                  Navigator.push(
+                      Get.context!,
+                      MaterialPageRoute(
+                          builder: (context) => const OtpScreen()));
+              // MaterialPageRoute(builder: (context) => const OTPVIEW()));
             }
             Future.delayed(
                 const Duration(seconds: 1),
@@ -250,7 +277,7 @@ class AuthProvider extends ChangeNotifier {
         debugPrint('login parameters $body');
         var res = await http.post(Uri.parse(url),
             headers: headers, body: jsonEncode(body));
-        debugPrint('login api ${res.body}');
+        // debugPrint('login api ${res.body}');
         if (res.statusCode == 200) {
           if (jsonDecode(res.body)['status'] == 200) {
             var cacheModel = APICacheDBModel(key: 'login', syncData: res.body);
@@ -267,14 +294,14 @@ class AuthProvider extends ChangeNotifier {
             Fluttertoast.showToast(msg: jsonDecode(res.body)['message']);
           }
         }
-        debugPrint("it's url Hit ${response['results']['data']}");
+        // debugPrint("it's url Hit ${response['results']['data']}");
       } else {
         showNetWorkToast();
         if (cacheExist) {
           response = jsonDecode(
               (await APICacheManager().getCacheData('login')).syncData);
-          debugPrint("it's cache Hit");
-          debugPrint("it's cache Hit ${response['results']['data']}");
+          // debugPrint("it's cache Hit");
+          // debugPrint("it's cache Hit ${response['results']['data']}");
         }
       }
 
@@ -301,6 +328,8 @@ class AuthProvider extends ChangeNotifier {
         await dp.getGenres();
         if (route != null && route) {
           profileCompleted = isProfileCompleted(up);
+          var dp = Provider.of<DashboardProvider>(Get.context!, listen: false);
+          dp.setBottomIndex(1);
           // dp.setBottomIndex(0);
           debugPrint('is profile completed $profileCompleted');
           phoneController.clear();
@@ -321,7 +350,7 @@ class AuthProvider extends ChangeNotifier {
     } catch (e) {
       debugPrint('e e e e e e e -> $e');
     }
-    debugPrint('testing login ------ > $imLogging    $response');
+    // debugPrint('testing login ------ > $imLogging    $response');
 
     if (imLogging != null && !isOnline) {
       response = null;

@@ -12,12 +12,15 @@ import 'package:creater_management/providers/authProvider.dart';
 import 'package:creater_management/providers/dashBoardController.dart';
 import 'package:creater_management/providers/userController.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:skeleton_loader/skeleton_loader.dart';
 import 'package:swipe_refresh/swipe_refresh.dart';
 
@@ -38,6 +41,23 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   List<String> bottomList = ['mycollab', 'history', 'wallet', 'myprofile'];
+
+  get willPop => () {
+        var dp = Provider.of<DashboardProvider>(context, listen: false);
+        if (dp.selectedBottomIndex != 0) {
+          bool? isOpen = dp.scaffoldKey.currentState?.isDrawerOpen;
+          if (isOpen != null && isOpen) {
+            dp.scaffoldKey.currentState?.closeDrawer();
+          } else {
+            Provider.of<DashboardProvider>(context, listen: false)
+                .setBottomIndex(0);
+          }
+          return Future.delayed(Duration.zero, () => false);
+        } else {
+          return Future.delayed(Duration.zero, () => true);
+        }
+      };
+
   @override
   void initState() {
     super.initState();
@@ -52,6 +72,7 @@ class _HomePageState extends State<HomePage> {
   ///Refreshing
   final _controller = StreamController<SwipeRefreshState>.broadcast();
   Stream<SwipeRefreshState> get _stream => _controller.stream;
+
   Future<void> _refresh() async {
     var dp = Provider.of<DashboardProvider>(context, listen: false);
     var ap = Provider.of<AuthProvider>(context, listen: false);
@@ -70,60 +91,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
-        var dp = Provider.of<DashboardProvider>(context, listen: false);
-        if (dp.selectedBottomIndex != 0) {
-          bool? isOpen = dp.scaffoldKey.currentState?.isDrawerOpen;
-          if (isOpen != null && isOpen) {
-            dp.scaffoldKey.currentState?.closeDrawer();
-          } else {
-            Provider.of<DashboardProvider>(context, listen: false)
-                .setBottomIndex(0);
-          }
-          return Future.delayed(Duration.zero, () => false);
-        } else {
-          return Future.delayed(Duration.zero, () => true);
-        }
-      },
+      onWillPop: willPop,
       child: Consumer<DashboardProvider>(builder: (context, dp, _) {
         return Scaffold(
           key: dp.scaffoldKey,
-          // backgroundColor: Get.theme.colorScheme.secondary.withOpacity(0.8),
+          backgroundColor: Get.theme.scaffoldBackgroundColor.withOpacity(0.98),
           drawer: const CustomDrawer(),
-          bottomNavigationBar: Container(
-            width: double.infinity,
-            height: 70,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ...bottomList.map((e) {
-                  var index = bottomList.indexOf(e);
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        dp.setBottomIndex(index);
-                      });
-                    },
-                    child: Container(
-                      // color: Colors.red,
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Text(e,
-                          style: TextStyle(
-                            color: dp.selectedBottomIndex == index
-                                ? Colors.black
-                                : Colors.black54,
-                            fontWeight: dp.selectedBottomIndex == index
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                            fontSize: dp.selectedBottomIndex == index ? 20 : 18,
-                          )),
-                    ),
-                  );
-                }),
-              ],
-            ),
-          ),
+          bottomNavigationBar: buildBottomNav(dp, context),
           body: dp.selectedBottomIndex == 0
               ? buildMyCollab(dp)
               : dp.selectedBottomIndex == 1
@@ -136,79 +110,134 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Container buildBottomNav(DashboardProvider dp, BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 70,
+      color: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          ...bottomList.map((e) {
+            var index = bottomList.indexOf(e);
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  dp.setBottomIndex(index);
+                });
+              },
+              child: Container(
+                color: Colors.transparent,
+                height: 60,
+                child: Center(
+                  child: capText(
+                    e,
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                        color: dp.selectedBottomIndex == index
+                            ? Colors.black
+                            : Colors.black45,
+                        fontWeight: dp.selectedBottomIndex == index
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                        fontSize: dp.selectedBottomIndex == index ? 18 : 16,
+                        letterSpacing: 0,
+                        height: 0),
+                  ),
+                ),
+              ),
+            );
+          }),
+        ],
+      ),
+    );
+  }
+
   Column buildMyCollab(DashboardProvider dp) {
     return Column(
       children: [
-        Stack(
-          children: [
-            ClipPath(
-              clipper: DiagonalPathClipperOne(),
-              child: Container(
-                height: 250,
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      App.themecolor,
-                      App.themecolor1,
-                    ],
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            dp.scaffoldKey.currentState?.openDrawer();
-                          },
-                          child: Container(
-                            color: Colors.transparent,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  height: 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white,
-                                  ),
-                                  width: 45,
-                                ),
-                                const SizedBox(height: 10),
-                                Container(
-                                  height: 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white,
-                                  ),
-                                  width: 35,
-                                ),
-                                const SizedBox(height: 10),
-                                Container(
-                                  height: 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white,
-                                  ),
-                                  width: 45,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: h4Text('Collaboration', color: Colors.white),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+        buildHeader(dp),
+        Expanded(
+          child: Consumer<DashboardProvider>(builder: (context, dp, _) {
+            return !dp.loadingTasks && dp.tasks.isEmpty
+                ? buildNoHistory('No task yet')
+                : buildSwipeRefresh(dp);
+          }),
+        ),
+      ],
+    );
+  }
+
+  Stack buildHeader(DashboardProvider dp) {
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: DiagonalPathClipperOne(),
+          child: Container(
+            height: 250,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  App.themecolor,
+                  App.themecolor1,
+                ],
               ),
             ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        dp.scaffoldKey.currentState?.openDrawer();
+                      },
+                      child: Container(
+                        color: Colors.transparent,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 3,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              width: 45,
+                            ),
+                            const SizedBox(height: 10),
+                            Container(
+                              height: 3,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              width: 35,
+                            ),
+                            const SizedBox(height: 10),
+                            Container(
+                              height: 3,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              width: 45,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: h4Text('Collaboration', color: Colors.white),
+                    ),
+                  ],
+                )
+              ],
+            ),
+
             // Positioned(
             //   bottom: 0,
             //   left: 10,
@@ -248,6 +277,26 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
     );
+  }
+
+  SwipeRefresh buildSwipeRefresh(DashboardProvider dp) {
+    return SwipeRefresh.builder(
+        stateStream: _stream,
+        onRefresh: _refresh,
+        refreshIndicatorExtent: 300,
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        // indicatorBuilder: (context,mode,d1,d2,d3){
+        //   return LinearProgressIndicator();
+        // },
+        itemCount:dp.loadingTasks?5: dp.tasks.length,
+        itemBuilder: (context, index) => Column(
+              children: [
+                dp.loadingTasks
+                    ? buildTasksSkeleton(context)
+                    : buildTasksCard(dp.tasks[index], context),
+                if (index != dp.tasks.length - 1) const Divider()
+              ],
+            ));
   }
 
   Padding buildTasksCard(TaskModel task, BuildContext context) {
@@ -295,12 +344,7 @@ class _HomePageState extends State<HomePage> {
                           child: Hero(
                             tag: heroTag,
                             child: isOnline
-                                ?
-                                // Image.network(
-                                //         imageUrl,
-                                //         fit: BoxFit.fill,
-                                //       )
-                                buildCachedNetworkImage(
+                                ? buildCachedNetworkImage(
                                     imageUrl:
                                         App.imageBase + (task.image ?? ''))
                                 : Image.asset('assets/images/noInternet.png'),
@@ -320,42 +364,40 @@ class _HomePageState extends State<HomePage> {
                           Expanded(
                             child: Text(
                               task.mainTitle ?? "",
-                              maxLines: 2,
+                              maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
-                                  fontSize: 16, color: Colors.grey),
+                                // fontSize: 16,
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 7),
-                          Icon(
-                            task.isFeatured == 1
-                                ? Icons.favorite
-                                : Icons.favorite_outline,
-                            color:
-                                task.isFeatured == 1 ? Colors.red : Colors.grey,
+                          GestureDetector(
+                            onTap: () async => shareThisTask(task),
+                            child: Image.asset('assets/images/share.png',
+                                width: 20),
                           ),
                         ],
                       ),
                       Row(
                         children: [
                           Expanded(
-                            child: Text(
-                              task.title ?? "",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            child: Text(task.title ?? "",
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context).textTheme.bodyText1),
                           ),
                         ],
                       ),
                       Row(
                         children: [
                           Text(
-                            NumberFormat.simpleCurrency(name: 'Rs.')
-                                .format(double.parse(task.amount ?? '0')),
+                            NumberFormat.simpleCurrency(
+                              name: '₹',
+                              // locale: 'Rs.',
+                            ).format(double.parse(task.amount ?? '0')),
+                            style: Theme.of(context).textTheme.caption,
                           ),
                         ],
                       ),
@@ -408,4 +450,15 @@ class LinePainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) {
     return false;
   }
+}
+
+shareThisTask(TaskModel task) async {
+  HapticFeedback.vibrate();
+  final box = Get.context!.findRenderObject() as RenderBox?;
+
+  await Share.share(
+    'Hey there is an interesting collaboration on wecollab, #${task.title ?? ''}# ${task.mainTitle != null ? 'by #${task.mainTitle}#' : ''} Go and check now #link for app#',
+    subject: 'subject',
+    sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+  );
 }
