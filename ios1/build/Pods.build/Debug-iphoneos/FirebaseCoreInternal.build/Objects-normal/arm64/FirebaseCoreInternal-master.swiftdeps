@@ -1,0 +1,27 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "e20ac942f78cecaad38d9b86b1658b9be2c94ef82710ce0d59b0dba27fd47fe5"
+build_start_time: [1674019852, 466567993]
+build_end_time: [1674019856, 797888040]
+inputs:
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Heartbeat.swift"
+  : [1673877411, 639853477]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatController.swift"
+  : [1673877411, 640809297]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatStorage.swift"
+  : [1673877411, 641246318]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsBundle.swift"
+  : [1673877411, 641475200]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsPayload.swift"
+  : [1673877411, 641826152]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/RingBuffer.swift"
+  : [1673877411, 640113353]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Storage.swift"
+  : [1673877411, 639588594]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/StorageFactory.swift"
+  : [1673877411, 641965389]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/WeakContainer.swift"
+  : [1673877411, 641614198]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatController.swift"
+  : [1673877411, 640531063]
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatsPayload.swift"
+  : [1673877411, 640980243]

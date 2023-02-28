@@ -237,7 +237,43 @@ class _HomePageState extends State<HomePage> {
                 )
               ],
             ),
-          ),
+
+            // Positioned(
+            //   bottom: 0,
+            //   left: 10,
+            //   child: Row(
+            //     children: [
+            //       const Text('Total: '),
+            //       Text(
+            //         dp.tasks.length.toString(),
+            //         style: const TextStyle(color: Colors.blue),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+          ],
+        ),
+        Expanded(
+          child: Consumer<DashboardProvider>(builder: (context, dp, _) {
+            return SwipeRefresh.builder(
+                stateStream: _stream,
+                onRefresh: _refresh,
+                refreshIndicatorExtent: 100,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                // indicatorBuilder: (context,mode,d1,d2,d3){
+                //   return LinearProgressIndicator();
+                // },
+                itemCount: dp.tasks.length,
+                itemBuilder: (context, index) => Column(
+                      children: [
+                        dp.loadingTasks
+                            ? buildTasksSkeleton(context)
+                            : buildTasksCard(dp.tasks[index], context),
+                        if (index != dp.tasks.length - 1) const Divider()
+                      ],
+                    ));
+          }),
         ),
       ],
     );

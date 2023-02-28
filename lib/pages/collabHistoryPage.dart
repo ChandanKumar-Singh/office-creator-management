@@ -50,9 +50,11 @@ class _CollabHistoryPageState extends State<CollabHistoryPage> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
+
               child: !dp.loadingResTasks && dp.resTasks.isEmpty
                   ? buildNoHistory('No collaboration')
                   : buildSwipeRefresh(dp),
+
             ),
           ),
         ],

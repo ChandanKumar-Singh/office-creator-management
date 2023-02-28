@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "6891d4776269b6e795e90be88b8998cb8fb4d5c9b417f5127cb39db46ff097b7"
+build_start_time: [1674023051, 807056903]
+build_end_time: [1674023051, 897775173]
+inputs:
+  ? "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Pods/ReachabilitySwift/Sources/Reachability.swift"
+  : !private [1674022963, 560153007]
