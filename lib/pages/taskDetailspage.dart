@@ -102,50 +102,62 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                             Row(
                               children: [
                                 GestureDetector(
-                                  onTap: () {
-                                    _scaffoldKey.currentState?.openDrawer();
-                                  },
+                                  onTap: () => Navigator.pop(context),
                                   child: Container(
-                                    color: Colors.transparent,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          height: 3,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: Colors.white,
-                                          ),
-                                          width: 45,
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Container(
-                                          height: 3,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: Colors.white,
-                                          ),
-                                          width: 35,
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Container(
-                                          height: 3,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: Colors.white,
-                                          ),
-                                          width: 45,
-                                        ),
-                                      ],
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: const BoxDecoration(
+                                        color: Colors.white, shape: BoxShape.circle),
+                                    child: const Center(
+                                      child: Icon(Icons.arrow_back_rounded,
+                                          color: Colors.black),
                                     ),
                                   ),
                                 ),
+                                // GestureDetector(
+                                //   onTap: () {
+                                //     _scaffoldKey.currentState?.openDrawer();
+                                //   },
+                                //   child: Container(
+                                //     color: Colors.transparent,
+                                //     child: Column(
+                                //       mainAxisAlignment:
+                                //           MainAxisAlignment.start,
+                                //       crossAxisAlignment:
+                                //           CrossAxisAlignment.start,
+                                //       children: [
+                                //         Container(
+                                //           height: 3,
+                                //           decoration: BoxDecoration(
+                                //             borderRadius:
+                                //                 BorderRadius.circular(10),
+                                //             color: Colors.white,
+                                //           ),
+                                //           width: 45,
+                                //         ),
+                                //         const SizedBox(height: 10),
+                                //         Container(
+                                //           height: 3,
+                                //           decoration: BoxDecoration(
+                                //             borderRadius:
+                                //                 BorderRadius.circular(10),
+                                //             color: Colors.white,
+                                //           ),
+                                //           width: 35,
+                                //         ),
+                                //         const SizedBox(height: 10),
+                                //         Container(
+                                //           height: 3,
+                                //           decoration: BoxDecoration(
+                                //             borderRadius:
+                                //                 BorderRadius.circular(10),
+                                //             color: Colors.white,
+                                //           ),
+                                //           width: 45,
+                                //         ),
+                                //       ],
+                                //     ),
+                                //   ),
+                                // ),
                                 const SizedBox(width: 10),
                                 Expanded(
                                   child: h5Text(

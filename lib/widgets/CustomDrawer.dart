@@ -121,7 +121,7 @@ class CustomDrawer extends StatelessWidget {
                                           GestureDetector(
                                               onTap: () {
                                                 Get.to(
-                                                    const CompleteProfilePage());
+                                                    const CompleteProfilePage(fromInside:true));
                                               },
                                               child: const Text(
                                                 'Edit Profile',
@@ -187,37 +187,35 @@ class CustomDrawer extends StatelessWidget {
                         ),
                       ],
                     ),
-),
-                    const SizedBox(height: 5),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: ListTile(
-                              tileColor: Colors.white54,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              // onTap: () async {
-                              //   bool? canCall = await callNumber(
-                              //       up.creator.call_relationship_manager ?? '');
-                              //   if (canCall != null && !canCall) {
-                              //     Fluttertoast.showToast(
-                              //         msg: 'Can\'t call on this number');
-                              //   }
-                              // },
-                              title: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: h6Text(
-                                      '-Call Relationship Manager',
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.bold,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-
+                  ),
+                  const SizedBox(height: 5),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: ListTile(
+                            tileColor: Colors.white54,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            // onTap: () async {
+                            //   bool? canCall = await callNumber(
+                            //       up.creator.call_relationship_manager ?? '');
+                            //   if (canCall != null && !canCall) {
+                            //     Fluttertoast.showToast(
+                            //         msg: 'Can\'t call on this number');
+                            //   }
+                            // },
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: h6Text(
+                                    '-Call Relationship Manager',
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ],
