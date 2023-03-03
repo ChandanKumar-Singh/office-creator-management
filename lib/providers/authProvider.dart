@@ -196,7 +196,7 @@ class AuthProvider extends ChangeNotifier {
       };
       print(sendOtpData);
       try {
-        var url = App.baseUrl + App.sendOTP;
+        var url = App.liveBaseUrl + App.sendOTP;
         var headers = {'Content-Type': 'application/json'};
         var body = {"phone": number, "app_signature_id": appSignatureID};
         debugPrint('sendOtpApi parameters $body');
@@ -260,7 +260,8 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  Future<dynamic> login({bool? imLogging, bool? route}) async {
+  Future<dynamic> login(
+      {bool? imLogging, bool? route, bool fastLogin = false}) async {
     var response;
     try {
       bool cacheExist = await APICacheManager().isAPICacheKeyExist('login');
@@ -269,15 +270,16 @@ class AuthProvider extends ChangeNotifier {
         hoverBlankLoadingDialog(true);
       }
 
-      if (isOnline) {
-        var url = App.baseUrl + App.login;
+      if (isOnline && !fastLogin) {
+        debugPrint(' this is fast loging = $fastLogin');
+        var url = App.liveBaseUrl + App.login;
         var headers = {'Content-Type': 'application/json'};
         var body = {"phone": phoneController.text, "device_token": deviceToken};
 
         debugPrint('login parameters $body');
         var res = await http.post(Uri.parse(url),
             headers: headers, body: jsonEncode(body));
-        // debugPrint('login api ${res.body}');
+        debugPrint('login api ${res.body}');
         if (res.statusCode == 200) {
           if (jsonDecode(res.body)['status'] == 200) {
             var cacheModel = APICacheDBModel(key: 'login', syncData: res.body);
@@ -296,7 +298,9 @@ class AuthProvider extends ChangeNotifier {
         }
         // debugPrint("it's url Hit ${response['results']['data']}");
       } else {
-        showNetWorkToast();
+        if (!isOnline) {
+          showNetWorkToast();
+        }
         if (cacheExist) {
           response = jsonDecode(
               (await APICacheManager().getCacheData('login')).syncData);
@@ -309,6 +313,7 @@ class AuthProvider extends ChangeNotifier {
         var up = Provider.of<UserProvider>(Get.context!, listen: false);
         var dp = Provider.of<DashboardProvider>(Get.context!, listen: false);
         debugPrint('creating user');
+        debugPrint('creating user results ${response['results']}');
         up.creator = Creator.fromJson(response['results']);
         debugPrint('created user');
 
@@ -348,7 +353,7 @@ class AuthProvider extends ChangeNotifier {
         }
       }
     } catch (e) {
-      debugPrint('e e e e e e e -> $e');
+      debugPrint(' login e e e e e e e -> $e');
     }
     // debugPrint('testing login ------ > $imLogging    $response');
 

@@ -40,7 +40,7 @@ class DashboardProvider extends ChangeNotifier {
       getTasksPage = 1;
 
       if (isOnline) {
-        var url = '${App.baseUrl}${App.getTasks}?page=$getTasksPage';
+        var url = '${App.liveBaseUrl}${App.getTasks}?page=$getTasksPage';
         var headers = {
           'Accept': '*/*',
           'Authorization': 'Bearer ${prefs.getString('token')!}'
@@ -98,7 +98,7 @@ class DashboardProvider extends ChangeNotifier {
     try {
       if (isOnline) {
         getTasksPage++;
-        var url = '${App.baseUrl}${App.getTasks}?page=$getTasksPage';
+        var url = '${App.liveBaseUrl}${App.getTasks}?page=$getTasksPage';
         var headers = {
           'Accept': '*/*',
           'Authorization': 'Bearer ${prefs.getString('token')!}'
@@ -147,7 +147,7 @@ class DashboardProvider extends ChangeNotifier {
 
       if (isOnline) {
         var url =
-            '${App.baseUrl}${App.userTaskResponseHistories}?page=$getResTasksPage';
+            '${App.liveBaseUrl}${App.userTaskResponseHistories}?page=$getResTasksPage';
         var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
         var res = await http.post(Uri.parse(url),
             headers: headers, body: jsonEncode({}));
@@ -199,7 +199,7 @@ class DashboardProvider extends ChangeNotifier {
       if (isOnline) {
         getResTasksPage++;
         var url =
-            '${App.baseUrl}${App.userTaskResponseHistories}?page=$getResTasksPage';
+            '${App.liveBaseUrl}${App.userTaskResponseHistories}?page=$getResTasksPage';
         var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
         var res = await http.post(Uri.parse(url),
             headers: headers, body: jsonEncode({}));
@@ -238,7 +238,7 @@ class DashboardProvider extends ChangeNotifier {
       getWallTasksPage = 1;
 
       if (isOnline) {
-        var url = '${App.baseUrl}${App.getwallet}?page=$getWallTasksPage';
+        var url = '${App.liveBaseUrl}${App.getwallet}?page=$getWallTasksPage';
         var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
         var res = await http.post(Uri.parse(url),
             headers: headers, body: jsonEncode({}));
@@ -297,7 +297,7 @@ class DashboardProvider extends ChangeNotifier {
       bool cacheExist =
           await APICacheManager().isAPICacheKeyExist('UserTasksHistory');
       if (isOnline) {
-        var url = '${App.baseUrl}${App.getUserTaskHistories}';
+        var url = '${App.liveBaseUrl}${App.getUserTaskHistories}';
         var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
         var res = await http.get(Uri.parse(url), headers: headers);
         if (res.statusCode == 200) {
@@ -337,7 +337,7 @@ class DashboardProvider extends ChangeNotifier {
     try {
       if (isOnline) {
         getWallTasksPage++;
-        var url = '${App.baseUrl}${App.getwallet}?page=$getWallTasksPage';
+        var url = '${App.liveBaseUrl}${App.getwallet}?page=$getWallTasksPage';
         var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
         var res = await http.post(Uri.parse(url),
             headers: headers, body: jsonEncode({}));
@@ -372,7 +372,7 @@ class DashboardProvider extends ChangeNotifier {
       hoverBlankLoadingDialog(true);
       try {
         if (isOnline) {
-          var url = '${App.baseUrl}${App.userResponseToTask}';
+          var url = '${App.liveBaseUrl}${App.userResponseToTask}';
           var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
           var body = {
             "task_id": taskId.toString(),
@@ -414,7 +414,7 @@ class DashboardProvider extends ChangeNotifier {
     hoverBlankLoadingDialog(true);
     try {
       if (isOnline) {
-        var url = '${App.baseUrl}${App.userResponseToTask}';
+        var url = '${App.liveBaseUrl}${App.userResponseToTask}';
         var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
         var body = {
           "task_id": taskId.toString(),
@@ -453,7 +453,7 @@ class DashboardProvider extends ChangeNotifier {
     var resstatus = 0;
     try {
       if (isOnline) {
-        var url = App.baseUrl + App.userSubmitCompletedTask;
+        var url = App.liveBaseUrl + App.userSubmitCompletedTask;
         var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
         var request = http.MultipartRequest(
           'POST',
@@ -500,7 +500,7 @@ class DashboardProvider extends ChangeNotifier {
     try {
       bool cacheExist = await APICacheManager().isAPICacheKeyExist('genres');
       if (isOnline) {
-        var url = '${App.baseUrl}${App.getGenres}';
+        var url = '${App.liveBaseUrl}${App.getGenres}';
         var headers = {'Accept': '*/*', 'Authorization': 'Bearer $token'};
         var res = await http.get(Uri.parse(url), headers: headers);
         if (res.statusCode == 200) {

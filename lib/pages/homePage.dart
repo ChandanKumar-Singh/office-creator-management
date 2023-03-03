@@ -81,10 +81,8 @@ class _HomePageState extends State<HomePage> {
         .getTasks()
         .then((value) async => await dp.getUserTasksHistory())
         .then((value) => _controller.sink.add(SwipeRefreshState.hidden));
-    setState(() {});
-    await ap.login();
+    ap.login();
     await dp.getGenres();
-
     setState(() {});
   }
 
@@ -252,7 +250,7 @@ class _HomePageState extends State<HomePage> {
         // indicatorBuilder: (context,mode,d1,d2,d3){
         //   return LinearProgressIndicator();
         // },
-        itemCount:dp.loadingTasks?5: dp.tasks.length,
+        itemCount: dp.loadingTasks ? 5 : dp.tasks.length,
         itemBuilder: (context, index) => Column(
               children: [
                 dp.loadingTasks
@@ -421,7 +419,7 @@ shareThisTask(TaskModel task) async {
   final box = Get.context!.findRenderObject() as RenderBox?;
 
   await Share.share(
-    'Hey there is an interesting collaboration on wecollab, #${task.title ?? ''}# ${task.mainTitle != null ? 'by #${task.mainTitle}#' : ''} Go and check now #link for app#',
+    'Hey there is an interesting collaboration on weCollab, #${task.title ?? ''}# ${task.mainTitle != null ? 'by #${task.mainTitle}#' : ''} Go and check now #${App.playStoreAppUrl}#',
     subject: 'subject',
     sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
   );

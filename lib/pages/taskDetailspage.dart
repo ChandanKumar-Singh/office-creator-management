@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:creater_management/constants/app.dart';
 import 'package:creater_management/pages/homePage.dart';
@@ -79,9 +80,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             children: [
               Stack(
                 children: [
-                  Container(
-                    height: 300,
-                  ),
+                  Container(height: 300),
                   ClipPath(
                     clipper: DiagonalPathClipperOne(),
                     child: Container(
@@ -101,51 +100,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                           children: [
                             Row(
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    _scaffoldKey.currentState?.openDrawer();
-                                  },
-                                  child: Container(
-                                    color: Colors.transparent,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          height: 3,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: Colors.white,
-                                          ),
-                                          width: 45,
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Container(
-                                          height: 3,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: Colors.white,
-                                          ),
-                                          width: 35,
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Container(
-                                          height: 3,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: Colors.white,
-                                          ),
-                                          width: 45,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                Platform.isIOS
+                                    ? buildBackButton(context)
+                                    : buildDrawerButtom(),
                                 const SizedBox(width: 10),
                                 Expanded(
                                   child: h5Text(
@@ -372,6 +329,63 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             ],
           ),
         ));
+  }
+
+  GestureDetector buildBackButton(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.pop(context),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration:
+            const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+        child: const Center(
+          child: Icon(Icons.arrow_back_rounded, color: Colors.black),
+        ),
+      ),
+    );
+  }
+
+  GestureDetector buildDrawerButtom() {
+    return GestureDetector(
+      onTap: () {
+        _scaffoldKey.currentState?.openDrawer();
+      },
+      child: Container(
+        color: Colors.transparent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+              ),
+              width: 45,
+            ),
+            const SizedBox(height: 10),
+            Container(
+              height: 3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+              ),
+              width: 35,
+            ),
+            const SizedBox(height: 10),
+            Container(
+              height: 3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+              ),
+              width: 45,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget buildTaskDetailsSkeleton() {
@@ -616,20 +630,22 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
               // style: ElevatedButton.styleFrom(
               //   backgroundColor: App.themecolor.withOpacity(0.8),
               // ),
-              onTap: () async {
-                Navigator.push(
-                    Get.context!,
-                    slideLeftRoute(
-                      UploadProofPage(
-                        task: task,
-                        reason: reason,
-                      ),
-                      effect: PageTransitionType.rightToLeftJoined,
-                      current: TaskDetailsPage(
-                        task: task,
-                      ),
-                    ));
-              },
+              onTap: status == 1
+                  ? null
+                  : () async {
+                      Navigator.push(
+                          Get.context!,
+                          slideLeftRoute(
+                            UploadProofPage(
+                              task: task,
+                              reason: reason,
+                            ),
+                            effect: PageTransitionType.rightToLeftJoined,
+                            current: TaskDetailsPage(
+                              task: task,
+                            ),
+                          ));
+                    },
               child: Container(
                 height: 45,
                 padding: const EdgeInsets.symmetric(vertical: 5),
@@ -637,7 +653,7 @@ class TaskDetailsUploadDocsButtons extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     // color: App.themecolor,
                     border: Border.all(
-                      color: Colors.grey,
+                      color: status == 1 ? Colors.grey[300]! : Colors.grey,
                       width: 0.8,
                     )),
                 child: Column(

@@ -300,18 +300,17 @@ void checkLogin() async {
   // } else {
   bool? login = prefs.getBool('isLogin');
   debugPrint('check login offline user $login');
-
   if (login != null && login) {
     isLogin = true;
     // }
   } else {
     isLogin = false;
   }
-  Timer(const Duration(seconds: 1), () async {
+  Timer(const Duration(seconds: 0), () async {
     if (!isLogin) {
       Get.offAll(const LoginScreen());
     } else {
-      await initiateUser();
+      await initiateUser(fastLogin: true);
       // Get.offAll(const LoginScreen());
     }
   });
@@ -477,12 +476,13 @@ Future<XFile?> pickImage(ImageSource source) async {
   return image;
 }
 
-Future<void> initiateUser({String? id, String? pass, bool? route}) async {
+Future<void> initiateUser(
+    {String? id, String? pass, bool? route, bool fastLogin = false}) async {
   Provider.of<AuthProvider>(Get.context!, listen: false).phoneController.text =
       id ?? prefs.getString('phone')!;
 
   await Provider.of<AuthProvider>(Get.context!, listen: false)
-      .login(route: route ?? true);
+      .login(route: route ?? true, fastLogin: fastLogin);
 }
 
 bool isProfileCompleted(UserProvider up) {

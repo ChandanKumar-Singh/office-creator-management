@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:creater_management/providers/dashBoardController.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:creater_management/providers/authProvider.dart';
@@ -16,6 +17,16 @@ import 'functions/functions.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await FirebaseAppCheck.instance.activate(
+    // webRecaptchaSiteKey: 'recaptcha-v3-site-key',
+    // Default provider for Android is the Play Integrity provider. You can use the "AndroidProvider" enum to choose
+    // your preferred provider. Choose from:
+    // 1. debug provider
+    // 2. safety net provider
+    // 3. play integrity provider
+    androidProvider: AndroidProvider.playIntegrity,
+  );
+
   await initFCM();
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 

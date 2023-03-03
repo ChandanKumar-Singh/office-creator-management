@@ -65,7 +65,7 @@ class UserProvider extends ChangeNotifier {
 
     try {
       if (isOnline) {
-        var url = App.baseUrl + App.userUpdateProfilePic;
+        var url = App.liveBaseUrl + App.userUpdateProfilePic;
         var headers = {
           'Accept': '*/*',
           'Authorization': 'Bearer ${creator.token}'
@@ -116,7 +116,7 @@ class UserProvider extends ChangeNotifier {
         hoverBlankLoadingDialog(true);
       }
       if (isOnline) {
-        var url = App.baseUrl + App.complete_profile;
+        var url = App.liveBaseUrl + App.complete_profile;
         var headers = {
           'Accept': '*/*',
           'Content-Type': 'application/json',
