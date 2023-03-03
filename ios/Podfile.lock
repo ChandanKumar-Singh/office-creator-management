@@ -621,17 +621,26 @@ PODS:
   - Firebase/Messaging (10.3.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 10.3.0)
+  - firebase_app_check (0.1.1-8):
+    - Firebase/CoreOnly (~> 10.3.0)
+    - firebase_core
+    - FirebaseAppCheck (~> 10.3.0-beta)
+    - Flutter
   - firebase_auth (4.2.1):
     - Firebase/Auth (= 10.3.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.4.0):
+  - firebase_core (2.4.1):
     - Firebase/CoreOnly (= 10.3.0)
     - Flutter
   - firebase_messaging (14.2.0):
     - Firebase/Messaging (= 10.3.0)
     - firebase_core
     - Flutter
+  - FirebaseAppCheck (10.3.0):
+    - FirebaseCore (~> 10.0)
+    - GoogleUtilities/Environment (~> 7.8)
+    - PromisesObjC (~> 2.1)
   - FirebaseAuth (10.3.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
@@ -796,6 +805,7 @@ PODS:
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
+  - firebase_app_check (from `.symlinks/plugins/firebase_app_check/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
@@ -818,6 +828,7 @@ SPEC REPOS:
     - abseil
     - BoringSSL-GRPC
     - Firebase
+    - FirebaseAppCheck
     - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreInternal
@@ -844,6 +855,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/cloud_firestore/ios"
   connectivity:
     :path: ".symlinks/plugins/connectivity/ios"
+  firebase_app_check:
+    :path: ".symlinks/plugins/firebase_app_check/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -883,9 +896,11 @@ SPEC CHECKSUMS:
   cloud_firestore: cf019e947a49ebb56ddf4ae7f6f2ca13469da1b1
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   Firebase: f92fc551ead69c94168d36c2b26188263860acd9
+  firebase_app_check: 44e4b4a2e69608f9093ed729f1d101bccdb8badd
   firebase_auth: 30cbdb28d5c38f572c331a8590a93e2a1201d75c
-  firebase_core: 6f2f753e316765799d88568232ed59e300ff53db
+  firebase_core: bf59c32d2e53814f558efa20840c1902fa2fe461
   firebase_messaging: 048cb84d3f87969d37a6947b32d0009eaf6f6b3c
+  FirebaseAppCheck: edbc4d99f30a2762603d618330f28046a47c031d
   FirebaseAuth: 0e415d29d846c1dce2fb641e46f35e9888d9bec6
   FirebaseCore: 988754646ab3bd4bdcb740f1bfe26b9f6c0d5f2a
   FirebaseCoreInternal: e301297f4c15a17489e48ed722d733b1578e0c02

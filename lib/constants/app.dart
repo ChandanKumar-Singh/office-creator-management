@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class App {
-  static const String playStoreAppUrl = 'https://play.google.com/store/apps/details?id=com.cq.creater_management';
+  static const String playStoreAppUrl =
+      'https://play.google.com/store/apps/details?id=com.cq.creater_management';
   // static const String imageBase = 'https://vikalpias.in/collaboration/public/';
   static const String imageBase = 'http://cms.techkaro.in/public/';
   // static const String liveBaseUrl =
   //     'https://vikalpias.in/collaboration/public/api/v1/';
-  static const String liveBaseUrl ='http://cms.techkaro.in/public/api/v1/';
+  static const String liveBaseUrl = 'http://cms.techkaro.in/public/api/v1/';
 
-      static const String login = 'login';
+  static const String login = 'login';
   static const String sendOTP = 'sendOTP';
   static const String forgetPassword = 'forgetPassword';
   static const String getTeamMembers = 'getTeamMembers';

@@ -380,7 +380,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 children:  [
                   Text(widget.fromInside?'Update':'Get Started'),
                   if(!widget.fromInside)
-                  Icon(Icons.arrow_forward_ios_rounded),
+                  const Icon(Icons.arrow_forward_ios_rounded),
                 ],
               )),
         ),
