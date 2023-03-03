@@ -64,7 +64,7 @@ class _WalletPageState extends State<WalletPage> {
     return SwipeRefresh.builder(
       stateStream: _stream,
       onRefresh: _refresh,
-      refreshIndicatorExtent: 300,
+      refreshIndicatorExtent: 100,
       padding: const EdgeInsets.symmetric(vertical: 10),
       itemCount: dp.wallTasks.length,
       itemBuilder: (context, index) => Column(

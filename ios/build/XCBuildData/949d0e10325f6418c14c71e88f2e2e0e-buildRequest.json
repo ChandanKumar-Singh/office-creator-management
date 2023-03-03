@@ -1,0 +1,2400 @@
+{
+  "_buildCommand2" : {
+    "command" : "migrate"
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "18c1723432283e0cc55f10a6dcfd9e0288a783a885d8b0b3beb2e9f90bde3f49",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42b35b2234c62e83383ef7c2509ddd49f7",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42a408a4c1f668e62161cdeba76f57d50c",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42c184ad8b3c49a0c098ef639132f1afe4",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42312b4bc59bbbe2c06c205bf4da6737f5",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd420062393f91a1d2d94e3e5ed3a5aa5da9",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42e2ca95742fe9145d6e85576b86908ca0",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42fdca3e568c0d4fe17f0e20bbe764df0d",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42b66589e559e86b96e7ab7c12d34548fe",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42144902882b713248a71c322fd5b2f4ee",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd421f000f066404b97b12e9c4ca84d38d0f",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42718890dfdac589615663a02d43d9af3e",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42d7de55694c750fe04d3bc1517f91a481",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42355cff7d758029119bc2218cc297bc97",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42812cb744006e837a06a1ec7fcf8ca389",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42f49b18868e69e442795477541dae1d9f",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42888c929bdb4ced65b2d21ecb0351709a",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd429840e8244cb75f43b3efe8cd6dec5ec5",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42cb446d83a55866e5ca0338d00b7158fb",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42e7cbafb63ff4e03edd5285aa56a57295",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_MIGRATE_CODE" : "YES",
+              "SWIFT_MIGRATE_DIR" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Migration/qr_code_scanner-swift.migrate",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42d3c8dfff2c580c352f83d3850ad17775",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42839a1650b1f10605b2db52456c9e6468",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42e5199a3f70555689be7018ee7f9f878d",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd427f74324bfc5c78140e34d510e26e00c1",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42020791fd2e7b7ddc8fb2658339c42e16",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd426836e78755c7a49cbac94d6710bb39cc",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd426f0e8be830d0d3c28782ddeefee89819",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42c7508c3a173f39338f076ef697b954c4",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42e3ed3527261efe7b09b47530bc030c23",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42a09f89f66b716da1ab2ec5e473d4f730",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd429da425bb6d6d5d8dbb95e4afffb82217",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd423788d8769c821650606514be955fca93",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42f10882e1684b8a3dfdec597bc0a47af3",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42566ec9a1d71c4629f4f85ecb735ce614",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42b762d5de103fb6cfc7506aa6be1d4f33",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42d57b8bce60a0f11113f4cff532db68d3",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd426dbfa2df59ddcae0f992dedaee8f3553",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42975ca575d1289bef32c9cad79a370b1b",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd423da17a3564c774dfaa331fa07754d2bc",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd4286480246dff0990da24465d140ad1874",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42903e66fa03d6d27edaa18126a82c20fd",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42dd3a6a519ed4181bf31ea6bc1f18ebc5",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd427a4af56e2729cecfad7b13d62a9a5fa4",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd423786431ce548989b846bbf1a7384f58e",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42c075cc473fa5680b867d51f1363214ff",
+      "parameters" : {
+        "action" : "build",
+        "activeArchitecture" : "undefined_arch",
+        "activeRunDestination" : {
+          "disableOnlyActiveArch" : true,
+          "platform" : "iphoneos",
+          "sdk" : "iphoneos16.1",
+          "sdkVariant" : "iphoneos",
+          "supportedArchitectures" : [
+            "armv4t",
+            "armv5",
+            "armv6",
+            "armv7",
+            "armv7f",
+            "armv7s",
+            "armv7k",
+            "arm64",
+            "arm64e"
+          ],
+          "targetArchitecture" : "undefined_arch"
+        },
+        "arenaInfo" : {
+          "buildIntermediatesPath" : "",
+          "buildProductsPath" : "",
+          "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+          "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+          "indexEnableDataStore" : true,
+          "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+          "pchPath" : ""
+        },
+        "configurationName" : "Debug",
+        "overrides" : {
+          "synthesized" : {
+            "table" : {
+              "DSTROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/ReleaseProducts",
+              "INDEX_ENABLE_DATA_STORE" : "NO",
+              "OBJROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Intermediates.noindex",
+              "SUPPORTS_TEXT_BASED_API" : "NO",
+              "SWIFT_COMPILATION_MODE" : "singlefile",
+              "SWIFT_ENABLE_BATCH_MODE" : "NO",
+              "SWIFT_OPTIMIZATION_LEVEL" : "-Onone",
+              "SWIFT_PRECOMPILE_BRIDGING_HEADER" : "NO",
+              "SWIFT_WHOLE_MODULE_OPTIMIZATION" : "NO",
+              "SYMROOT" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/SwiftMigration/Runner/Products",
+              "TOOLCHAINS" : "com.apple.dt.toolchain.XcodeDefault"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "containerPath" : "/Users/manojsingh/Flutter Projects CKS/Creator-Management/office-creator-management/office-creator-management/ios/Runner.xcworkspace",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "undefined_arch",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : true,
+      "platform" : "iphoneos",
+      "sdk" : "iphoneos16.1",
+      "sdkVariant" : "iphoneos",
+      "supportedArchitectures" : [
+        "armv4t",
+        "armv5",
+        "armv6",
+        "armv7",
+        "armv7f",
+        "armv7s",
+        "armv7k",
+        "arm64",
+        "arm64e"
+      ],
+      "targetArchitecture" : "undefined_arch"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/manojsingh/Library/Developer/Xcode/DerivedData/Runner-gesqchbhkbqddpbgizvxnmzjqkro/Index.noindex/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

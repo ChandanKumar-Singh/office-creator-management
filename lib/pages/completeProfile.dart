@@ -134,6 +134,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                         ],
                       ),
                     SizedBox(height: widget.fromInside ? 10 : 50),
+
                     buildProfilePicCircle(up),
                     const SizedBox(height: 50),
                     buildNameForm(up),
@@ -312,25 +313,27 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   buildLogoutAndStartButtons(BuildContext context, UserProvider up) {
     return Row(
       children: [
-        if (!widget.fromInside)
-          Expanded(
-            child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0))),
-                onPressed: () async {
-                  await Provider.of<AuthProvider>(context, listen: false)
-                      .logOut();
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    // Icon(Icons.logout),
-                    Text('Log Out'),
-                  ],
-                )),
-          ),
-        if (!widget.fromInside) const SizedBox(width: 10),
+
+        if(!widget.fromInside)
+        Expanded(
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0))),
+              onPressed: () async {
+                await Provider.of<AuthProvider>(context, listen: false)
+                    .logOut();
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  // Icon(Icons.logout),
+                  Text('Log Out'),
+                ],
+              )),
+        ),
+        if(!widget.fromInside)
+        const SizedBox(width: 10),
         Expanded(
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -374,9 +377,10 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                     },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(widget.fromInside ? 'Update' : 'Get Started'),
-                  if (!widget.fromInside) Icon(Icons.arrow_forward_ios_rounded),
+                children:  [
+                  Text(widget.fromInside?'Update':'Get Started'),
+                  if(!widget.fromInside)
+                  Icon(Icons.arrow_forward_ios_rounded),
                 ],
               )),
         ),
@@ -906,6 +910,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                         .copyWith(color: Colors.white),
                   ),
                 ),
+
               )
             ],
           ),
@@ -1118,6 +1123,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                         .copyWith(color: Colors.white),
                   ),
                 ),
+
               )
             ],
           ),

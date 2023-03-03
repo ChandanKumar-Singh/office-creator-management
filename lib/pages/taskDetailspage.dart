@@ -103,6 +103,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                                 Platform.isIOS
                                     ? buildBackButton(context)
                                     : buildDrawerButtom(),
+
                                 const SizedBox(width: 10),
                                 Expanded(
                                   child: h5Text(
