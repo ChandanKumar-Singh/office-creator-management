@@ -62,10 +62,10 @@ class CustomDrawer extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 0.0, horizontal: 10),
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       h6Text(
-                                          up.creator.data!.fullName ??
-                                              'Your Name',
+                                          up.creator.data!.fullName ?? 'Guest',
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey[700]),
                                       const SizedBox(height: 7),
@@ -103,11 +103,11 @@ class CustomDrawer extends StatelessWidget {
                                               ),
                                               const SizedBox(width: 5),
                                               Text(
-                                                countInKMB(
-                                                    4877747343.toString()),
-                                                // countInKMB(up.creator.data!
-                                                //     .youtubeSubscribers
-                                                //     .toString()),
+                                                // countInKMB(
+                                                //     4877747343.toString()),
+                                                countInKMB(up.creator.data!
+                                                    .youtubeSubscribers
+                                                    .toString()),
                                                 overflow: TextOverflow.ellipsis,
                                               ),
                                             ],
@@ -121,7 +121,8 @@ class CustomDrawer extends StatelessWidget {
                                           GestureDetector(
                                               onTap: () {
                                                 Get.to(
-                                                    const CompleteProfilePage(fromInside:true));
+                                                    const CompleteProfilePage(
+                                                        fromInside: true));
                                               },
                                               child: const Text(
                                                 'Edit Profile',

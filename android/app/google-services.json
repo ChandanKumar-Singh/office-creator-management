@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "977529091350",
-    "firebase_url": "https://tagxi-evanto-default-rtdb.firebaseio.com",
-    "project_id": "tagxi-evanto",
-    "storage_bucket": "tagxi-evanto.appspot.com"
+    "project_number": "194577068541",
+    "project_id": "creator-management-3d8fd",
+    "storage_bucket": "creator-management-3d8fd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:977529091350:android:8971ed33175731a8944c37",
+        "mobilesdk_app_id": "1:194577068541:android:e044a18f7cdd36983d6994",
         "android_client_info": {
           "package_name": "com.cq.creater_management"
         }
       },
       "oauth_client": [
         {
-          "client_id": "977529091350-oq1qjve2opsa1fg4dauneir5v8hcus5i.apps.googleusercontent.com",
+          "client_id": "194577068541-erjb5rbkhkifjjvtua6magl5e38v7qhq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cq.creater_management",
+            "certificate_hash": "39a7710147c308f5399b1599b7bbd031ff952bd0"
+          }
+        },
+        {
+          "client_id": "194577068541-1lq74j4bmse1dsmi19iff4fq6bmlpm3a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBXnb_cmv6UtDqSEE_1glg4r5h1y_Y5RWg"
+          "current_key": "AIzaSyBH10iv_jCJyeH6efPWpxV1Fmc8p_T98Ys"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "977529091350-oq1qjve2opsa1fg4dauneir5v8hcus5i.apps.googleusercontent.com",
+              "client_id": "194577068541-1lq74j4bmse1dsmi19iff4fq6bmlpm3a.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -37,35 +44,27 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:977529091350:android:8fa2229d1803be84944c37",
+        "mobilesdk_app_id": "1:194577068541:android:12cd88cbf11f63d13d6994",
         "android_client_info": {
-          "package_name": "com.cubic.tagxi_envato_driver"
+          "package_name": "com.wecollab.creator"
         }
       },
       "oauth_client": [
         {
-          "client_id": "977529091350-9tf3orrdj5on49692jcnp4ajhqb7s7ag.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.cubic.tagxi_envato_driver",
-            "certificate_hash": "a1f8cf9be3e91bf203644cd73ee2b00bdc271409"
-          }
-        },
-        {
-          "client_id": "977529091350-oq1qjve2opsa1fg4dauneir5v8hcus5i.apps.googleusercontent.com",
+          "client_id": "194577068541-1lq74j4bmse1dsmi19iff4fq6bmlpm3a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBXnb_cmv6UtDqSEE_1glg4r5h1y_Y5RWg"
+          "current_key": "AIzaSyBH10iv_jCJyeH6efPWpxV1Fmc8p_T98Ys"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "977529091350-oq1qjve2opsa1fg4dauneir5v8hcus5i.apps.googleusercontent.com",
+              "client_id": "194577068541-1lq74j4bmse1dsmi19iff4fq6bmlpm3a.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

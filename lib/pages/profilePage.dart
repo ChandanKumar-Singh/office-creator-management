@@ -435,7 +435,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        (up.creator.data!.fullName ?? 'Your Name'),
+                        (up.creator.data!.fullName ?? 'Guest'),
                         textAlign: TextAlign.center,
                         // fontWeight: FontWeight.bold,
                         style: Theme.of(context)

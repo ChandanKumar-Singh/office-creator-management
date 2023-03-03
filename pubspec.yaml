@@ -20,6 +20,7 @@ dependencies:
   awesome_dialog: ^3.0.2
   firebase_core: ^2.4.0
   firebase_auth: ^4.2.1
+  firebase_app_check: ^0.1.1+8
   provider: ^6.0.5
   font_awesome_flutter: ^10.3.0
   custom_refresh_indicator: ^2.0.1
@@ -80,9 +81,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/NOV-LOGO-red.png"
-  adaptive_icon_foreground: "assets/images/NOV-LOGO-red.png"
-  adaptive_icon_background: "#ed1e79"
+  image_path: "assets/images/wecollab icon.png"
 
 
 

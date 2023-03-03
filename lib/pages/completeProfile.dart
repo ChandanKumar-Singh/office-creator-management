@@ -84,7 +84,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
             name: genresModel.title ?? '', value: genresModel.id ?? 0);
         debugPrint('dropDownValueList ${dropDownValueModel}');
         _cntMulti.dropDownValueList ??= [];
-        _cntMulti.dropDownValueList!.add(dropDownValueModel);
+        _cntMulti.dropDownValueList?.add(dropDownValueModel);
         up.selectedGenres.add(dropDownValueModel);
         setState(() {});
       }
@@ -106,32 +106,35 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 18.0, horizontal: 20),
+                // child: Center(child: Text('Testing  Welcome'),),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    if(widget.fromInside)
-                    Column(
-                      children: [
-                        const SizedBox(height: 10),
-                        Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () => Navigator.pop(context),
-                              child: Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: const BoxDecoration(
-                                    color: Colors.white, shape: BoxShape.circle),
-                                child: const Center(
-                                  child: Icon(Icons.arrow_back_rounded,
-                                      color: Colors.black),
+                    if (widget.fromInside)
+                      Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () => Navigator.pop(context),
+                                child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      shape: BoxShape.circle),
+                                  child: const Center(
+                                    child: Icon(Icons.arrow_back_rounded,
+                                        color: Colors.black),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: widget.fromInside?10:50),
+                            ],
+                          ),
+                        ],
+                      ),
+                    SizedBox(height: widget.fromInside ? 10 : 50),
+
                     buildProfilePicCircle(up),
                     const SizedBox(height: 50),
                     buildNameForm(up),
@@ -310,6 +313,7 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   buildLogoutAndStartButtons(BuildContext context, UserProvider up) {
     return Row(
       children: [
+
         if(!widget.fromInside)
         Expanded(
           child: ElevatedButton(
@@ -709,8 +713,8 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                                         loadingInsta = true;
                                       });
                                       var countText = await getInstaSubscribers(
-                                          // up.instaUserNameController.text);
-                                          'apnamotiv');
+                                          up.instaUserNameController.text);
+                                      // 'apnamotiv');
                                       debugPrint(countText.toString());
 
                                       Future.delayed(const Duration(seconds: 1),
@@ -753,21 +757,15 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     labelStyle: const TextStyle(
                       fontWeight: FontWeight.normal,
@@ -822,21 +820,15 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     labelStyle: const TextStyle(
                       fontWeight: FontWeight.normal,
@@ -889,21 +881,15 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     labelText: 'Address '),
               ),
@@ -913,16 +899,18 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
         if (showErrorText)
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Expanded(
-                    child: Text(
-                  '* Address is Required',
-                  style: Theme.of(context)
-                      .textTheme
-                      .caption!
-                      .copyWith(color: Colors.white),
-                )),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    '* Address is Required',
+                    style: Theme.of(context)
+                        .textTheme
+                        .caption!
+                        .copyWith(color: Colors.white),
+                  ),
+                ),
+
               )
             ],
           ),
@@ -957,21 +945,15 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     labelText: 'phone '),
               ),
@@ -1112,21 +1094,15 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                      ),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     labelText: 'First Name '),
               ),
@@ -1136,16 +1112,18 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
         if (showErrorText)
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Expanded(
-                    child: Text(
-                  '* Name is Required',
-                  style: Theme.of(context)
-                      .textTheme
-                      .caption!
-                      .copyWith(color: Colors.white),
-                )),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    '* Name is Required',
+                    style: Theme.of(context)
+                        .textTheme
+                        .caption!
+                        .copyWith(color: Colors.white),
+                  ),
+                ),
+
               )
             ],
           ),
